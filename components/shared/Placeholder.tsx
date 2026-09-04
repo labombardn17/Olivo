@@ -26,8 +26,9 @@ interface Props {
 /** Palette-tinted photographic placeholder. Every one is labeled in alt text. */
 export function Placeholder({ shot, className = "", sizes = "100vw", priority, tint = true, imgClassName = "" }: Props) {
   const s = shots[shot];
+  const pos = /\b(absolute|fixed|sticky)\b/.test(className) ? "" : "relative ";
   return (
-    <figure className={`${tint ? "tint " : ""}relative overflow-hidden ${className}`} data-placeholder={shot}>
+    <figure className={`${tint ? "tint " : ""}${pos}overflow-hidden ${className}`} data-placeholder={shot}>
       <Image src={`/img/placeholders/${shot}.jpg`} alt={s.alt} width={s.w} height={s.h} sizes={sizes} priority={priority} className={`h-full w-full object-cover ${imgClassName}`} />
     </figure>
   );

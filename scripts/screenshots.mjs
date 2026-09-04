@@ -21,6 +21,17 @@ mkdirSync(screens, { recursive: true });
 mkdirSync(`${root}public/img/heroes/`, { recursive: true });
 
 const stop = await ensureServer();
+
+/** Scroll through the page so lazy images load, wait for them, return to top. */
+async function settle(page) {
+  await page.evaluate(async () => {
+    const h = document.body.scrollHeight;
+    for (let y = 0; y < h; y += 500) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 40)); }
+    window.scrollTo(0, 0);
+    await Promise.all([...document.images].filter((i) => !i.complete).map((i) => new Promise((r) => { i.onload = i.onerror = r; })));
+  });
+  await page.waitForTimeout(300);
+}
 const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
 const report = { violations: [], pages: {} };
 
@@ -74,7 +85,7 @@ for (const c of concepts) {
       await page.goto(url, { waitUntil: "networkidle" });
       const pal = p ?? (await page.evaluate(() => document.documentElement.getAttribute("data-palette")));
       await page.evaluate(() => document.fonts.ready);
-      await page.waitForTimeout(400);
+      await settle(page);
       await page.screenshot({ path: `${screens}${c}-${pal}-${v.name}.png`, fullPage: true });
       const checks = await page.evaluate(DOM_CHECKS);
       report.pages[`${c}-${pal}-${v.name}`] = checks;

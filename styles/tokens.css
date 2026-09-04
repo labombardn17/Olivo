@@ -130,6 +130,7 @@ html[data-palette="glacier"] {
 }
 
 /* ---------- Base ---------- */
+@layer base {
 html { background: var(--ground); color: var(--ink); }
 html.palette-transition, html.palette-transition * {
   transition: background-color 350ms ease, color 350ms ease, border-color 350ms ease !important;
@@ -152,6 +153,9 @@ a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 
+}
+
+@layer components {
 /* Type helpers */
 .smallcaps { font-variant-caps: all-small-caps; letter-spacing: 0.06em; }
 .hang { hanging-punctuation: first last; }
@@ -175,14 +179,19 @@ ul, ol { padding: 0; list-style: none; }
   background: var(--accent); opacity: 0.1; mix-blend-mode: multiply;
 }
 [data-concept="cinema"] .tint::after, .inverse .tint::after { mix-blend-mode: soft-light; opacity: 0.12; }
+.tint-layer { background: var(--accent); opacity: 0.1; mix-blend-mode: multiply; pointer-events: none; }
+[data-concept="cinema"] .tint-layer, .inverse .tint-layer { mix-blend-mode: soft-light; opacity: 0.12; }
 
 /* Video scrim: transparent to ground */
 .scrim { background: linear-gradient(to bottom, transparent 0%, var(--ground) 100%); }
+
+}
 
 /* Motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+@layer components {
 .split-line { display: block; overflow: hidden; }
 .split-line > span { display: block; }
 .grain { position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.05; mix-blend-mode: multiply; }
@@ -204,3 +213,4 @@ html.lenis, html.lenis body { height: auto; }
 .snap-x-mandatory { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .snap-x-mandatory::-webkit-scrollbar { display: none; }
 .snap-start { scroll-snap-align: start; }
+}

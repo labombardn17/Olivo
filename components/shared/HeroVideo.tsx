@@ -61,9 +61,10 @@ export function HeroVideo({
   }, [mp4, webm]);
 
   return (
-    <div ref={frameRef} className={`relative overflow-hidden ${className}`} data-hero-video="">
+    <div ref={frameRef} className={`overflow-hidden ${className}`} data-hero-video="">
       <Image src={poster} alt={posterAlt} width={width} height={height} priority sizes="100vw" className="absolute inset-0 h-full w-full object-cover" />
       <video ref={ref} autoPlay muted loop playsInline preload="none" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
+      <div aria-hidden="true" className="absolute inset-0 tint-layer" />
     </div>
   );
 }

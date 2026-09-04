@@ -35,7 +35,15 @@ export interface DesignState {
   onWipeRevealed: () => void;
 }
 
-export const DesignContext = createContext<DesignState | null>(null);
+const noop = () => {};
+/** Safe default so consumers render during a Suspense fallback (no switcher, no wipe). */
+export const defaultDesignState: DesignState = {
+  concept: null, palette: "olivo", chosen: false, hidden: true, present: false, notes: false, open: false,
+  wipe: { phase: "idle", color: "#000" },
+  setOpen: noop, setHidden: noop, setPalette: noop, cyclePalette: noop, switchConcept: noop, prefetch: noop, onWipeCovered: noop, onWipeRevealed: noop,
+};
+
+export const DesignContext = createContext<DesignState>(defaultDesignState);
 
 function readStored(): PaletteKey | null {
   try {
@@ -157,7 +165,5 @@ export function useDesignStateValue(): DesignState {
 }
 
 export function useDesignState(): DesignState {
-  const ctx = useContext(DesignContext);
-  if (!ctx) throw new Error("useDesignState must be used inside DesignProvider");
-  return ctx;
+  return useContext(DesignContext);
 }
