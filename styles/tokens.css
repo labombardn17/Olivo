@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+/* Reset every default Tailwind color, radius, shadow and font so no
+   default color name can appear anywhere. Own tokens are declared below. */
+@theme {
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --font-*: initial;
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 52rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 90rem;
+}
+
+/* Semantic slots. Utilities like bg-ground, text-ink, border-rule resolve to
+   the runtime palette variables so a palette switch needs no reload. */
+@theme inline {
+  --color-ground: var(--ground);
+  --color-ground-2: var(--ground-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-fill: var(--accent-fill);
+  --color-inverse-ground: var(--inverse-ground);
+  --color-inverse-ink: var(--inverse-ink);
+  --color-scrim: var(--scrim);
+  --color-brass: var(--brass);
+  --color-brass-text: var(--brass-text);
+  --color-tool-ground: #f7f4ee;
+  --color-tool-ink: #141414;
+  --color-tool-rule: #d8d3c9;
+  --font-display: var(--font-display-face);
+  --font-text: var(--font-text-face);
+  --font-mono: var(--font-mono-face);
+  --radius-1: 1px;
+  --radius-2: 2px;
+  --radius-4: 4px;
+}
+
+/* ---------- Palettes ----------
+   Each palette declares a light scheme and a dark scheme. Concepts consume
+   the semantic slots only. Cinema and any .inverse section use the dark
+   scheme. Light accents (brass, champagne gold, pewter) are rule colors and
+   never carry text; --accent-text is the text and focus-ring color. */
+
+html[data-palette="noir"] {
+  --l-accent-fill: #0b0b0c; --d-accent-fill: #f5f3ef;
+  --l-ground: #f5f3ef; --l-ground-2: #ecebe6; --l-ink: #0b0b0c; --l-ink-2: #4d4d4f;
+  --l-rule: #d9d6d0; --l-accent: #0b0b0c; --l-accent-text: #0b0b0c; --l-accent-ink: #f5f3ef;
+  --l-brass: #b3b0aa; --l-brass-text: #4d4d4f;
+  --d-ground: #0b0b0c; --d-ground-2: #151516; --d-ink: #f5f3ef; --d-ink-2: #b4b2ad;
+  --d-rule: #2a2a2c; --d-accent: #f5f3ef; --d-accent-text: #f5f3ef; --d-accent-ink: #0b0b0c;
+  --d-brass: #4a4a4c; --d-brass-text: #b4b2ad;
+}
+html[data-palette="orchid"] {
+  --l-accent-fill: #6e4b8f; --d-accent-fill: #c4a6dd;
+  --l-ground: #fbf9fc; --l-ground-2: #f1edf4; --l-ink: #1b1424; --l-ink-2: #5b4f67;
+  --l-rule: #dcd4e2; --l-accent: #6e4b8f; --l-accent-text: #553873; --l-accent-ink: #fbf9fc;
+  --l-brass: #c7b6d6; --l-brass-text: #553873;
+  --d-ground: #1a1220; --d-ground-2: #241a2c; --d-ink: #efe6f3; --d-ink-2: #baaec5;
+  --d-rule: #3a2e45; --d-accent: #a582c4; --d-accent-text: #c4a6dd; --d-accent-ink: #1a1220;
+  --d-brass: #4b3d57; --d-brass-text: #c4a6dd;
+}
+html[data-palette="olivo"] {
+  --l-accent-fill: #4a5730; --d-accent-fill: #aab98a;
+  --l-ground: #efeae0; --l-ground-2: #e5dfd2; --l-ink: #1f241c; --l-ink-2: #545a4b;
+  --l-rule: #d2ccbd; --l-accent: #5b6b3a; --l-accent-text: #4a5730; --l-accent-ink: #efeae0;
+  --l-brass: #a8894b; --l-brass-text: #6f582b;
+  --d-ground: #151812; --d-ground-2: #1f231b; --d-ink: #e9e4d8; --d-ink-2: #b0ad9e;
+  --d-rule: #353a2e; --d-accent: #8c9d68; --d-accent-text: #aab98a; --d-accent-ink: #151812;
+  --d-brass: #a8894b; --d-brass-text: #cbb07a;
+}
+html[data-palette="champagne"] {
+  --l-accent-fill: #76603c; --d-accent-fill: #cfb385;
+  --l-ground: #f6f1e8; --l-ground-2: #ede6d9; --l-ink: #2a211b; --l-ink-2: #5f544b;
+  --l-rule: #ddd2c1; --l-accent: #b89a6a; --l-accent-text: #76603c; --l-accent-ink: #f6f1e8;
+  --l-brass: #b89a6a; --l-brass-text: #76603c;
+  --d-ground: #1a1512; --d-ground-2: #241e19; --d-ink: #efe7da; --d-ink-2: #b6ab9b;
+  --d-rule: #3b322b; --d-accent: #b89a6a; --d-accent-text: #cfb385; --d-accent-ink: #1a1512;
+  --d-brass: #b89a6a; --d-brass-text: #cfb385;
+}
+html[data-palette="glacier"] {
+  --l-accent-fill: #2e4a61; --d-accent-fill: #97b7cf;
+  --l-ground: #f1f1ee; --l-ground-2: #e6e7e3; --l-ink: #101820; --l-ink-2: #4a535b;
+  --l-rule: #cdd1d4; --l-accent: #3a5a73; --l-accent-text: #2e4a61; --l-accent-ink: #f1f1ee;
+  --l-brass: #8a939b; --l-brass-text: #5e6870;
+  --d-ground: #0f151b; --d-ground-2: #171e25; --d-ink: #e6eaee; --d-ink-2: #aeb6bd;
+  --d-rule: #2b343c; --d-accent: #7398b3; --d-accent-text: #97b7cf; --d-accent-ink: #0f151b;
+  --d-brass: #4e5860; --d-brass-text: #aeb6bd;
+}
+
+/* Default: light scheme with dark as inverse. */
+:root {
+  --accent-fill: var(--l-accent-fill);
+  --ground: var(--l-ground); --ground-2: var(--l-ground-2); --ink: var(--l-ink); --ink-2: var(--l-ink-2);
+  --rule: var(--l-rule); --accent: var(--l-accent); --accent-text: var(--l-accent-text); --accent-ink: var(--l-accent-ink);
+  --brass: var(--l-brass); --brass-text: var(--l-brass-text);
+  --inverse-ground: var(--d-ground); --inverse-ink: var(--d-ink);
+  --scrim: color-mix(in srgb, var(--ground) 100%, transparent);
+  --scrim-stop: 75%;
+  --font-display-face: Georgia, "Times New Roman", serif;
+  --font-text-face: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono-face: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* Dark scheme: Cinema is always dark; any section marked .inverse flips. */
+[data-concept="cinema"], .inverse {
+  --accent-fill: var(--d-accent-fill);
+  --ground: var(--d-ground); --ground-2: var(--d-ground-2); --ink: var(--d-ink); --ink-2: var(--d-ink-2);
+  --rule: var(--d-rule); --accent: var(--d-accent); --accent-text: var(--d-accent-text); --accent-ink: var(--d-accent-ink);
+  --brass: var(--d-brass); --brass-text: var(--d-brass-text);
+  --inverse-ground: var(--l-ground); --inverse-ink: var(--l-ink);
+  --scrim-stop: 55%;
+  color-scheme: dark;
+}
+/* A light section inside a dark concept, or an inverse inside an inverse. */
+[data-concept="cinema"] .inverse, .inverse .inverse {
+  --accent-fill: var(--l-accent-fill);
+  --ground: var(--l-ground); --ground-2: var(--l-ground-2); --ink: var(--l-ink); --ink-2: var(--l-ink-2);
+  --rule: var(--l-rule); --accent: var(--l-accent); --accent-text: var(--l-accent-text); --accent-ink: var(--l-accent-ink);
+  --brass: var(--l-brass); --brass-text: var(--l-brass-text);
+  --inverse-ground: var(--d-ground); --inverse-ink: var(--d-ink);
+  --scrim-stop: 75%;
+  color-scheme: light;
+}
+
+/* ---------- Base ---------- */
+html { background: var(--ground); color: var(--ink); }
+html.palette-transition, html.palette-transition * {
+  transition: background-color 350ms ease, color 350ms ease, border-color 350ms ease !important;
+}
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-text-face);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+.inverse { background: var(--ground); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+::selection { background: var(--ink); color: var(--ground); }
+img, video { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+/* Type helpers */
+.smallcaps { font-variant-caps: all-small-caps; letter-spacing: 0.06em; }
+.hang { hanging-punctuation: first last; }
+.balance { text-wrap: balance; }
+.pretty { text-wrap: pretty; }
+.eyebrow { font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Underline that draws on hover (secondary links) */
+.u-draw { position: relative; }
+.u-draw::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: left;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.u-draw:hover::after, .u-draw:focus-visible::after { transform: scaleX(1); }
+
+/* Palette-aware photo tint */
+.tint { position: relative; }
+.tint::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: var(--accent); opacity: 0.1; mix-blend-mode: multiply;
+}
+[data-concept="cinema"] .tint::after, .inverse .tint::after { mix-blend-mode: soft-light; opacity: 0.12; }
+
+/* Video scrim: transparent to ground */
+.scrim { background: linear-gradient(to bottom, transparent 0%, var(--ground) 100%); }
+
+/* Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+.split-line { display: block; overflow: hidden; }
+.split-line > span { display: block; }
+.grain { position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.05; mix-blend-mode: multiply; }
+
+/* Marquee */
+.marquee { overflow: hidden; white-space: nowrap; }
+.marquee-track { display: inline-flex; animation: marquee var(--marquee-duration, 20s) linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Native scroll snap carousel (Cinema mobile) */
+.snap-x-mandatory { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.snap-x-mandatory::-webkit-scrollbar { display: none; }
+.snap-start { scroll-snap-align: start; }
