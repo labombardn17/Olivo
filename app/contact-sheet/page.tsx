@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { noindex } from "@/content/seo";
 import { concepts } from "@/content/olivo";
 import { palettes } from "@/lib/palettes";
+import { withBase } from "@/lib/base";
 
 export const metadata: Metadata = { title: "Olivo Med Spa | Contact sheet", robots: noindex };
 
@@ -17,7 +18,7 @@ export default function ContactSheet() {
             {palettes.map((p) => (
               <figure key={p.key} className="border border-tool-rule">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/img/heroes/${c.key}-${p.key}.jpg`} alt={`${c.name} in ${p.name}`} width={1440} height={900} loading="lazy" />
+                <img src={withBase(`/img/heroes/${c.key}-${p.key}.jpg`)} alt={`${c.name} in ${p.name}`} width={1440} height={900} loading="lazy" />
                 <figcaption className="px-2 py-1">{p.name}</figcaption>
               </figure>
             ))}

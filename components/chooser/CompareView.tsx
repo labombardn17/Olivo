@@ -7,6 +7,7 @@ import { concepts, type ConceptKey } from "@/content/copy";
 import { conceptDefaults, isConceptKey, isPaletteKey, palettes, type PaletteKey } from "@/lib/palettes";
 import { PaletteDot } from "@/components/switcher/PaletteDot";
 import { toolMono } from "@/components/switcher/switcherFont";
+import { withBase } from "@/lib/base";
 
 function Pane({ label, concept, palette, onConcept, onPalette }: { label: string; concept: ConceptKey; palette: PaletteKey; onConcept: (c: ConceptKey) => void; onPalette: (p: PaletteKey) => void }) {
   return (
@@ -20,7 +21,7 @@ function Pane({ label, concept, palette, onConcept, onPalette }: { label: string
           {palettes.map((p) => <PaletteDot key={p.key} palette={p} active={p.key === palette} dark={concept === "cinema"} onSelect={onPalette} size={16} />)}
         </span>
       </div>
-      <iframe title={`${label}: ${concept} in ${palette}`} src={`/${concept}?palette=${palette}&present=1`} className="min-h-[70vh] flex-1 w-full bg-ground" />
+      <iframe title={`${label}: ${concept} in ${palette}`} src={withBase(`/${concept}?palette=${palette}&present=1`)} className="min-h-[70vh] flex-1 w-full bg-ground" />
     </div>
   );
 }

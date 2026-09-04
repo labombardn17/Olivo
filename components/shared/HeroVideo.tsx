@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { withBase } from "@/lib/base";
 
 interface Props {
   className?: string;
@@ -28,8 +29,8 @@ export function HeroVideo({
   className = "",
   poster = "/video/hero-drone-poster.jpg",
   posterAlt = "Placeholder aerial still, to be replaced with the clinic's drone footage",
-  mp4 = "/video/hero-drone.mp4",
-  webm = "/video/hero-drone.webm",
+  mp4 = withBase("/video/hero-drone.mp4"),
+  webm = withBase("/video/hero-drone.webm"),
   width = 1920,
   height = 1080,
   frameRef,

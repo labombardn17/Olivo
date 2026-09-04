@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
 import { descriptions, pageMetadata } from "@/content/seo";
@@ -29,7 +30,7 @@ export default function Page() {
               <p className="mt-6 max-w-[34ch] text-[1.125rem] leading-[1.5]">{d.fn}</p>
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
                 <BookingCTA label={`Book ${d.name}`} />
-                <a href="/atelier#technology" data-cta="text" className="u-draw">All nine instruments</a>
+                <Link href="/atelier#technology" data-cta="text" className="u-draw">All nine instruments</Link>
               </div>
             </div>
             <AtelierPlate device={d} index={0} className="col-span-8 md:col-start-9 md:col-span-4" />

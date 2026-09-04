@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
 import { Cursor } from "@/components/shared/Cursor";
@@ -35,7 +36,7 @@ export default function Page() {
             <p className="mt-3 text-[0.8125rem] text-ink-2 max-w-[40ch]">Candidacy and expectations are set at consultation.<Verify note={downtimeVerify} /></p>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
               <BookingCTA label={`Book ${d.name}`} />
-              <a href="/cinema#technology" data-cta="text" className="u-draw text-ink-2">The full collection</a>
+              <Link href="/cinema#technology" data-cta="text" className="u-draw text-ink-2">The full collection</Link>
             </div>
           </div>
         </section>

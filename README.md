@@ -60,7 +60,11 @@ The screenshot, Lighthouse and axe scripts start `next start` on port 3100 if no
 
 ## Deploy
 
-No Vercel CLI was authenticated in the build environment, so the prototype ends at a passing `next build`. To deploy:
+The prototype deploys two ways.
+
+**Inside the main site (what is live).** The repository is connected to Vercel as the `benchmark-advisors` project. During that project's production build, `next.config.mjs` runs `scripts/build-olivo.mjs`, which installs this app, exports it statically with `basePath: "/olivo"`, and copies it to `public/olivo`. The main site then serves it at `/olivo`, `/olivo/atelier`, `/olivo/compare` and so on, with `X-Robots-Tag: noindex` and a `Disallow: /olivo/` in `robots.txt`. Images are optimized by the host app's `/_next/image` through `lib/image-loader.ts`. Every push to a branch gets a Vercel preview URL; merging to `main` makes it `https://benchmark-advisors.com/olivo`.
+
+**On its own.** As a separate Vercel project with the root directory set to `olivo`:
 
 ```bash
 cd olivo
@@ -68,7 +72,7 @@ npx vercel login
 npx vercel --prod
 ```
 
-Set the root directory to `olivo` if deploying from the monorepo. Optional access gate: set `OLIVO_ACCESS_TOKEN` in the project environment and share `https://<host>/?key=<token>`; the first visit sets a cookie. Or enable Vercel Deployment Protection if the plan allows. The URL is unlisted and noindexed either way.
+Either way the URL is unlisted and every route is noindexed. For a password, use Vercel Deployment Protection on the project; the static export has no middleware.
 
 ## Assets the client must supply
 
