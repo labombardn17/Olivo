@@ -69,6 +69,7 @@ const DOM_CHECKS = `(() => {
   if (document.querySelectorAll('h1').length !== 1) out.push('h1-count ' + document.querySelectorAll('h1').length);
   for (const s of document.querySelectorAll('main section')) if (!s.getAttribute('aria-labelledby') && !s.getAttribute('aria-label')) out.push('section-unlabelled ' + (s.id || s.className.slice(0,30)));
   out.push('sections ' + document.querySelectorAll('main > section, main > div > section').length);
+  if (document.documentElement.scrollWidth > window.innerWidth + 1) out.push('horizontal-overflow ' + document.documentElement.scrollWidth + '>' + window.innerWidth);
   // 5. switcher vs sticky bar overlap
   const sw = document.querySelector('[data-switcher]'); const bar = document.querySelector('[data-sticky-bar]');
   if (sw && bar) { const a = sw.getBoundingClientRect(), b = bar.getBoundingClientRect(); if (a.right > b.left && a.left < b.right && a.bottom > b.top && a.top < b.bottom) out.push('switcher-overlaps-sticky-bar'); }

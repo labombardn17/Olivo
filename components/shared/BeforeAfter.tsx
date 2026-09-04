@@ -15,6 +15,8 @@ interface Props {
   initial?: number;
   /** Frame aspect classes; concepts choose the shape. */
   aspectClassName?: string;
+  /** Extra classes for the After label only (Current tilts it). */
+  afterLabelClassName?: string;
 }
 
 /**
@@ -22,7 +24,7 @@ interface Props {
  * After; a range input drives the reveal so it works by keyboard. Never real
  * patient imagery without written authorization.
  */
-export function BeforeAfter({ className = "", rangeClassName = "", handleClassName = "", labelClassName = "", caption, initial = 50, aspectClassName = "aspect-[4/5] md:aspect-[16/10]" }: Props) {
+export function BeforeAfter({ className = "", rangeClassName = "", handleClassName = "", labelClassName = "", caption, initial = 50, aspectClassName = "aspect-[4/5] md:aspect-[16/10]", afterLabelClassName = "" }: Props) {
   const [v, setV] = useState(initial);
   return (
     <figure className={`relative ${className}`} data-before-after="">
@@ -31,7 +33,7 @@ export function BeforeAfter({ className = "", rangeClassName = "", handleClassNa
         <span aria-hidden="true" className={`absolute left-5 bottom-5 ${labelClassName}`}>Before</span>
         <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${v}%)` }} aria-hidden="true">
           <Placeholder shot="skin-2" className="absolute inset-0 h-full" tint />
-          <span className={`absolute right-5 bottom-5 ${labelClassName}`}>After</span>
+          <span className={`absolute right-5 bottom-5 ${labelClassName} ${afterLabelClassName}`}>After</span>
         </div>
         <div aria-hidden="true" className={`absolute top-0 bottom-0 w-px ${handleClassName}`} style={{ left: `${v}%` }} />
         <input

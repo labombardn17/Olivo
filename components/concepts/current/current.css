@@ -1,0 +1,33 @@
+/* Concept 05: The Current. Color blocks, mixed scale, motion. */
+@layer components {
+[data-concept="current"] { --gutter: clamp(1.25rem, 4vw, 4rem); overflow-x: clip; }
+[data-concept="current"] .font-display { font-stretch: 125%; font-weight: 600; letter-spacing: -0.03em; line-height: 0.92; }
+[data-concept="current"] .cap { font-size: 0.75rem; letter-spacing: 0.02em; color: var(--ink-2); }
+[data-concept="current"] a[data-cta="primary"] {
+  background: var(--accent-fill); color: var(--accent-ink);
+  padding: 1.1rem 2rem; font-size: 0.9375rem; font-weight: 600; border-radius: 2px;
+  transition: background-color 300ms ease;
+}
+[data-concept="current"] a[data-cta="primary"]:hover { background: var(--ink); color: var(--ground); }
+[data-concept="current"] [data-cta="text"] { font-size: 0.9375rem; font-weight: 600; }
+[data-concept="current"] .cblock { background: var(--ground); color: var(--ink); }
+/* Machines: peeling cards */
+[data-concept="current"] .card { position: sticky; top: 6rem; min-height: 68svh; }
+[data-concept="current"] .card-ground { background: var(--ground); color: var(--ink); border: 1px solid var(--rule); }
+[data-concept="current"] .card-inverse { background: var(--inverse-ground); color: var(--inverse-ink); }
+[data-concept="current"] .card-accent { background: var(--accent-fill); color: var(--accent-ink); }
+/* Concern tabs: 2px accent rule slides under the active tab */
+[data-concept="current"] .tabs { position: relative; display: flex; gap: clamp(1rem, 3vw, 2.5rem); overflow-x: auto; border-bottom: 1px solid var(--rule); scrollbar-width: none; }
+[data-concept="current"] .tabs::-webkit-scrollbar { display: none; }
+[data-concept="current"] .tab { font-family: var(--font-display-face); font-stretch: 125%; font-weight: 600; font-size: clamp(1.5rem, 3.4vw, 3rem); letter-spacing: -0.03em; padding: 0.3em 0 0.4em; color: var(--ink-2); white-space: nowrap; transition: color 300ms ease; }
+[data-concept="current"] .tab[aria-selected="true"] { color: var(--ink); }
+[data-concept="current"] .tab-rule { position: absolute; bottom: -1px; height: 2px; background: var(--accent-fill); transition: left 450ms cubic-bezier(0.22, 1, 0.36, 1), width 450ms cubic-bezier(0.22, 1, 0.36, 1); }
+/* Results range and giant labels */
+[data-concept="current"] .reveal-range { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; height: 100%; margin: 0; cursor: ew-resize; }
+[data-concept="current"] .reveal-range::-webkit-slider-thumb { -webkit-appearance: none; width: 2px; height: 100%; background: transparent; }
+[data-concept="current"] .reveal-range::-moz-range-thumb { width: 2px; height: 100%; background: transparent; border: 0; }
+[data-concept="current"] .reveal-range:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
+[data-concept="current"] .tilt { transform: rotate(-4deg); transform-origin: left bottom; }
+/* Off-canvas headline */
+[data-concept="current"] .runoff { white-space: nowrap; }
+}
