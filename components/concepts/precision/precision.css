@@ -1,0 +1,39 @@
+/* Concept 03: The Precision. Swiss clinic. Exactness as luxury. */
+@layer components {
+[data-concept="precision"] { --gutter: clamp(1rem, 2.5vw, 2.5rem); }
+[data-concept="precision"] .font-display { font-weight: 500; letter-spacing: -0.025em; }
+[data-concept="precision"] .mono { font-family: var(--font-mono-face); font-size: 0.75rem; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
+[data-concept="precision"] .mono-lg { font-family: var(--font-mono-face); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+[data-concept="precision"] .label { font-family: var(--font-mono-face); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-2); }
+[data-concept="precision"] section { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: -1px; }
+[data-concept="precision"] a[data-cta="primary"] {
+  background: var(--ink); color: var(--ground);
+  padding: 0.9rem 1.5rem; border-radius: 2px;
+  font-family: var(--font-mono-face); font-size: 0.8125rem; letter-spacing: 0.02em;
+  transition: background-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-concept="precision"] a[data-cta="primary"]:hover { background: var(--accent-fill); }
+[data-concept="precision"] [data-cta="text"] { font-family: var(--font-mono-face); font-size: 0.8125rem; letter-spacing: 0.02em; }
+/* Drafting grid: visible column rules */
+[data-concept="precision"] .cols { position: relative; }
+@media (min-width: 52rem) {
+  [data-concept="precision"] .cols { background-image: repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px calc(100% / 12)); }
+}
+[data-concept="precision"] .grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+/* Faint drafting grid for drawings */
+[data-concept="precision"] .draft { background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(to right, var(--rule) 1px, transparent 1px); background-size: 24px 24px; }
+/* Platform index rows */
+[data-concept="precision"] .row { display: grid; grid-template-columns: 3rem 3.25rem 1.4fr 0.6fr 1.6fr 0.8fr 0.7fr; gap: 1rem; align-items: center; padding: 0.85rem 0; border-top: 1px solid var(--rule); text-align: left; width: 100%; transition: background-color 250ms ease; }
+[data-concept="precision"] .row[aria-selected="true"], [data-concept="precision"] .row:hover { background: var(--ground-2); }
+[data-concept="precision"] .row:focus-visible { outline-offset: -2px; }
+@media (max-width: 52rem) { [data-concept="precision"] .row { grid-template-columns: 2.5rem 3rem 1fr; } [data-concept="precision"] .row > .cell-wide { display: none; } }
+/* Segmented control */
+[data-concept="precision"] .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
+[data-concept="precision"] .seg button { font-family: var(--font-mono-face); font-size: 0.75rem; padding: 0.6rem 0.9rem; border-right: 1px solid var(--rule); color: var(--ink-2); transition: background-color 250ms ease, color 250ms ease; }
+[data-concept="precision"] .seg button:last-child { border-right: 0; }
+[data-concept="precision"] .seg button[aria-selected="true"] { background: var(--ink); color: var(--ground); }
+[data-concept="precision"] .tag { display: inline-block; white-space: nowrap; border: 1px solid var(--rule); border-radius: 2px; padding: 0.15rem 0.45rem; font-family: var(--font-mono-face); font-size: 0.6875rem; color: var(--ink-2); }
+/* Hairline that draws from the left */
+[data-concept="precision"] .hairline { height: 1px; background: var(--ink); transform-origin: left; transform: scaleX(0); }
+@media (prefers-reduced-motion: reduce) { [data-concept="precision"] .hairline { transform: none; } }
+}
