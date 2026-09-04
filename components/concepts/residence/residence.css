@@ -1,0 +1,52 @@
+/* Concept 04: The Residence. Image is the type. Framed and symmetrical. */
+@layer components {
+[data-concept="residence"] { --inset: 24px; --gutter: clamp(1.25rem, 4vw, 4rem); }
+[data-concept="residence"] .font-display { font-weight: 300; letter-spacing: -0.005em; line-height: 1.15; }
+[data-concept="residence"] .ital { font-style: italic; }
+[data-concept="residence"] .eyebrow-r { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+/* The organizing device: a 1px frame inset 24px from the viewport edge */
+[data-concept="residence"] .frame { position: relative; border: 1px solid var(--rule); margin-inline: var(--inset); }
+@media (max-width: 52rem) { [data-concept="residence"] .frame { margin-inline: 0; border-inline: 0; } }
+[data-concept="residence"] .gap-section { padding-block: clamp(6rem, 12vw, 15rem); }
+[data-concept="residence"] a[data-cta="primary"] {
+  border: 1px solid var(--ink); color: var(--ink);
+  padding: 1rem 2.25rem; font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: background-color 600ms ease, color 600ms ease;
+}
+[data-concept="residence"] a[data-cta="primary"]:hover { background: var(--ink); color: var(--ground); }
+[data-concept="residence"] [data-cta="text"] { font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase; }
+/* Room images: 1.03 hover zoom, nowhere else */
+[data-concept="residence"] .room img { transition: transform 1600ms cubic-bezier(0.22, 1, 0.36, 1); }
+[data-concept="residence"] .room:hover img { transform: scale(1.03); }
+/* Hotspots */
+[data-concept="residence"] .hotspot { position: absolute; transform: translate(-50%, -50%); }
+[data-concept="residence"] .hotspot-dot {
+  width: 2rem; height: 2rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--ground); color: var(--ink); border: 1px solid var(--ink);
+  font-family: var(--font-text-face); font-size: 0.75rem;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-concept="residence"] .hotspot[data-open="true"] .hotspot-dot { transform: scale(0.85); }
+[data-concept="residence"] .hotspot-card {
+  position: absolute; left: 1.4rem; top: 1.4rem; width: 15rem; padding: 1rem 1.1rem;
+  background: var(--ground); border: 1px solid var(--rule);
+  opacity: 0; transform: translateY(6px); pointer-events: none;
+  transition: opacity 500ms ease, transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-concept="residence"] .hotspot[data-open="true"] .hotspot-card { opacity: 1; transform: none; pointer-events: auto; }
+[data-concept="residence"] .hotspot.flip .hotspot-card { left: auto; right: 1.4rem; }
+/* Ken Burns on the poster while the film loads */
+[data-concept="residence"] .kenburns img { animation: kenburns 24s ease-in-out infinite alternate; transform-origin: 60% 40%; }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.08); } }
+@media (prefers-reduced-motion: reduce) { [data-concept="residence"] .kenburns img { animation: none; } }
+/* Timeline */
+[data-concept="residence"] .timeline { position: relative; }
+[data-concept="residence"] .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 0.4rem; height: 1px; background: var(--rule); }
+[data-concept="residence"] .tick { width: 0.8rem; height: 0.8rem; border-radius: 50%; border: 1px solid var(--ink); background: var(--ground); }
+/* Reveal range */
+[data-concept="residence"] .reveal-range { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; height: 100%; margin: 0; cursor: ew-resize; }
+[data-concept="residence"] .reveal-range::-webkit-slider-thumb { -webkit-appearance: none; width: 2px; height: 100%; background: transparent; }
+[data-concept="residence"] .reveal-range::-moz-range-thumb { width: 2px; height: 100%; background: transparent; border: 0; }
+[data-concept="residence"] .reveal-range:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
+}

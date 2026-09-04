@@ -12,7 +12,7 @@ const target = +sy;
 for (let y = 0; y <= target; y += 600) { await p.evaluate((v) => window.scrollTo(0, v), Math.min(y, target)); await p.waitForTimeout(60); }
 await p.evaluate((v) => window.scrollTo(0, v), target);
 await p.waitForTimeout(400);
-if (hover) { await p.hover(hover); await p.waitForTimeout(600); }
+if (hover) { await p.evaluate((sel) => document.querySelector(sel)?.scrollIntoView({ block: "center" }), hover); await p.waitForTimeout(400); await p.hover(hover); await p.waitForTimeout(700); }
 await p.waitForTimeout(1400);
 const dir = "/tmp/claude-0/-home-user-benchmark-advisors/bd507d5b-899f-5b41-a50c-39bb106196e9/scratchpad/";
 await p.screenshot({ path: dir + out });
