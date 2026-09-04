@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { concepts, type ConceptKey } from "@/content/copy";
 import { conceptDefaults, isConceptKey, isPaletteKey, palettes, type PaletteKey } from "@/lib/palettes";
 import { PaletteDot } from "@/components/switcher/PaletteDot";
 import { toolMono } from "@/components/switcher/switcherFont";
-
-interface Props { a?: string; b?: string; pa?: string; pb?: string }
 
 function Pane({ label, concept, palette, onConcept, onPalette }: { label: string; concept: ConceptKey; palette: PaletteKey; onConcept: (c: ConceptKey) => void; onPalette: (p: PaletteKey) => void }) {
   return (
@@ -27,7 +26,9 @@ function Pane({ label, concept, palette, onConcept, onPalette }: { label: string
 }
 
 /** Two concepts side by side, each with its own palette. Palette in the iframe URL wins, so the panes stay independent. */
-export function CompareView({ a, b, pa, pb }: Props) {
+export function CompareView() {
+  const sp = useSearchParams();
+  const a = sp.get("a"), b = sp.get("b"), pa = sp.get("pa"), pb = sp.get("pb");
   const [ca, setCa] = useState<ConceptKey>(isConceptKey(a) ? a : "atelier");
   const [cb, setCb] = useState<ConceptKey>(isConceptKey(b) ? b : "cinema");
   const [ppa, setPa] = useState<PaletteKey>(isPaletteKey(pa) ? pa : conceptDefaults[ca]);

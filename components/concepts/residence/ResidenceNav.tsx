@@ -7,7 +7,7 @@ import { Verify } from "@/lib/verify";
 
 export function ResidenceWordmark({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`inline-flex flex-col items-center leading-none ${className}`} aria-label="Olivo Med Spa, home">
+    <a href="#top" className={`inline-flex flex-col items-center leading-none ${className}`}>
       <span className="font-display text-[1.5rem] tracking-[0.22em] font-normal">OLIVO</span>
       <span className="eyebrow-r mt-1 text-[0.5625rem]">Med Spa</span>
     </a>
@@ -33,7 +33,7 @@ export function ResidenceNav() {
           {nav.slice(3).map((n) => (
             <a key={n.href} href={n.href} className="u-draw">{n.label}</a>
           ))}
-          <span className="text-ink-2" aria-label="Language, English selected">EN <span className="opacity-50">/ ES</span><Verify note={clinic.language.verify} /></span>
+          <span className="text-ink-2" aria-label="Language, English selected">EN <span>/ ES</span><Verify note={clinic.language.verify} /></span>
           <a href={clinic.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="!py-2 !px-4">{cta.book}</a>
         </div>
         <a href={clinic.phoneTel} className="md:hidden justify-self-end text-[0.8125rem]">{cta.call}</a>

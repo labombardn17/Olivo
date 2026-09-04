@@ -2,7 +2,10 @@
 
 import { Suspense, type ReactNode } from "react";
 import { DesignContext, useDesignStateValue } from "./useDesignState";
-import { DesignSwitcher } from "./DesignSwitcher";
+import dynamic from "next/dynamic";
+
+// The switcher (and motion) load after hydration; they are not on the first-paint path.
+const DesignSwitcher = dynamic(() => import("./DesignSwitcher").then((m) => m.DesignSwitcher), { ssr: false });
 import { TransitionOverlay } from "./TransitionOverlay";
 
 function Inner({ children }: { children: ReactNode }) {

@@ -18,9 +18,8 @@ export function AtelierConcerns() {
       <div className="grid-12 px-[var(--gutter)] py-20 md:py-28 gap-y-12">
         <div className="col-span-12 md:col-start-2 md:col-span-5">
           <h2 id="concerns-title" className="sc text-ink-2">Start with what you would like to change<Verify note={concernsVerify} /></h2>
-          <ul role="tablist" aria-label="Concerns" className="mt-8 border-t border-rule">
+          <div role="tablist" aria-label="Concerns" className="mt-8 border-t border-rule">
             {concerns.map((x, k) => (
-              <li key={x.key} className="border-b border-rule">
                 <button
                   type="button"
                   role="tab"
@@ -30,13 +29,12 @@ export function AtelierConcerns() {
                   onMouseEnter={() => setI(k)}
                   onFocus={() => setI(k)}
                   onClick={() => setI(k)}
-                  className="concern-btn block w-full text-left py-4"
+                  className="concern-btn block w-full text-left py-4 border-b border-rule"
                 >
                   {x.label}
                 </button>
-              </li>
             ))}
-          </ul>
+          </div>
         </div>
         <div id="concern-panel" role="tabpanel" aria-labelledby={`concern-${c.key}`} className="col-span-12 md:col-start-8 md:col-span-5 md:pt-14">
           <div className="relative aspect-[4/5] max-w-[420px] overflow-hidden">

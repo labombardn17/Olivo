@@ -7,7 +7,7 @@ import { Verify } from "@/lib/verify";
 
 export function AtelierWordmark({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`inline-flex items-baseline gap-2 ${className}`} aria-label="Olivo Med Spa, home">
+    <a href="#top" className={`inline-flex items-baseline gap-2 ${className}`}>
       <span className="font-display text-[1.6rem] leading-none tracking-[0.02em]" style={{ fontVariationSettings: '"opsz" 72, "SOFT" 50' }}>OLIVO</span>
       <span className="sc text-[0.6875rem] text-ink-2">Med Spa</span>
     </a>
@@ -28,7 +28,7 @@ export function AtelierNav() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-6 text-[0.875rem]">
-          <span className="text-ink-2" aria-label="Language, English selected">EN <span className="opacity-50">/ ES</span><Verify note={clinic.language.verify} /></span>
+          <span className="text-ink-2" aria-label="Language, English selected">EN <span>/ ES</span><Verify note={clinic.language.verify} /></span>
           <a href={clinic.phoneTel} className="u-draw">{clinic.phoneDisplay}</a>
           <a href={clinic.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="!py-2.5 !px-5">{cta.book}</a>
         </div>

@@ -38,12 +38,10 @@ export function CurrentHero() {
             <a href="#technology" data-cta="text" className="u-draw">{cta.secondary}</a>
           </div>
         </div>
-        <div className="order-1 md:order-2 relative h-[62svh] md:h-full">
-          {/* Mobile: a plain frame. Desktop: the absolute frame below takes over. */}
-          <div className="absolute inset-0 md:hidden"><HeroVideo className="absolute inset-0 h-full w-full" /></div>
-        </div>
+        <div className="order-1 md:order-2 relative h-[62svh] md:h-full" aria-hidden="true" />
       </div>
-      <div data-frame="" className="absolute hidden md:block left-[48%] top-[8%] h-[120%] w-[52%]">
+      {/* One frame for both layouts: full width at the top on mobile, a tall offset frame on desktop that GSAP expands. */}
+      <div data-frame="" className="absolute left-0 top-0 h-[62svh] w-full md:left-[48%] md:top-[8%] md:h-[120%] md:w-[52%]">
         <HeroVideo className="absolute inset-0 h-full w-full" />
         <div className="inverse absolute inset-x-0 bottom-0 h-[45%] !bg-transparent" style={{ background: "linear-gradient(to top, var(--ground), transparent)" }} aria-hidden="true" />
       </div>

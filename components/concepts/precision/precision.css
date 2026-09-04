@@ -31,7 +31,7 @@
 [data-concept="precision"] .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
 [data-concept="precision"] .seg button { font-family: var(--font-mono-face); font-size: 0.75rem; padding: 0.6rem 0.9rem; border-right: 1px solid var(--rule); color: var(--ink-2); transition: background-color 250ms ease, color 250ms ease; }
 [data-concept="precision"] .seg button:last-child { border-right: 0; }
-[data-concept="precision"] .seg button[aria-selected="true"] { background: var(--ink); color: var(--ground); }
+[data-concept="precision"] .seg button[aria-selected="true"], [data-concept="precision"] .seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
 [data-concept="precision"] .tag { display: inline-block; white-space: nowrap; border: 1px solid var(--rule); border-radius: 2px; padding: 0.15rem 0.45rem; font-family: var(--font-mono-face); font-size: 0.6875rem; color: var(--ink-2); }
 /* Hairline that draws from the left */
 [data-concept="precision"] .hairline { height: 1px; background: var(--ink); transform-origin: left; transform: scaleX(0); }

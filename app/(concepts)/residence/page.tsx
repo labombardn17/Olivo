@@ -1,6 +1,5 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { ResidenceNav, ResidenceWordmark } from "@/components/concepts/residence/ResidenceNav";
 import { ResidenceHero } from "@/components/concepts/residence/ResidenceHero";
@@ -10,10 +9,9 @@ import { ResidenceDoctor, ResidenceFinal, ResidenceMemberships, ResidenceProof, 
 
 export const metadata = pageMetadata(descriptions.home);
 
-export default async function ResidencePage({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "residence");
+export default function ResidencePage() {
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <ResidenceNav />
       <main>
         <ResidenceHero />

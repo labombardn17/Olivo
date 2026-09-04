@@ -44,7 +44,7 @@ export function CurrentMachines() {
             <li key={x.slug} data-card="" className={`card grid grid-cols-[1fr_auto] gap-6 p-6 md:p-10 mb-6 ${k % 3 === 0 ? "card-ground" : k % 3 === 1 ? "card-inverse" : "card-accent"}`} style={{ top: `${6 + k * 0.75}rem` }}>
               <div className="flex flex-col justify-between">
                 <div>
-                  <p className="text-[0.875rem] opacity-70">{String(k + 1).padStart(2, "0")} / 09 · {x.family}</p>
+                  <p className="text-[0.875rem]">{String(k + 1).padStart(2, "0")} / 09 · {x.family}</p>
                   <h3 className="font-display mt-4 text-[2.2rem] md:text-[3.6vw]">{x.name}</h3>
                 </div>
                 <div>

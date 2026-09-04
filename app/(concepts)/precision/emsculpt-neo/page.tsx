@@ -1,6 +1,5 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { PrecisionNav, PrecisionWordmark } from "@/components/concepts/precision/PrecisionNav";
 import { PrecisionDrawing } from "@/components/concepts/precision/PrecisionDrawing";
@@ -13,11 +12,10 @@ import { Verify } from "@/lib/verify";
 export const metadata = pageMetadata(descriptions.emsculptNeo, "Emsculpt Neo | Olivo Med Spa, Logan Square");
 
 /** Interior: one row of the index, expanded to a spec sheet. */
-export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "precision");
+export default function Page() {
   const d = devices[0]!;
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <PrecisionNav />
       <main>
         <section id="top" data-hero="" aria-labelledby="device-title" className="grid md:grid-cols-[3fr_2fr] pt-20 md:pt-24">

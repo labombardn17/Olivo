@@ -81,11 +81,11 @@ export function CinemaCollection() {
           ref={track}
           data-cursor="Drag"
           className={`flex flex-1 items-center gap-4 ${pinned ? "pl-[var(--gutter)] pr-[var(--gutter)] select-none" : "snap-x-mandatory overflow-x-auto px-[var(--gutter)]"}`}
-          role="list"
+          role="group"
           aria-label="The nine devices"
         >
           {devices.map((d, k) => (
-            <article key={d.slug} role="listitem" className="panel snap-start grid h-full max-h-[70svh] grid-cols-1 md:grid-cols-[1fr_1.1fr] items-end gap-6 md:gap-10 border-l border-rule pl-5 md:pl-8" aria-labelledby={`dev-${d.slug}`}>
+            <article key={d.slug} className="panel snap-start grid h-full max-h-[70svh] grid-cols-1 md:grid-cols-[1fr_1.1fr] items-end gap-6 md:gap-10 border-l border-rule pl-5 md:pl-8" aria-labelledby={`dev-${d.slug}`}>
               <div className="pb-2">
                 <p className="micro text-ink-2">{d.family} · {String(k + 1).padStart(2, "0")}</p>
                 <h3 id={`dev-${d.slug}`} className="font-display mt-3 text-[2rem] leading-[1] md:text-[3.2vw]">{d.name}</h3>

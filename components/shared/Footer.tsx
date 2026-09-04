@@ -21,7 +21,7 @@ export function Footer({ className = "", wordmark }: Props) {
             <br />
             {clinic.address.neighborhood}
           </p>
-          <a href={clinic.phoneTel} className="u-draw mt-3 inline-block text-[13px]">{clinic.phoneDisplay}</a>
+          <a href={clinic.phoneTel} className="u-draw mt-3 inline-block py-1 text-[13px]">{clinic.phoneDisplay}</a>
         </div>
         <nav className="md:col-span-3" aria-label="Services index">
           <h2 className="eyebrow text-ink-2">Technology</h2>
@@ -49,20 +49,20 @@ export function Footer({ className = "", wordmark }: Props) {
           </ul>
           <h2 className="eyebrow text-ink-2 mt-6">Follow</h2>
           <p className="mt-3 text-[13px]">
-            <a href="#follow" className="u-draw">Instagram {clinic.instagram.handle}</a>
+            <a href="#follow" className="u-draw inline-block py-1">Instagram {clinic.instagram.handle}</a>
             <Verify note={clinic.instagram.verify} />
           </p>
         </div>
         <div className="md:col-span-3">
           <h2 className="eyebrow text-ink-2">Book and pay</h2>
-          <ul className="mt-3 space-y-1 text-[13px]">
-            <li><a href={clinic.booking} target="_blank" rel="noopener noreferrer" className="u-draw">Book through Vagaro</a></li>
+          <ul className="mt-3 text-[13px] leading-7">
+            <li><a href={clinic.booking} target="_blank" rel="noopener noreferrer" className="u-draw inline-block">Book through Vagaro</a></li>
             <li><span>{clinic.financing.line}</span></li>
           </ul>
           <h2 className="eyebrow text-ink-2 mt-6">Policies</h2>
-          <ul className="mt-3 space-y-1 text-[13px]">
+          <ul className="mt-3 text-[13px] leading-7">
             {footerPolicies.map((p) => (
-              <li key={p}><a href="#" className="u-draw">{p}</a></li>
+              <li key={p}><a href="#" className="u-draw inline-block">{p}</a></li>
             ))}
           </ul>
         </div>

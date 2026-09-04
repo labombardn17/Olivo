@@ -7,7 +7,7 @@ import { Verify } from "@/lib/verify";
 
 export function CinemaWordmark({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`inline-flex items-baseline gap-2 ${className}`} aria-label="Olivo Med Spa, home">
+    <a href="#top" className={`inline-flex items-baseline gap-2 ${className}`}>
       <span className="font-display text-[1.25rem] tracking-[0.08em] font-semibold">OLIVO</span>
       <span className="micro text-ink-2">Med Spa</span>
     </a>
@@ -27,7 +27,7 @@ export function CinemaNav() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-6 text-[0.8125rem]">
-          <span className="micro text-ink-2" aria-label="Language, English selected">EN <span className="opacity-50">/ ES</span><Verify note={clinic.language.verify} /></span>
+          <span className="micro text-ink-2" aria-label="Language, English selected">EN <span>/ ES</span><Verify note={clinic.language.verify} /></span>
           <a href={clinic.phoneTel} className="u-draw">{clinic.phoneDisplay}</a>
           <a href={clinic.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="!py-2.5 !px-5">{cta.book}</a>
         </div>

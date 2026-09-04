@@ -1,6 +1,5 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { CurrentNav, CurrentWordmark } from "@/components/concepts/current/CurrentNav";
 import { CurrentHero } from "@/components/concepts/current/CurrentHero";
@@ -10,10 +9,9 @@ import { CurrentDoctor, CurrentFinal, CurrentMemberships, CurrentProof, CurrentR
 
 export const metadata = pageMetadata(descriptions.home);
 
-export default async function CurrentPage({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "current");
+export default function CurrentPage() {
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <CurrentNav />
       <main>
         <CurrentHero />

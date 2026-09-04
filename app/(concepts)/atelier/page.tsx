@@ -1,6 +1,5 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { AtelierNav, AtelierWordmark } from "@/components/concepts/atelier/AtelierNav";
 import { AtelierHero } from "@/components/concepts/atelier/AtelierHero";
@@ -11,10 +10,9 @@ import { AtelierDoctor, AtelierFinal, AtelierMemberships, AtelierProof, AtelierR
 
 export const metadata = pageMetadata(descriptions.home);
 
-export default async function AtelierPage({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "atelier");
+export default function AtelierPage() {
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <AtelierNav />
       <main>
         <AtelierHero />

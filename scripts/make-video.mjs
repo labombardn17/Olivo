@@ -1,5 +1,6 @@
 // Placeholder hero video: a 12s slow pan over a soft two-tone field with
-// grain. 1920x1080 H.264 at ~5 Mbps plus WebM, and a clean poster frame.
+// grain. 1920x1080 H.264 at ~2 Mbps plus WebM (the placeholder is soft, so a
+// low bitrate is lossless to the eye; encode client footage at 4 to 6 Mbps).
 // Replace with the client's drone footage; HeroVideo needs no other change.
 import { execFileSync } from "node:child_process";
 import { mkdirSync, existsSync } from "node:fs";
@@ -34,8 +35,10 @@ const dur = 12, fps = 30, frames = dur * fps;
 // zoompan: slow drift right and a hair of zoom, output 1920x1080.
 const vf = `zoompan=z='1.04+0.03*on/${frames}':x='(iw-iw/zoom)*on/${frames}':y='(ih-ih/zoom)*0.4':d=${frames}:s=1920x1080:fps=${fps},noise=alls=6:allf=t,format=yuv420p`;
 const run = (args) => execFileSync(ffmpeg, ["-y", "-hide_banner", "-loglevel", "error", ...args], { stdio: "inherit" });
-run(["-loop", "1", "-i", still, "-t", String(dur), "-vf", vf, "-c:v", "libx264", "-preset", "medium", "-b:v", "5M", "-maxrate", "6M", "-bufsize", "10M", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", `${dir}hero-drone.mp4`]);
-run(["-i", `${dir}hero-drone.mp4`, "-c:v", "libvpx-vp9", "-b:v", "3M", "-row-mt", "1", "-deadline", "good", "-cpu-used", "2", "-an", `${dir}hero-drone.webm`]);
-run(["-i", `${dir}hero-drone.mp4`, "-ss", "0.5", "-frames:v", "1", "-q:v", "3", `${dir}hero-drone-poster.jpg`]);
+run(["-loop", "1", "-i", still, "-t", String(dur), "-vf", vf, "-c:v", "libx264", "-preset", "medium", "-b:v", "2M", "-maxrate", "2.5M", "-bufsize", "5M", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", `${dir}hero-drone.mp4`]);
+run(["-i", `${dir}hero-drone.mp4`, "-c:v", "libvpx-vp9", "-b:v", "1.2M", "-row-mt", "1", "-deadline", "good", "-cpu-used", "2", "-an", `${dir}hero-drone.webm`]);
+// The poster carries visible grain so it stays a valid LCP candidate (Chrome
+// discards images under 0.05 bits per pixel). A real drone frame needs none of this.
+run(["-i", `${dir}hero-drone.mp4`, "-ss", "0.5", "-frames:v", "1", "-vf", "noise=alls=22:allf=t+u", "-q:v", "6", `${dir}hero-drone-poster.jpg`]);
 if (existsSync(still)) execFileSync("rm", [still]);
 console.log("video written");

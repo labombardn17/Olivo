@@ -44,7 +44,7 @@ export function PrecisionIndex() {
         <span className="label">Area</span>
         <div className="seg">
           {(["All", ...treatmentAreas] as Filter[]).map((f) => (
-            <button key={f} type="button" aria-selected={f === filter} role="tab" onClick={() => { setFilter(f); setActive(devices.findIndex((d) => f === "All" || d.area === f || (d.area === "Face and body" && (f === "Face" || f === "Body")))); }}>{f}</button>
+            <button key={f} type="button" aria-pressed={f === filter} onClick={() => { setFilter(f); setActive(devices.findIndex((d) => f === "All" || d.area === f || (d.area === "Face and body" && (f === "Face" || f === "Body")))); }}>{f}</button>
           ))}
         </div>
       </div>

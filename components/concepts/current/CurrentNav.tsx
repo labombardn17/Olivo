@@ -7,7 +7,7 @@ import { Verify } from "@/lib/verify";
 
 export function CurrentWordmark({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`inline-flex items-baseline gap-2 ${className}`} aria-label="Olivo Med Spa, home">
+    <a href="#top" className={`inline-flex items-baseline gap-2 ${className}`}>
       <span className="font-display text-[1.4rem]">OLIVO</span>
       <span className="cap uppercase tracking-[0.1em] text-[0.625rem]">Med Spa</span>
     </a>
@@ -27,7 +27,7 @@ export function CurrentNav() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-6 text-[0.9375rem]">
-          <span className="cap" aria-label="Language, English selected">EN <span className="opacity-50">/ ES</span><Verify note={clinic.language.verify} /></span>
+          <span className="cap" aria-label="Language, English selected">EN <span>/ ES</span><Verify note={clinic.language.verify} /></span>
           <a href={clinic.phoneTel} className="u-draw font-medium">{clinic.phoneDisplay}</a>
           <a href={clinic.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="!py-2.5 !px-5 !text-[0.875rem]">{cta.book}</a>
         </div>

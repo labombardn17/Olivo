@@ -1,0 +1,25 @@
+# VERIFY list
+
+Every claim on the prototype that is not sourced in the brief. Each renders in the HTML as `<!-- VERIFY: ... -->` next to the claim.
+
+1. Client to confirm Spanish content (`content/clinic.ts`)
+2. Coordinates are approximate; replace with the geocoded address (`components/concepts/precision/PrecisionSections.tsx`)
+3. Downtime tags are qualitative placeholders; clinic to confirm per device (`content/devices.ts`)
+4. Emface function line: confirm claim wording with BTL materials (`content/devices.ts`)
+5. Emsella session length and clothed claim: confirm with BTL materials (`content/devices.ts`)
+6. First-visit steps describe a typical process; clinic to confirm (`content/clinic.ts`)
+7. Hours: client to supply (`content/clinic.ts`)
+8. Instagram handle: client to confirm (`content/clinic.ts`)
+9. Measurement claim: confirm the clinic documents outcomes (`content/copy.ts`)
+10. Membership perks are placeholders; client to supply the real terms (`content/clinic.ts`)
+11. Miradry  (`content/devices.ts`)
+12. Opus Plasma downtime comparison: confirm with Alma materials (`content/devices.ts`)
+13. Ownership and completeness claim: client to confirm (`content/copy.ts`)
+14. Parking and transit note: client to confirm (`content/clinic.ts`)
+15. Room names and device positions are placeholders until room photography is made (`components/concepts/residence/ResidenceRooms.tsx`)
+16. Session counts are illustrative until real cases are authorized (`content/clinic.ts`)
+17. Team roles beyond credentials shown: client to confirm (`content/clinic.ts`)
+18. Treatment-to-concern mapping: clinic to confirm (`content/devices.ts`)
+19. Women (`content/devices.ts`)
+20. Written plan claim: clinic to confirm (`app/(concepts)/precision/emsculpt-neo/page.tsx`)
+21. counsel to confirm board name and advertising compliance (`content/clinic.ts`)

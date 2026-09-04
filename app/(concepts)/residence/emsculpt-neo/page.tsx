@@ -1,6 +1,5 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { ResidenceNav, ResidenceWordmark } from "@/components/concepts/residence/ResidenceNav";
 import { BookingCTA } from "@/components/shared/BookingCTA";
@@ -12,11 +11,10 @@ import { Verify } from "@/lib/verify";
 export const metadata = pageMetadata(descriptions.emsculptNeo, "Emsculpt Neo | Olivo Med Spa, Logan Square");
 
 /** Interior: the room the device lives in, one hotspot, the facts beneath. */
-export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "residence");
+export default function Page() {
   const d = devices[0]!;
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <ResidenceNav />
       <main>
         <section id="top" data-hero="" aria-labelledby="device-title" className="pt-24 md:pt-28">

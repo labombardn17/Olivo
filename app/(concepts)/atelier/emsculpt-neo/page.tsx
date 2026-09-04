@@ -1,6 +1,5 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { AtelierNav, AtelierWordmark } from "@/components/concepts/atelier/AtelierNav";
 import { AtelierPlate } from "@/components/concepts/atelier/AtelierPlate";
@@ -14,11 +13,10 @@ import { Verify } from "@/lib/verify";
 export const metadata = pageMetadata(descriptions.emsculptNeo, "Emsculpt Neo | Olivo Med Spa, Logan Square");
 
 /** Interior page: does the Atelier system extend to a single device? */
-export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "atelier");
+export default function Page() {
   const d = devices[0]!;
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <AtelierNav />
       <main>
         <section id="top" data-hero="" aria-labelledby="device-title" className="relative pt-32 md:pt-40 pb-16 md:pb-24">

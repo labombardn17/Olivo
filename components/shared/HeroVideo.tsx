@@ -19,7 +19,10 @@ interface Props {
 /**
  * Server renders an empty <video> and a priority poster. Sources are
  * injected after first paint so the poster is the LCP element. Under
- * prefers-reduced-motion or saveData the poster stays.
+ * prefers-reduced-motion or saveData the poster stays. On portrait screens
+ * the poster is fetched at 150vw: object-fit cover shows only the middle
+ * of a landscape frame. Sources are injected on the first interaction or
+ * after 3s idle, whichever comes first, so the poster settles as the LCP.
  */
 export function HeroVideo({
   className = "",
@@ -52,17 +55,24 @@ export function HeroVideo({
       v.play().catch(() => {});
     };
     const win = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number };
-    const t = window.setTimeout(inject, 1500);
-    if (win.requestIdleCallback) win.requestIdleCallback(inject, { timeout: 1500 });
+    const events = ["pointerdown", "keydown", "touchstart", "wheel", "scroll"] as const;
+    const onFirst = () => {
+      events.forEach((e) => window.removeEventListener(e, onFirst));
+      if (win.requestIdleCallback) win.requestIdleCallback(inject, { timeout: 1500 });
+      else inject();
+    };
+    events.forEach((e) => window.addEventListener(e, onFirst, { passive: true, once: true }));
+    const t = window.setTimeout(onFirst, 3000);
     return () => {
       cancelled = true;
       window.clearTimeout(t);
+      events.forEach((e) => window.removeEventListener(e, onFirst));
     };
   }, [mp4, webm]);
 
   return (
     <div ref={frameRef} className={`overflow-hidden ${className}`} data-hero-video="">
-      <Image src={poster} alt={posterAlt} width={width} height={height} priority sizes="100vw" className="absolute inset-0 h-full w-full object-cover" />
+      <Image src={poster} alt={posterAlt} width={width} height={height} priority quality={75} sizes="(max-width: 52rem) 150vw, 100vw" className="absolute inset-0 h-full w-full object-cover" />
       <video ref={ref} autoPlay muted loop playsInline preload="none" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
       <div aria-hidden="true" className="absolute inset-0 tint-layer" />
     </div>

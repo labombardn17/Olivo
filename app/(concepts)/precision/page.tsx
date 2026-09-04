@@ -1,6 +1,5 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { PrecisionNav, PrecisionWordmark } from "@/components/concepts/precision/PrecisionNav";
 import { PrecisionHero } from "@/components/concepts/precision/PrecisionHero";
@@ -10,10 +9,9 @@ import { PrecisionDoctor, PrecisionFinal, PrecisionMemberships, PrecisionProof, 
 
 export const metadata = pageMetadata(descriptions.home);
 
-export default async function PrecisionPage({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "precision");
+export default function PrecisionPage() {
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <PrecisionNav />
       <main>
         <PrecisionHero />

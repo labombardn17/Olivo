@@ -1,6 +1,5 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { CurrentNav, CurrentWordmark } from "@/components/concepts/current/CurrentNav";
 import { CurrentBlock } from "@/components/concepts/current/CurrentBlock";
@@ -13,11 +12,10 @@ import { Verify } from "@/lib/verify";
 export const metadata = pageMetadata(descriptions.emsculptNeo, "Emsculpt Neo | Olivo Med Spa, Logan Square");
 
 /** Interior: one card, blown up to a page. */
-export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "current");
+export default function Page() {
   const d = devices[0]!;
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <CurrentNav />
       <main>
         <section id="top" data-hero="" aria-labelledby="device-title" className="cblock px-[var(--gutter)] pt-28 md:pt-36 pb-16">

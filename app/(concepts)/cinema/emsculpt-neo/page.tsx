@@ -1,7 +1,6 @@
 import { ConceptShell } from "@/components/shared/ConceptShell";
 import { Footer } from "@/components/shared/Footer";
 import { Cursor } from "@/components/shared/Cursor";
-import { resolvePageParams, type SearchParams } from "@/lib/page";
 import { descriptions, pageMetadata } from "@/content/seo";
 import { CinemaNav, CinemaWordmark } from "@/components/concepts/cinema/CinemaNav";
 import { CinemaObject } from "@/components/concepts/cinema/CinemaObject";
@@ -14,11 +13,10 @@ import { Verify } from "@/lib/verify";
 export const metadata = pageMetadata(descriptions.emsculptNeo, "Emsculpt Neo | Olivo Med Spa, Logan Square");
 
 /** Interior: one object on the stage. */
-export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const { palette, fromUrl } = await resolvePageParams(searchParams, "cinema");
+export default function Page() {
   const d = devices[0]!;
   return (
-    <ConceptShell palette={palette} fromUrl={fromUrl}>
+    <ConceptShell>
       <CinemaNav />
       <main>
         <section id="top" data-hero="" aria-labelledby="device-title" className="stage grid min-h-[100svh] items-center gap-10 pt-28 pb-16 md:grid-cols-12">

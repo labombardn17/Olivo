@@ -45,7 +45,7 @@ export function MobileMenu({ triggerClassName = "", panelClassName = "", linkCla
             <a href={clinic.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="inline-flex justify-center px-6 py-4 bg-ink text-ground">{cta.primary}</a>
             <div className="flex items-center justify-between text-ink-2">
               <a href={clinic.phoneTel} className="u-draw">{clinic.phoneDisplay}</a>
-              <span aria-label="Language, English selected">EN <span className="opacity-50">/ ES</span><Verify note={clinic.language.verify} /></span>
+              <span aria-label="Language, English selected">EN <span>/ ES</span><Verify note={clinic.language.verify} /></span>
             </div>
           </div>
       </Dialog.Content>
