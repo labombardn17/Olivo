@@ -13,6 +13,8 @@ interface Props {
   caption?: React.ReactNode;
   /** Initial reveal percentage. */
   initial?: number;
+  /** Frame aspect classes; concepts choose the shape. */
+  aspectClassName?: string;
 }
 
 /**
@@ -20,11 +22,11 @@ interface Props {
  * After; a range input drives the reveal so it works by keyboard. Never real
  * patient imagery without written authorization.
  */
-export function BeforeAfter({ className = "", rangeClassName = "", handleClassName = "", labelClassName = "", caption, initial = 50 }: Props) {
+export function BeforeAfter({ className = "", rangeClassName = "", handleClassName = "", labelClassName = "", caption, initial = 50, aspectClassName = "aspect-[4/5] md:aspect-[16/10]" }: Props) {
   const [v, setV] = useState(initial);
   return (
     <figure className={`relative ${className}`} data-before-after="">
-      <div className="relative aspect-[4/5] md:aspect-[16/10] overflow-hidden">
+      <div className={`relative overflow-hidden ${aspectClassName}`}>
         <Placeholder shot="skin-1" className="absolute inset-0 h-full" tint />
         <span aria-hidden="true" className={`absolute left-5 bottom-5 ${labelClassName}`}>Before</span>
         <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${v}%)` }} aria-hidden="true">

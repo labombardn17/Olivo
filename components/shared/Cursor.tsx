@@ -16,6 +16,7 @@ export function Cursor() {
     setOn(true);
     let x = 0, y = 0, cx = 0, cy = 0, raf = 0;
     const move = (e: PointerEvent) => {
+      if (ref.current) ref.current.style.opacity = "1";
       x = e.clientX;
       y = e.clientY;
       const t = (e.target as Element | null)?.closest?.("[data-cursor]");
@@ -40,7 +41,7 @@ export function Cursor() {
       ref={ref}
       aria-hidden="true"
       className="pointer-events-none fixed left-0 top-0 z-[70] grid place-items-center rounded-[50%] border border-ink text-ink text-[11px] uppercase tracking-[0.1em] transition-[width,height,background-color] duration-300"
-      style={{ width: label ? 72 : 10, height: label ? 72 : 10, background: label ? "var(--ground)" : "var(--ink)" }}
+      style={{ opacity: 0, width: label ? 72 : 10, height: label ? 72 : 10, background: label ? "var(--ground)" : "var(--ink)" }}
     >
       {label}
     </div>

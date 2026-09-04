@@ -32,7 +32,7 @@ const emDash = /—/;
 // 4. Copy
 const bannedWords = /\b(elevate[ds]?|transform(?:s|ed|ing|ation)?|unlock(?:s|ed)?|journey|seamless(?:ly)?|cutting-edge|state-of-the-art|empower(?:s|ed|ing)?|revolutioni[sz]e[sd]?|next-level|game-changer|bespoke|curated|tailored|sanctuary|radiance|rejuvenat(?:e|es|ed|ion|ing)|holistic|personali[sz]ed)\b/i;
 const bannedPhrases = /(look and feel your best|FDA[- ]approved|0% interest|\bAPR\b|permanent(?:ly)?|\bcure[sd]?\b|book now|request appointment)/i;
-const codeLine = /className=|style=|@keyframes|transform\s*[:=]|\.style\.|transition|translate/;
+const codeLine = /className=|style=|@keyframes|transform\s*[:=]|transform-origin|will-change|\.style\.|transition|translate/;
 const notXButY = /It(?:'|’)s not [^.]{1,40}\. It(?:'|’)s /;
 const exclaim = /[A-Za-z]![\s"'<]/;
 const superlative = /\b(#1|number one|the best|most complete|most advanced)\b/i;
