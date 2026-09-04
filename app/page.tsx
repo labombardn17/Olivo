@@ -6,7 +6,8 @@ import { palettes } from "@/lib/palettes";
 import { ChooserDots } from "@/components/chooser/ChooserDots";
 import { ChooserTiles } from "@/components/chooser/ChooserTiles";
 
-const fraunces = Fraunces({ subsets: ["latin"], display: "swap", preload: true, axes: ["opsz", "SOFT", "WONK"], variable: "--font-chooser-display" });
+// The chooser is a tool page: Fraunces with the optical size axis only, a third of the full file.
+const fraunces = Fraunces({ subsets: ["latin"], display: "swap", preload: true, axes: ["opsz"], variable: "--font-chooser-display" });
 const manrope = Manrope({ subsets: ["latin"], display: "swap", preload: true, variable: "--font-chooser-text" });
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ export default function Chooser() {
       <header className="flex flex-wrap items-end justify-between gap-6 border-b border-rule pb-6">
         <div>
           <p className="eyebrow text-ink-2">Olivo Med Spa</p>
-          <h1 className="font-display mt-2 text-[2rem] md:text-[3rem] leading-[1.02] hang" style={{ fontVariationSettings: '"opsz" 144, "SOFT" 50' }}>
+          <h1 className="font-display mt-2 text-[2rem] md:text-[3rem] leading-[1.02] hang" style={{ fontVariationSettings: '"opsz" 144' }}>
             Five homepages. One clinic.
           </h1>
           <p className="mt-3 max-w-[52ch] text-ink-2 text-[15px] leading-relaxed">

@@ -22,7 +22,7 @@ export default function Page() {
           <div className="grid gap-10 md:grid-cols-[58fr_42fr] md:gap-x-[var(--gutter)] items-end">
             <div>
               <p className="cap">01 / 09 · {d.family}</p>
-              <SplitReveal as="h1" id="device-title" immediate className="font-display mt-4 text-[16vw] md:text-[9vw] runoff -mr-[10vw]">{d.name}</SplitReveal>
+              <SplitReveal as="h1" id="device-title" immediate className="font-display mt-4 text-[16vw] md:text-[9vw] runoff -mr-[10vw] relative z-20">{d.name}</SplitReveal>
               <p className="mt-6 max-w-[34ch] text-[1.25rem] leading-[1.35]">{d.fn}</p>
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
                 <BookingCTA label={`Book ${d.name}`} />
