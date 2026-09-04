@@ -66,11 +66,11 @@ export const cta = {
 } as const;
 
 export const concepts: { key: ConceptKey; number: string; name: string; line: string; defaultPalette: string }[] = [
-  { key: "atelier", number: "01", name: "Atelier", line: "Editorial. Type is the image. Paper and ink.", defaultPalette: "olivo" },
-  { key: "cinema", number: "02", name: "Cinema", line: "A dark screening room. Devices as sculpture.", defaultPalette: "champagne" },
-  { key: "precision", number: "03", name: "Precision", line: "Swiss clinic. Data, grid, exactness.", defaultPalette: "glacier" },
-  { key: "residence", number: "04", name: "Residence", line: "A boutique hotel. Image is the type, framed.", defaultPalette: "champagne" },
-  { key: "current", number: "05", name: "Current", line: "Bold, contemporary. Color blocks and motion.", defaultPalette: "orchid" },
+  { key: "atelier", number: "01", name: "Atelier", line: "Editorial serif, warm olive, square corners, photo-led hero.", defaultPalette: "olivo" },
+  { key: "cinema", number: "02", name: "Cinema", line: "Dark and cinematic, champagne accents, film hero.", defaultPalette: "champagne" },
+  { key: "precision", number: "03", name: "Precision", line: "Clean clinical grotesk, cool ice ground, split hero with facts.", defaultPalette: "glacier" },
+  { key: "residence", number: "04", name: "Residence", line: "Soft hospitality serif, ivory, rounded cards, framed hero.", defaultPalette: "champagne" },
+  { key: "current", number: "05", name: "Current", line: "Bold wide type, orchid accent, color blocks, pill buttons.", defaultPalette: "orchid" },
 ];
 
 export const sectionCopy = {
@@ -86,4 +86,14 @@ export const sectionCopy = {
   visitIntro: "Visit",
   finalCta: "Book a consultation with Dr. Olivo's team.",
   finalCtaVerify: "'Dr. Olivo's team' phrasing: client to confirm who conducts consultations",
+  servicesHeading: "What can we help you with?",
+  servicesIntro: "Six ways in. Every treatment is chosen at a consultation and performed under a physician's direction.",
+  servicesIntroVerify: "'performed under a physician's direction': client to confirm",
+  technologyHeading: "The full BTL and Alma platforms, under one roof",
+  resultsHeading: "Real results, one treatment at a time",
+  reviewsHeading: "What patients say",
+  membershipsHeading: "Memberships and financing",
+  doctorHeading: "Meet Dr. Olivo",
+  visitHeading: "Visit us in Logan Square",
+  faqHeading: "Good to know",
 } as const;

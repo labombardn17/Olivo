@@ -106,10 +106,15 @@ export const firstVisitVerify = "First-visit steps describe a typical process; c
 export const nav = [
   { label: "Treatments", href: "#treatments" },
   { label: "Technology", href: "#technology" },
-  { label: "Dr. Olivo", href: "#doctor" },
-  { label: "Memberships", href: "#memberships" },
   { label: "Results", href: "#results" },
+  { label: "Memberships", href: "#memberships" },
+  { label: "Dr. Olivo", href: "#doctor" },
   { label: "Contact", href: "#visit" },
 ] as const;
+
+export const trust = {
+  google: "Google reviews",
+  googleVerify: "Google rating and review count: client to supply verified figures before launch",
+} as const;
 
 export const footerPolicies = ["Privacy", "Terms", "Accessibility", "Patient rights"] as const;

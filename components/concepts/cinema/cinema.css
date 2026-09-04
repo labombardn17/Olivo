@@ -1,55 +1,7 @@
-/* Concept 02: The Cinema. Always dark. Devices as sculpture under one light. */
+/* Skin: cinema. Corners, type, and section tone on top of the shared functional page. */
 @layer components {
-[data-concept="cinema"] {
-  --gutter: clamp(1.25rem, 4vw, 4.5rem);
-  letter-spacing: -0.005em;
-}
-[data-concept="cinema"] .font-display { letter-spacing: -0.03em; font-weight: 500; }
-[data-concept="cinema"] .serif { font-family: var(--font-serif-face); font-style: italic; font-weight: 400; letter-spacing: 0; }
-[data-concept="cinema"] .micro { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
-[data-concept="cinema"] a[data-cta="primary"] {
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  padding: 1rem 1.75rem;
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-  transition: background-color 500ms ease, color 500ms ease;
-}
-[data-concept="cinema"] a[data-cta="primary"]:hover { background: var(--ink); color: var(--ground); }
-[data-concept="cinema"] [data-cta="text"] { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
-/* Stage: centered, wide margins, narrow measure */
-[data-concept="cinema"] .stage { max-width: 76rem; margin-inline: auto; padding-inline: var(--gutter); }
-[data-concept="cinema"] .measure { max-width: 34rem; }
-/* Hero frame shrink is driven by GSAP; the frame starts edge to edge */
-[data-concept="cinema"] .hero-frame { will-change: transform; transform-origin: center center; }
-/* Vertical concern marquee */
-[data-concept="cinema"] .vmarquee { overflow: hidden; height: 22rem; mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
-[data-concept="cinema"] .vmarquee-track { display: flex; flex-direction: column; animation: vmarquee 26s linear infinite; }
-[data-concept="cinema"] .vmarquee:hover .vmarquee-track, [data-concept="cinema"] .vmarquee:focus-within .vmarquee-track { animation-duration: 90s; }
-@keyframes vmarquee { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-@media (prefers-reduced-motion: reduce) { [data-concept="cinema"] .vmarquee-track { animation: none; } [data-concept="cinema"] .vmarquee { height: auto; mask-image: none; } [data-concept="cinema"] .vmarquee-track > [aria-hidden="true"] { display: none; } }
-/* Photographs sit in the dark room: a ground multiply under the accent soft-light */
-[data-concept="cinema"] .tint::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--ground); mix-blend-mode: multiply; opacity: 0.45; }
-[data-concept="cinema"] .concern-item {
-  font-family: var(--font-display-face);
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: var(--ink-2);
-  text-align: left;
-  padding: 0.35em 0;
-  transition: color 500ms ease;
-}
-[data-concept="cinema"] .concern-item[aria-selected="true"], [data-concept="cinema"] .concern-item:hover { color: var(--ink); }
-/* Collection panels */
-[data-concept="cinema"] .panel { width: min(78vw, 56rem); flex: 0 0 auto; }
-/* Results range */
-[data-concept="cinema"] .reveal-range { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; height: 100%; margin: 0; cursor: ew-resize; }
-[data-concept="cinema"] .reveal-range::-webkit-slider-thumb { -webkit-appearance: none; width: 2px; height: 100%; background: transparent; }
-[data-concept="cinema"] .reveal-range::-moz-range-thumb { width: 2px; height: 100%; background: transparent; border: 0; }
-[data-concept="cinema"] .reveal-range:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
-/* Hide the native cursor where the custom one is active */
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) { [data-concept="cinema"] [data-cursor] { cursor: none; } }
+[data-concept="cinema"] { --r-card: 1rem; --r-btn: 999px; --r-img: 1rem; }
+[data-concept="cinema"] .font-display, [data-concept="cinema"] .section-title, [data-concept="cinema"] h1, [data-concept="cinema"] h2, [data-concept="cinema"] h3 { font-family: var(--font-display-face); font-weight: 500; letter-spacing: -0.03em; }
+[data-concept="cinema"] .serif, [data-concept="cinema"] blockquote { font-family: var(--font-serif-face); font-style: italic; font-weight: 400; letter-spacing: 0; }
+[data-concept="cinema"] .card { box-shadow: 0 10px 30px -12px rgba(0,0,0,0.6); }
 }

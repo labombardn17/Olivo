@@ -7,7 +7,7 @@ export function InstagramTiles({ count = 6, className = "", tileClassName = "" }
     <div className={className} data-instagram="">
       <ul className={`grid gap-px bg-rule ${count === 6 ? "grid-cols-3" : "grid-cols-2 md:grid-cols-4"}`} aria-label="Instagram placeholder tiles">
         {Array.from({ length: count }).map((_, i) => (
-          <li key={i} className={`aspect-square bg-ground-2 ${tileClassName}`} aria-hidden="true" />
+          <li key={i} className={`aspect-square border border-rule bg-ground ${tileClassName}`} aria-hidden="true" />
         ))}
       </ul>
       <p className="mt-3 text-[13px] text-ink-2">

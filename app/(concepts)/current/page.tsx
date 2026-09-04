@@ -1,31 +1,9 @@
-import { ConceptShell } from "@/components/shared/ConceptShell";
-import { Footer } from "@/components/shared/Footer";
+import { HomePage } from "@/components/functional/HomePage";
+import { skin } from "@/components/concepts/current/skin";
 import { descriptions, pageMetadata } from "@/content/seo";
-import { CurrentNav, CurrentWordmark } from "@/components/concepts/current/CurrentNav";
-import { CurrentHero } from "@/components/concepts/current/CurrentHero";
-import { CurrentMachines } from "@/components/concepts/current/CurrentMachines";
-import { CurrentConcerns } from "@/components/concepts/current/CurrentConcerns";
-import { CurrentDoctor, CurrentFinal, CurrentMemberships, CurrentProof, CurrentResults, CurrentReviews, CurrentVisit } from "@/components/concepts/current/CurrentSections";
 
 export const metadata = pageMetadata(descriptions.home);
 
-export default function CurrentPage() {
-  return (
-    <ConceptShell>
-      <CurrentNav />
-      <main>
-        <CurrentHero />
-        <CurrentProof />
-        <CurrentDoctor />
-        <CurrentMachines />
-        <CurrentConcerns />
-        <CurrentResults />
-        <CurrentMemberships />
-        <CurrentReviews />
-        <CurrentVisit />
-        <CurrentFinal />
-      </main>
-      <Footer wordmark={<CurrentWordmark />} />
-    </ConceptShell>
-  );
+export default function Page() {
+  return <HomePage skin={skin} />;
 }

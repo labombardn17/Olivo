@@ -37,22 +37,7 @@ const report = { violations: [], pages: {} };
 
 const DOM_CHECKS = `(() => {
   const out = [];
-  // 1. heading followed by exactly three sibling cards whose first child is an svg
-  for (const h of document.querySelectorAll('h1,h2,h3')) {
-    let n = h.nextElementSibling; while (n && !n.children.length) n = n.nextElementSibling;
-    if (n && n.children.length === 3 && [...n.children].every(c => c.firstElementChild && c.firstElementChild.tagName === 'svg')) out.push('triptych-svg-cards after "' + h.textContent.trim().slice(0,40) + '"');
-  }
-  // 2. sections opening with eyebrow + headline + sub + CTA
-  let stacks = 0;
-  for (const s of document.querySelectorAll('main section')) {
-    const first = s.querySelector('.eyebrow, [data-eyebrow]');
-    if (!first) continue;
-    const h = s.querySelector('h1,h2');
-    const p = h && h.nextElementSibling && h.nextElementSibling.tagName === 'P';
-    const cta = s.querySelector('a[data-cta]');
-    if (first && h && p && cta && s.textContent.indexOf(first.textContent) < s.textContent.indexOf(h.textContent)) stacks++;
-  }
-  if (stacks > 2) out.push('eyebrow-stack-count ' + stacks);
+  // 1. and 2. (triptych icon cards, eyebrow-stack count) retired with the functional-homepage pivot.
   // 3. :hover rules with a transform scale above 1.03
   for (const sheet of document.styleSheets) {
     let rules; try { rules = sheet.cssRules; } catch { continue; }

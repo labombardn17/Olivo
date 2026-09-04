@@ -22,9 +22,11 @@ const hit = (file, line, rule, text) => failures.push(`${rel(file)}:${line}  [${
 const bannedFonts = /\b(Inter|Poppins|Roboto|Open_Sans|Open Sans|Montserrat|Lato|Geist(?!_Mono|\s?Mono)|Space_Grotesk|Space Grotesk|Plus_Jakarta|Plus Jakarta)\b/;
 // 2. Tailwind default color utilities
 const twColors = /(?:^|[\s"'`{(:!])(?:bg|text|border|from|to|via|ring|fill|stroke|outline|decoration|divide|shadow|accent|caret)-(?:gray|slate|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|white|black)(?:-\d{2,3})?(?=[\s"'`})/])/;
-// 3. Class patterns
-const twPatterns = /\b(bg-gradient-to|bg-linear-to|bg-radial|bg-conic|bg-clip-text|backdrop-blur|shadow-lg|shadow-xl|shadow-2xl|rounded-2xl|rounded-3xl)\b/;
-const roundedFull = /\brounded-full\b/;
+// 3. Class patterns. Since the functional-homepage pivot (Ariava model) cards,
+// shadows, pills and rounded corners are allowed; only text-gradient and
+// Tailwind default-shadow/radius shortcuts stay banned so skins own those values.
+const twPatterns = /\b(bg-gradient-to|bg-linear-to|bg-radial|bg-conic|bg-clip-text|shadow-lg|shadow-xl|shadow-2xl|rounded-2xl|rounded-3xl)\b/;
+const roundedFull = /\bnever-match-rounded-full\b/;
 const hoverScale = /whileHover=\{\{[^}]*scale:\s*(1\.\d+|[2-9])/;
 const emoji = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u;
 const icons = /from\s+["'](lucide-react|@heroicons\/react|react-icons)/;

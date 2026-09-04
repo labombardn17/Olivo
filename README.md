@@ -1,6 +1,6 @@
 # Olivo Med Spa: five homepage concepts, one URL
 
-A design-selection prototype for Dr. Jacqueline Olivo. One link opens a chooser; from any concept the round switch at the bottom left flips between all five designs and five palettes.
+A design-selection prototype for Dr. Jacqueline Olivo. One link opens a chooser; from any concept the round switch at the bottom left flips between all five designs and five palettes. All five are functional, conversion-first homepages in the Ariava.com pattern (header with Book, hero, trust bar, service cards, technology, results, reviews, memberships, the doctor, visit, FAQ, final CTA, floating Call / Book) and differ as skins: type, palette, corners, hero layout.
 
 ## Open it
 

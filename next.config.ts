@@ -20,10 +20,16 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: __dirname,
-  images: { formats: ["image/avif", "image/webp"], loader: "custom", loaderFile: "./lib/image-loader.ts" },
   ...(isExport
-    ? { output: "export", basePath, assetPrefix: basePath }
+    ? {
+        output: "export",
+        basePath,
+        assetPrefix: basePath,
+        // The host site's optimizer serves the exported images (see lib/image-loader.ts).
+        images: { loader: "custom", loaderFile: "./lib/image-loader.ts" },
+      }
     : {
+        images: { formats: ["image/avif", "image/webp"] },
         async headers() {
           return [{ source: "/(.*)", headers: securityHeaders }];
         },

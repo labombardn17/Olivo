@@ -1,31 +1,9 @@
-import { ConceptShell } from "@/components/shared/ConceptShell";
-import { Footer } from "@/components/shared/Footer";
+import { HomePage } from "@/components/functional/HomePage";
+import { skin } from "@/components/concepts/precision/skin";
 import { descriptions, pageMetadata } from "@/content/seo";
-import { PrecisionNav, PrecisionWordmark } from "@/components/concepts/precision/PrecisionNav";
-import { PrecisionHero } from "@/components/concepts/precision/PrecisionHero";
-import { PrecisionIndex } from "@/components/concepts/precision/PrecisionIndex";
-import { PrecisionConcerns } from "@/components/concepts/precision/PrecisionConcerns";
-import { PrecisionDoctor, PrecisionFinal, PrecisionMemberships, PrecisionProof, PrecisionResults, PrecisionReviews, PrecisionVisit } from "@/components/concepts/precision/PrecisionSections";
 
 export const metadata = pageMetadata(descriptions.home);
 
-export default function PrecisionPage() {
-  return (
-    <ConceptShell>
-      <PrecisionNav />
-      <main>
-        <PrecisionHero />
-        <PrecisionProof />
-        <PrecisionDoctor />
-        <PrecisionIndex />
-        <PrecisionConcerns />
-        <PrecisionResults />
-        <PrecisionMemberships />
-        <PrecisionReviews />
-        <PrecisionVisit />
-        <PrecisionFinal />
-      </main>
-      <Footer wordmark={<PrecisionWordmark />} />
-    </ConceptShell>
-  );
+export default function Page() {
+  return <HomePage skin={skin} />;
 }
