@@ -1,4 +1,8 @@
-# Olivo Med Spa: five homepage concepts, one URL
+# Olivo Med Spa: the public site, plus five homepage concepts
+
+`/` is the public site: one design, about 100 pages, treatment quiz, text-now bar, local SEO schema. See `docs/LAUNCH.md` for go-live steps and `docs/CONTENT-RULES.md` for the claim rules. The concept review below now lives under `/concepts`.
+
+## The concept review
 
 A design-selection prototype for Dr. Jacqueline Olivo. One link opens a chooser; from any concept the round switch at the bottom left flips between all five designs and five palettes. All five are functional, conversion-first homepages in the Ariava.com pattern (header with Book, hero, trust bar, service cards, technology, results, reviews, memberships, the doctor, visit, FAQ, final CTA, floating Call / Book) and differ as skins: type, palette, corners, hero layout.
 
@@ -6,7 +10,7 @@ A design-selection prototype for Dr. Jacqueline Olivo. One link opens a chooser;
 
 | Route | What it is |
 |---|---|
-| `/` | The chooser. Five tiles, five palette dots. Send this link. |
+| `/concepts` | The chooser. Five tiles, five palette dots. |
 | `/atelier` | 01 The Atelier: editorial, type is the image |
 | `/cinema` | 02 The Cinema: dark screening room, devices as sculpture |
 | `/precision` | 03 The Precision: Swiss clinic, data and grid |

@@ -35,7 +35,7 @@ export function CategoryTemplate({ c }: { c: CategoryMeta }) {
           <Stagger as="ul" className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {list.map((s) => (
               <li key={s.slug}><Link href={`/treatments/${s.slug}`} className="group card card-link lift flex h-full flex-col overflow-hidden">
-                <Photo slot={s.image.slot} fallback={s.image.fallback} alt={s.image.alt} className="aspect-[16/10]" imgClassName="transition-transform duration-[1200ms] group-hover:scale-[1.05]" sizes="(min-width: 64rem) 33vw, (min-width: 40rem) 50vw, 100vw" />
+                <Photo slot={s.image.slot} fallbackSlot={c.slot} fallback={s.image.fallback} alt={s.image.alt} className="aspect-[16/10]" imgClassName="transition-transform duration-[1200ms] group-hover:scale-[1.05]" sizes="(min-width: 64rem) 33vw, (min-width: 40rem) 50vw, 100vw" />
                 <div className="flex flex-1 flex-col p-6"><p className="kicker">{s.tag}</p><h3 className="font-display mt-2 text-[1.6rem] leading-tight">{s.name}</h3><p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-ink-2">{s.headline}</p><span className="link-arrow mt-4 text-[0.875rem]">Learn more <Arrow /></span></div>
               </Link></li>
             ))}

@@ -115,6 +115,7 @@ async function main() {
       } catch {}
     }
     if (list.length) manifest[slot] = list;
+    console.log(`live-images: ${slot} <- ${list.length} of ${found.length} candidates from ${paths.join(" ")}${list.map((i) => ` [${i.width}x${i.height} ${i.alt.slice(0, 40)}]`).join("")}`);
   }
   writeFileSync(manifestPath, JSON.stringify(manifest, null, 0));
   console.log(`live-images: ${fetched} new files, ${Object.keys(manifest).length} slots in manifest`);

@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { execFileSync } from "node:child_process";
+import legacy from "./content/redirects.json";
 
 /**
  * Two modes. Standalone (default): a normal Next app with headers and its own
@@ -34,6 +35,10 @@ const nextConfig: NextConfig = {
         async headers() {
           return [{ source: "/(.*)", headers: securityHeaders }];
         },
+        /** Old olivomedspa.com paths map to their new homes once the domain moves. */
+        async redirects() {
+          return Object.entries(legacy as Record<string, string>).map(([from, to]) => ({ source: from.replace(/\/$/, ""), destination: to, permanent: true }));
+        },
       }),
 };
 
@@ -42,6 +47,7 @@ export default function config(phase: string): NextConfig {
   if (phase === "phase-production-build" && process.env.LIVE_IMAGES_SKIP !== "1") {
     try {
       execFileSync(process.execPath, ["scripts/fetch-live-images.mjs"], { stdio: "inherit", cwd: __dirname });
+      execFileSync(process.execPath, ["scripts/fetch-live-video.mjs"], { stdio: "inherit", cwd: __dirname });
     } catch (e) {
       console.log("live-images: skipped", e instanceof Error ? e.message : "");
     }

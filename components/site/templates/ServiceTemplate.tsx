@@ -43,7 +43,7 @@ export function ServiceTemplate({ s }: { s: Service }) {
             </dl>
             <p className="mt-3 text-[0.8125rem] text-ink-2">Facts describe a typical plan. Candidacy and expectations are set at consultation.{s.session.verify && <Verify note={s.session.verify} />}</p>
           </div>
-          <Drift className="img-frame shadow-[var(--shadow-card-hover)]"><Photo slot={s.image.slot} fallback={s.image.fallback} alt={s.image.alt} className="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]" sizes="(min-width: 64rem) 50vw, 100vw" priority /></Drift>
+          <Drift className="img-frame shadow-[var(--shadow-card-hover)]"><Photo slot={s.image.slot} fallbackSlot={cat.slot} fallback={s.image.fallback} alt={s.image.alt} className="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]" sizes="(min-width: 64rem) 50vw, 100vw" priority /></Drift>
         </div>
       </section>
 

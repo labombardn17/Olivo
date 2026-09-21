@@ -3,6 +3,9 @@ import { HeroVideo } from "@/components/shared/HeroVideo";
 import { HeroFade } from "@/components/site/Motion";
 import { site } from "@/content/site";
 import { Verify } from "@/lib/verify";
+import liveVideoJson from "@/content/live-video.json";
+
+const liveVideo = liveVideoJson as { ok: boolean; src: string | null; poster: string | null };
 
 interface Copy { kicker: string; title: string; sub: string; book: string; quiz: string; hours: string; note: string; scroll: string; quizHref: string }
 
@@ -14,7 +17,7 @@ export function HomeHero({ copy = heroEn }: { copy?: Copy }) {
   return (
     <section id="top" data-hero="" aria-labelledby="hero-title" className="relative">
       <div className="relative min-h-[92svh] w-full overflow-hidden">
-        <HeroVideo className="absolute inset-0 h-full w-full" posterAlt="Aerial view over Logan Square at dusk" />
+        <HeroVideo className="absolute inset-0 h-full w-full" {...(liveVideo.ok && liveVideo.src && liveVideo.poster ? { mp4: liveVideo.src, webm: liveVideo.src, poster: liveVideo.poster, posterAlt: "Inside Olivo Med Spa" } : { posterAlt: "Aerial view over Logan Square at dusk" })} />
         <div className="absolute inset-0 hero-scrim" aria-hidden="true" />
         <HeroFade className="relative z-10 flex min-h-[92svh] items-end">
           <div className="container-x w-full pb-16 pt-32 md:pb-24">
