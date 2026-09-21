@@ -24,7 +24,7 @@ async function get(url, ms = 15000) {
   try { return await fetch(url, { headers: { "user-agent": UA, accept: "*/*" }, signal: ctrl.signal, redirect: "follow" }); } finally { clearTimeout(t); }
 }
 
-const SKIP = /logo|icon|badge|avatar|emoji|sprite|arrow|\.svg|data:image|gravatar|wp-emoji|payment|award|before|after|b&amp;a|\bba\b|offer|special|promo|coupon|flyer|club|add-?ons?|menu|pricing|price|gift|event|holiday|valentine|galentine|mother|father|black-?friday|cyber|sale|discount|\bmap\b|screenshot|instagram|sbi_/i;
+const SKIP = /logo|icon|badge|avatar|emoji|sprite|arrow|\.svg|data:image|gravatar|wp-emoji|payment|award|before|after|b&amp;a|\bba\b|offer|special|promo|coupon|flyer|club|add-?ons?|menu|pricing|price|gift|event|holiday|valentine|galentine|mother|father|black-?friday|cyber|sale|discount|\bmap\b|screenshot|instagram|sbi_|IMG[_ -]?\d{3,}|[0-9A-F]{8}[_ -][0-9A-F]{4}|DSC_?\d|PXL_|beforeandafter|gallery/i;
 
 function pickImages(html) {
   const main = html.split(/<main[\s>]/)[1] ?? html;
@@ -76,6 +76,9 @@ function scanServices() {
       if (slug && live) out.push({ live, image: { slot: slug } });
     }
   }
+  // Prefer photographs that crop well: reasonably large and not a thin banner.
+  const score = (o) => { const w = parseInt((/-(\d+)x\d+\./.exec(o.src) || [])[1] || "0"); return (o.alt && !/iStock|\d{6,}/.test(o.alt) ? 1 : 0) + (w >= 800 ? 0.5 : 0); };
+  out.sort((a, b) => score(b) - score(a));
   return out;
 }
 
@@ -97,6 +100,7 @@ async function resolvePath(path, slot) {
   const words = slot.split("-").filter((w) => w.length > 2 && !["and", "for", "the", "with"].includes(w));
   let best = null, score = 0;
   for (const u of urls) {
+    if (/before|after|gallery|promo|special|blog|category/.test(u)) continue;
     const n = words.filter((w) => u.includes(w)).length;
     if (n > score) { score = n; best = u; }
   }
@@ -151,6 +155,7 @@ async function main() {
         const buf = Buffer.from(await r.arrayBuffer());
         const meta = await sharp(buf).metadata();
         if (!meta.width || meta.width < 500 || !meta.height) continue;
+        if (meta.width / meta.height > 2.4 && list.length + (found.length - found.indexOf(img)) > limitPerSlot) continue;
         const name = `${slot}-${createHash("md5").update(img.src).digest("hex").slice(0, 8)}.webp`;
         const file = join(outDir, name);
         const resized = sharp(buf).rotate().resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 74 });
