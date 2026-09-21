@@ -20,6 +20,7 @@
 7. Search Console: add the property, submit sitemap.xml, request indexing for /, /treatments, /quiz, and the top ten treatments.
 8. Replace testimonials and rating with verified Google reviews and a real count; supply authorized before and after cases.
 9. Confirm 872-315-3481 receives texts (every Text button uses it) and the Vagaro, Cherry, and RepeatMD links.
+10. /book embeds the Vagaro business widget (the same iframe the current site uses). Confirm it loads on the new domain and that the confirmation texts and emails come from the right Vagaro account.
 
 ## Content owners
 - Claims: docs/CONTENT-RULES.md governs every string. Counsel to review Emfemme 360, hormone therapy, GLP-1, Miradry, and Kybella pages first.

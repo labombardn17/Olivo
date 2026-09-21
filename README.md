@@ -1,6 +1,6 @@
 # Olivo Med Spa: the public site, plus five homepage concepts
 
-`/` is the public site: one design, about 100 pages, treatment quiz, text-now bar, local SEO schema. See `docs/LAUNCH.md` for go-live steps and `docs/CONTENT-RULES.md` for the claim rules. The concept review below now lives under `/concepts`.
+`/` is the public site: one design, 136 static pages (38 treatments in 9 categories, 16 concerns, 12 neighborhoods, 14 journal posts, team, patient resources, memberships, specials, gift cards, financing, skincare, results, reviews, visit, contact, on-site Vagaro booking at /book, Spanish home and treatments hub, legal, /site-map), the two-minute treatment quiz at /quiz, a text, call, book bar on every page, and local SEO schema throughout. See `docs/LAUNCH.md` for go-live steps and `docs/CONTENT-RULES.md` for the claim rules. The concept review below now lives under `/concepts`.
 
 ## The concept review
 
