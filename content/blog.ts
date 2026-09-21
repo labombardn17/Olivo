@@ -2,8 +2,9 @@
 // Anything a physician should approve is listed in `verify`.
 // See docs/CONTENT-RULES.md before editing.
 import type { Post } from "./types";
+import { postsMore } from "./blog-2";
 
-export const posts: Post[] = [
+const postsBase: Post[] = [
   {
     slug: "when-moisturizer-is-not-enough",
     title: "When Moisturizer Is Not Enough",
@@ -161,3 +162,5 @@ export const posts: Post[] = [
     verify: ["Street parking availability: client to confirm", "74 Fullerton bus stop location: confirm", "Kennedy Fullerton exit routing: confirm", "Membership terms: to be supplied by the clinic"],
   },
 ];
+
+export const posts: Post[] = [...postsBase, ...postsMore];

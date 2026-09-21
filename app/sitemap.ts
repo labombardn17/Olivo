@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...categories.map((c) => u(`/treatments/${c.key}`, 0.8)),
     ...services.map((s) => u(`/treatments/${s.slug}`, 0.8)),
     ...concerns.map((c) => u(`/concerns/${c.slug}`, 0.7)),
-    u("/about", 0.7), u("/team", 0.7), ...teamMembers.map((t) => u(`/team/${t.slug}`, 0.6)),
+    u("/about", 0.7), u("/team", 0.7), u("/for-patients", 0.6), u("/gift-cards", 0.5), u("/es/tratamientos", 0.7), ...teamMembers.map((t) => u(`/team/${t.slug}`, 0.6)),
     u("/memberships", 0.7), u("/specials", 0.7, "weekly"), u("/financing", 0.5), u("/skincare", 0.5), u("/results", 0.5), u("/reviews", 0.6), u("/visit", 0.8), u("/contact", 0.6),
     ...areas.map((a) => u(`/med-spa/${a.slug}`, 0.6)),
     u("/blog", 0.6, "weekly"), ...posts.map((p) => u(`/blog/${p.slug}`, 0.5)),

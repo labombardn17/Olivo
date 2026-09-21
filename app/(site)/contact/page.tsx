@@ -1,6 +1,7 @@
 import { site } from "@/content/site";
 import { Crumbs, CtaBand } from "@/components/site/Blocks";
 import { VisitBlock } from "@/components/site/home/HomeSections2";
+import { TextComposer } from "@/components/site/TextComposer";
 import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 import { Phone } from "@/components/functional/Icons";
@@ -20,6 +21,7 @@ export default function Contact() {
           <a href={site.phoneTel} className="card lift p-7"><p className="kicker">Call</p><p className="font-display mt-2 inline-flex items-center gap-3 text-[1.75rem]"><Phone className="h-5 w-5 text-accent-text" />{site.phoneDisplay}</p><p className="mt-2 text-[0.9375rem] text-ink-2">Mon to Fri 10 to 7, Sat 10 to 5.</p></a>
           <a href={site.booking} target="_blank" rel="noopener noreferrer" className="card lift p-7 !border-accent"><p className="kicker">Book online</p><p className="font-display mt-2 text-[1.75rem]">Vagaro, any time</p><p className="mt-2 text-[0.9375rem] text-ink-2">Pick a consultation or a treatment and a time that suits you.</p></a>
         </div>
+        <div className="mx-auto mt-14 max-w-3xl"><TextComposer /></div>
       </div></section>
       <VisitBlock />
       <CtaBand sms={sms} />

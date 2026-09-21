@@ -68,6 +68,7 @@ export function ServiceTemplate({ s }: { s: Service }) {
               <a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-7 w-full">Book a consultation</a>
               <a href={site.phoneTel} className="btn btn-outline mt-3 w-full"><Phone />{site.phoneDisplay}</a>
               <p className="mt-4 text-center text-[0.8125rem] text-ink-2">Individual results vary.</p>
+              <Link href="/quiz" className="mt-5 block rounded-[var(--r-card)] bg-ground-2 p-4 text-[0.875rem] hover:ring-soft"><span className="font-semibold">Not sure this is the one?</span><br /><span className="text-ink-2">Take the two-minute treatment quiz.</span></Link>
             </div>
           </Reveal>
         </div>

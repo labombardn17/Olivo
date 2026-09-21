@@ -50,13 +50,34 @@ export function Stagger({ children, className = "", as: Tag = "div", amount = 0.
   return <El ref={ref} className={className}>{children}</El>;
 }
 
+/** Buttons lean toward a fine pointer. Children must be a single element. */
+export function Magnetic({ children, className = "", strength = 0.25 }: { children: ReactNode; className?: string; strength?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useGSAP(() => {
+    const el = ref.current;
+    if (!el || prefersReducedMotion() || !window.matchMedia("(pointer: fine)").matches) return;
+    const target = el.firstElementChild as HTMLElement | null;
+    if (!target) return;
+    const move = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      gsap.to(target, { x: (e.clientX - r.left - r.width / 2) * strength, y: (e.clientY - r.top - r.height / 2) * strength, duration: 0.5, ease: "power3.out" });
+    };
+    const leave = () => gsap.to(target, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.45)" });
+    el.addEventListener("pointermove", move);
+    el.addEventListener("pointerleave", leave);
+    return () => { el.removeEventListener("pointermove", move); el.removeEventListener("pointerleave", leave); };
+  }, { scope: ref });
+  return <div ref={ref} className={`inline-block ${className}`}>{children}</div>;
+}
+
 /** Slow Ken Burns on a framed image. */
 export function Drift({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useGSAP(() => {
     const el = ref.current;
     if (!el || prefersReducedMotion()) return;
-    gsap.fromTo(el.firstElementChild, { scale: 1.08 }, { scale: 1, duration: 1.8, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
+    gsap.fromTo(el, { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
+    gsap.fromTo(el.firstElementChild, { scale: 1.12 }, { scale: 1, duration: 2, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
   }, { scope: ref });
   return <div ref={ref} className={`overflow-hidden ${className}`}>{children}</div>;
 }

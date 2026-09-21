@@ -5,6 +5,7 @@ import type { Faq } from "@/content/types";
 import { Verify } from "@/lib/verify";
 import { Arrow, Phone } from "@/components/functional/Icons";
 import { Reveal } from "@/components/shared/Reveal";
+import { Magnetic } from "@/components/site/Motion";
 
 export function Crumbs({ items }: { items: { name: string; href?: string }[] }) {
   return (
@@ -58,7 +59,7 @@ export function CtaBand({ title = "Ready when you are.", line = "Book online any
           <h2 id="cta-title" className="section-title balance">{title}</h2>
           <p className="section-sub mx-auto mt-4">{line}</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href={site.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="btn btn-primary">Book a consultation</a>
+            <Magnetic><a href={site.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="btn btn-primary">Book a consultation</a></Magnetic>
             <a href={site.sms(sms ?? "Hi Olivo, I would like to book a consultation.")} className="btn btn-outline">Text us</a>
             <a href={site.phoneTel} className="btn btn-outline"><Phone />{site.phoneDisplay}</a>
           </div>

@@ -20,6 +20,13 @@ export function SiteHeader() {
   const solid = !overlay || scrolled;
   const [open, setOpen] = useState(false);
   const [mega, setMega] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  useEffect(() => {
+    let last = window.scrollY;
+    const on = () => { const y = window.scrollY; setHidden(y > 320 && y > last + 4 && !mega); last = y; };
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, [mega]);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => { setMega(false); setOpen(false); }, [pathname]);
   useEffect(() => {
@@ -30,7 +37,7 @@ export function SiteHeader() {
     return () => { document.removeEventListener("pointerdown", on); document.removeEventListener("keydown", esc); };
   }, [mega]);
   return (
-    <header data-header="" className={`sticky top-0 z-[50] transition-[background-color,box-shadow,color] duration-300 ${solid ? "glass border-b border-rule text-ink" : "border-b border-transparent text-[#fff]"}`} style={{ marginBottom: overlay ? "calc(-1 * 4.5rem)" : 0 }}>
+    <header data-header="" data-hidden={hidden} className={`sticky top-0 z-[50] ${solid ? "glass border-b border-rule text-ink" : "border-b border-transparent text-[#fff]"}`} style={{ marginBottom: overlay ? "calc(-1 * 4.5rem)" : 0 }}>
       <div className="container-x flex h-[4.5rem] items-center justify-between gap-6 lg:h-[5rem]">
         <Wordmark />
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
