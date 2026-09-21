@@ -48,6 +48,8 @@ export function SiteHeader({ lang = "en" }: { lang?: Lang }) {
     if (!d) return;
     if (open && !d.open) d.showModal();
     if (!open && d.open) d.close();
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    return () => { document.documentElement.style.overflow = ""; };
   }, [open]);
   const L = (p: string) => href(lang, p);
   return (
@@ -93,27 +95,28 @@ export function SiteHeader({ lang = "en" }: { lang?: Lang }) {
         <button type="button" data-nav-toggle="" onClick={() => setOpen(true)} className="lg:hidden inline-flex items-center gap-2 text-[0.875rem] font-semibold" aria-haspopup="dialog" aria-expanded={open}>
           <span aria-hidden="true" className="flex flex-col gap-[5px]"><span className="block h-[2px] w-6 bg-current" /><span className="block h-[2px] w-6 bg-current" /><span className="block h-[2px] w-4 bg-current" /></span>{t.nav.menu}
         </button>
-        <dialog ref={dialogRef} onClose={() => setOpen(false)} onClick={(e) => { if (e.target === dialogRef.current) setOpen(false); }} className="menu-dialog m-0 h-full max-h-none w-full max-w-none bg-ground p-0 text-ink" data-mobile-menu="" aria-label={t.nav.menu}>
-          <div className="flex min-h-full flex-col overflow-y-auto">
-            <div className="container-x flex h-[4.5rem] items-center justify-between">
+        <dialog ref={dialogRef} onClose={() => setOpen(false)} onClick={(e) => { if (e.target === dialogRef.current) setOpen(false); }} className="menu-dialog m-0 h-full max-h-none w-full max-w-none bg-ground p-0 text-ink" data-mobile-menu="" data-lenis-prevent="" aria-label={t.nav.menu}>
+          <div className="flex min-h-full w-full flex-col overflow-y-auto">
+            <div className="container-x flex h-[4.5rem] items-center justify-between border-b border-rule">
               <Wordmark href={L("/")} />
-              <button type="button" onClick={() => setOpen(false)} className="text-[0.875rem] font-semibold">{t.nav.close}</button>
+              <button type="button" onClick={() => setOpen(false)} className="menu-close">{t.nav.close}</button>
             </div>
             <nav className="container-x flex-1 py-4" aria-label="Mobile">
-              <ul className="divide-y divide-rule border-y border-rule">
-                {navItems.map(([label, path]) => (<li key={path}><Link href={L(path)} className="flex items-center justify-between py-4 font-display text-[1.75rem]">{label}<Arrow className="h-4 w-4 opacity-50" /></Link></li>))}
-                <li><Link href={L("/quiz")} className="flex items-center justify-between py-4 font-display text-[1.75rem]">{t.nav.quiz}<Arrow className="h-4 w-4 opacity-50" /></Link></li>
+              <ul className="divide-y divide-rule border-b border-rule">
+                {navItems.map(([label, path]) => (<li key={path}><Link href={L(path)} className="menu-row">{label}<Arrow className="h-5 w-5 text-accent-text" /></Link></li>))}
+                <li><Link href={L("/quiz")} className="menu-row">{t.nav.quiz}<Arrow className="h-5 w-5 text-accent-text" /></Link></li>
               </ul>
-              <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 text-[0.9375rem] text-ink-2">
-                {cats.map((c) => (<li key={c.key}><Link href={L(`/treatments/${c.key}`)}>{c.name}</Link></li>))}
+              <p className="kicker mt-6">{t.nav.byGoal}</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {cats.map((c) => (<li key={c.key}><Link href={L(`/treatments/${c.key}`)} className="menu-chip">{c.name}</Link></li>))}
               </ul>
-              <p className="mt-6 text-[0.8125rem] font-semibold tracking-[0.12em] text-ink-2"><Link href={altPath(pathname)} hrefLang={lang === "es" ? "en" : "es"}>{lang === "es" ? "ENGLISH" : "ESPAÑOL"}</Link></p>
+              <p className="mt-6"><Link href={altPath(pathname)} hrefLang={lang === "es" ? "en" : "es"} className="menu-chip">{lang === "es" ? "English" : "Español"}</Link></p>
             </nav>
-            <div className="container-x grid gap-3 pb-10">
+            <div className="container-x grid gap-3 border-t border-rule bg-ground-2 py-5 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
               <a href={L(site.booking)} className="btn btn-primary">{t.nav.bookConsult}</a>
               <div className="grid grid-cols-2 gap-3">
-                <a href={site.sms(t.textNow.body)} className="btn btn-outline">{t.nav.textUs}</a>
-                <a href={site.phoneTel} className="btn btn-outline"><Phone />{t.nav.call}</a>
+                <a href={site.sms(t.textNow.body)} className="btn btn-solid">{t.nav.textUs}</a>
+                <a href={site.phoneTel} className="btn btn-solid"><Phone />{t.nav.call}</a>
               </div>
             </div>
           </div>

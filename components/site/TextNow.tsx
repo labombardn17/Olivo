@@ -30,16 +30,16 @@ export function TextNow({ lang = "en" }: { lang?: Lang }) {
   const book = href(lang, site.booking);
   return (
     <aside aria-label={t.label}>
-      <div className={`fixed bottom-6 right-6 z-[75] hidden md:flex items-center gap-2 rounded-full glass border border-rule p-1.5 text-now transition-all duration-300 ${cls}`} aria-hidden={!show}>
-        <a href={site.sms(t.body)} className="btn btn-outline btn-sm !border-transparent" tabIndex={show ? 0 : -1}><Chat className="h-4 w-4" />{t.text}</a>
-        <a href={site.phoneTel} className="btn btn-outline btn-sm !border-transparent" tabIndex={show ? 0 : -1}><Phone />{t.call}</a>
+      <div className={`fixed bottom-6 right-6 z-[75] hidden md:flex items-center gap-2 rounded-full text-now p-1.5 transition-all duration-300 ${cls}`} aria-hidden={!show}>
+        <a href={site.sms(t.body)} className="btn btn-solid btn-sm" tabIndex={show ? 0 : -1}><Chat className="h-4 w-4" />{t.text}</a>
+        <a href={site.phoneTel} className="btn btn-solid btn-sm" tabIndex={show ? 0 : -1}><Phone />{t.call}</a>
         <a href={book} className="btn btn-primary btn-sm" tabIndex={show ? 0 : -1}>{t.book}</a>
         <Verify note={site.smsVerify} />
       </div>
       <div className={`fixed inset-x-0 bottom-0 z-[75] md:hidden px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 pointer-events-none transition-all duration-300 ${cls}`} aria-hidden={!show}>
-        <div className="pointer-events-auto grid grid-cols-3 gap-1.5 rounded-full glass border border-rule p-1.5 text-now">
-          <a href={site.sms(t.body)} className="btn btn-outline !border-transparent !px-2" tabIndex={show ? 0 : -1}><Chat className="h-4 w-4" />{t.textShort}</a>
-          <a href={site.phoneTel} className="btn btn-outline !border-transparent !px-2" tabIndex={show ? 0 : -1}><Phone />{t.call}</a>
+        <div className="pointer-events-auto grid grid-cols-3 gap-1.5 rounded-full text-now p-1.5">
+          <a href={site.sms(t.body)} className="btn btn-solid !px-2" tabIndex={show ? 0 : -1}><Chat className="h-4 w-4" />{t.textShort}</a>
+          <a href={site.phoneTel} className="btn btn-solid !px-2" tabIndex={show ? 0 : -1}><Phone />{t.call}</a>
           <a href={book} className="btn btn-primary !px-2" tabIndex={show ? 0 : -1}>{t.book}</a>
         </div>
       </div>

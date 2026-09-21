@@ -7,7 +7,7 @@ import { ALL_ROUTES, CONCEPT_ROUTES, SITE_ROUTES } from "./routes.mjs";
 
 const require = createRequire(import.meta.url);
 const axeSource = readFileSync(require.resolve("axe-core/axe.min.js"), "utf8");
-const routes = process.argv.includes("--all") ? ALL_ROUTES : process.argv.includes("--concepts") ? CONCEPT_ROUTES : SITE_ROUTES;
+const routes = process.argv.includes("--all") ? ALL_ROUTES : process.argv.includes("--concepts") ? CONCEPT_ROUTES : (process.argv.find((a) => a.startsWith("--only="))?.slice(7).split(",") ?? SITE_ROUTES);
 const stop = await ensureServer();
 const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
 const failures = [];
