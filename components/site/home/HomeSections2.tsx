@@ -36,7 +36,7 @@ export function VisitBlock() {
   return (
     <section id="visit" aria-labelledby="visit-title" className="py-20 md:py-28">
       <div className="container-x grid gap-10 md:grid-cols-2 md:gap-16">
-        <Reveal><a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" aria-label="Open directions to 2550 W. Fullerton Ave in Google Maps" className="block"><MapPlaceholder className="img-frame aspect-[4/3] shadow-[var(--shadow-card)]" /></a></Reveal>
+        <Reveal><a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" className="block"><MapPlaceholder className="img-frame aspect-[4/3] shadow-[var(--shadow-card)]" /><span className="sr-only">Open directions to 2550 W. Fullerton Ave in Google Maps</span></a></Reveal>
         <Reveal delay={0.1}>
           <p className="kicker">Logan Square</p>
           <h2 id="visit-title" className="section-title mt-3">Visit us on Fullerton</h2>

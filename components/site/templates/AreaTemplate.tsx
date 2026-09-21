@@ -26,7 +26,7 @@ export function AreaTemplate({ a }: { a: Area }) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a consultation</a><a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">Directions</a></div>
             {a.verify?.map((v) => <Verify key={v} note={v} />)}
           </div>
-          <a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" aria-label="Open directions in Google Maps"><MapPlaceholder className="img-frame aspect-[4/3] shadow-[var(--shadow-card-hover)]" /></a>
+          <a href={site.directionsUrl} target="_blank" rel="noopener noreferrer"><MapPlaceholder className="img-frame aspect-[4/3] shadow-[var(--shadow-card-hover)]" /><span className="sr-only">Open directions in Google Maps</span></a>
         </div>
       </section>
       <section className="py-20 md:py-24">
