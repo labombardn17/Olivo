@@ -17,7 +17,7 @@ export default function Specials() {
         <Photo slot="specials" fallback="light-1" className="img-frame aspect-[4/3] shadow-[var(--shadow-card-hover)]" sizes="(min-width: 64rem) 50vw, 100vw" priority />
       </div></section>
       <section className="py-20"><div className="container-x">
-        <Stagger className="grid gap-6 md:grid-cols-3">{specials.items.map((s) => (<div key={s.name} className="card p-7"><p className="kicker">Offer</p><h2 className="font-display mt-2 text-[1.6rem] leading-tight">{s.name}</h2><p className="mt-3 text-ink-2">{s.line}</p>{"verify" in s && s.verify && <Verify note={s.verify} />}<a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm mt-6">Book</a></div>))}</Stagger>
+        <Stagger className="grid gap-6 md:grid-cols-3">{specials.items.map((s) => (<div key={s.name} className="card p-7"><p className="kicker">Offer</p><h2 className="font-display mt-2 text-[1.6rem] leading-tight">{s.name}</h2><p className="mt-3 text-ink-2">{s.line}</p>{"verify" in s && s.verify && <Verify note={s.verify} />}<a href={site.booking} className="btn btn-outline btn-sm mt-6">Book</a></div>))}</Stagger>
         <div className="card-2 mt-10 p-7 md:flex md:items-center md:justify-between"><div><p className="font-semibold">Prefer a standing discount?</p><p className="mt-1 text-[0.9375rem] text-ink-2">{membershipTiers.map((t) => t.name).join(", ")} include member pricing every month.</p></div><Link href="/memberships" className="btn btn-primary btn-sm mt-4 md:mt-0">See memberships</Link></div>
       </div></section>
       <CtaBand title="Ask what is on this month." sms="Hi Olivo, what are this month's specials?" />

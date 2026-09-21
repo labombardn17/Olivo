@@ -35,7 +35,7 @@ export function ServiceTemplate({ s }: { s: Service }) {
             <h1 id="svc-title" className="display-xl mt-4 balance">{s.name}</h1>
             <p className="lede mt-5 max-w-[50ch]">{s.headline}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href={site.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="btn btn-primary">Book {s.name}</a>
+              <a href={site.booking} data-cta="primary" className="btn btn-primary">Book {s.name}</a>
               <a href={site.sms(sms)} className="btn btn-outline">Text us about it</a>
             </div>
             <dl className="mt-10 grid grid-cols-2 gap-5 border-t border-rule pt-6 sm:grid-cols-4">
@@ -65,7 +65,7 @@ export function ServiceTemplate({ s }: { s: Service }) {
               <p className="mt-2 leading-relaxed">{s.session.results}</p>
               <p className="kicker mt-6">Good candidates</p>
               <ul className="mt-2 space-y-2 text-[0.9375rem]">{s.goodFor.map((g) => (<li key={g} className="flex items-start gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-accent-text" />{g}</li>))}</ul>
-              <a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-7 w-full">Book a consultation</a>
+              <a href={site.booking} className="btn btn-primary mt-7 w-full">Book a consultation</a>
               <a href={site.phoneTel} className="btn btn-outline mt-3 w-full"><Phone />{site.phoneDisplay}</a>
               <p className="mt-4 text-center text-[0.8125rem] text-ink-2">Individual results vary.</p>
               <Link href="/quiz" className="mt-5 block rounded-[var(--r-card)] bg-ground-2 p-4 text-[0.875rem] hover:ring-soft"><span className="font-semibold">Not sure this is the one?</span><br /><span className="text-ink-2">Take the two-minute treatment quiz.</span></Link>

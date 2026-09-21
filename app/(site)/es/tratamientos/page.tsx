@@ -27,7 +27,7 @@ export default function Tratamientos() {
             </div>); })}
         </div>
       </div></section>
-      <section className="inverse py-20"><div className="container-x text-center"><h2 className="section-title balance">Reserve su consulta.</h2><p className="section-sub mx-auto mt-4">En línea a cualquier hora, por texto o por teléfono en horario de clínica.</p><div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row"><a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary">{esUi.book}</a><a href={site.sms("Hola Olivo, quisiera reservar una consulta.")} className="btn btn-outline">{esUi.text}</a><a href={site.phoneTel} className="btn btn-outline"><Phone />{esUi.call} {site.phoneDisplay}</a></div></div></section>
+      <section className="inverse py-20"><div className="container-x text-center"><h2 className="section-title balance">Reserve su consulta.</h2><p className="section-sub mx-auto mt-4">En línea a cualquier hora, por texto o por teléfono en horario de clínica.</p><div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row"><a href={site.booking} className="btn btn-primary">{esUi.book}</a><a href={site.sms("Hola Olivo, quisiera reservar una consulta.")} className="btn btn-outline">{esUi.text}</a><a href={site.phoneTel} className="btn btn-outline"><Phone />{esUi.call} {site.phoneDisplay}</a></div></div></section>
     </>
   );
 }

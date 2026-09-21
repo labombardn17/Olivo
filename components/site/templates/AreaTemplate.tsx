@@ -23,7 +23,7 @@ export function AreaTemplate({ a }: { a: Area }) {
             <p className="kicker mt-6">Med spa near {a.name}</p>
             <h1 className="display-xl mt-3 balance">{a.name} to Olivo Med Spa: {a.travel}.</h1>
             <p className="lede mt-5 max-w-[50ch]">{a.intro[0]}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a consultation</a><a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">Directions</a></div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={site.booking} className="btn btn-primary">Book a consultation</a><a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">Directions</a></div>
             {a.verify?.map((v) => <Verify key={v} note={v} />)}
           </div>
           <a href={site.directionsUrl} target="_blank" rel="noopener noreferrer"><MapPlaceholder className="img-frame aspect-[4/3] shadow-[var(--shadow-card-hover)]" /><span className="sr-only">Open directions in Google Maps</span></a>

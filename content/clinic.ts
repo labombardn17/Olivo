@@ -15,7 +15,7 @@ export const clinic = {
     zip: "60618",
     neighborhood: "Logan Square",
   },
-  booking: "https://www.vagaro.com/olivomedspa",
+  booking: "https://www.vagaro.com/olivomedspa/book-now",
   financing: { name: "Cherry", line: "Financing available through Cherry." },
   instagram: {
     handle: "@olivomedspa",

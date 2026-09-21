@@ -37,7 +37,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <p className="kicker mt-8">Focus</p>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">{t.focus.map((f) => (<li key={f} className="flex items-start gap-3 text-[0.9375rem]"><Check className="mt-1 h-4 w-4 shrink-0 text-accent-text" />{f}</li>))}</ul>
           <Verify note={t.verify} />
-          <div className="mt-8 flex flex-wrap gap-3"><a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book with the team</a><Link href="/team" className="btn btn-outline">All team</Link></div>
+          <div className="mt-8 flex flex-wrap gap-3"><a href={site.booking} className="btn btn-primary">Book with the team</a><Link href="/team" className="btn btn-outline">All team</Link></div>
         </div>
       </div></section>
       <CtaBand />

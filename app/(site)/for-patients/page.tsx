@@ -19,7 +19,7 @@ export default function ForPatients() {
     <>
       <JsonLd data={[faqSchema(faqs), breadcrumbs([{ name: "Home", path: "/" }, { name: "For patients", path: "/for-patients" }])]} />
       <section data-hero="" className="bg-ground-2"><div className="container-x grid items-center gap-10 py-10 lg:grid-cols-2 lg:gap-16 lg:py-20">
-        <div><Crumbs items={[{ name: "Home", href: "/" }, { name: "For patients" }]} /><p className="kicker mt-6">For patients</p><h1 className="display-xl mt-3 balance">Your first visit, in plain words.</h1><p className="lede mt-5 max-w-[50ch]">{intro}</p><div className="mt-8 flex flex-wrap gap-3"><a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a consultation</a><a href="#aftercare" className="btn btn-outline">Aftercare</a></div></div>
+        <div><Crumbs items={[{ name: "Home", href: "/" }, { name: "For patients" }]} /><p className="kicker mt-6">For patients</p><h1 className="display-xl mt-3 balance">Your first visit, in plain words.</h1><p className="lede mt-5 max-w-[50ch]">{intro}</p><div className="mt-8 flex flex-wrap gap-3"><a href={site.booking} className="btn btn-primary">Book a consultation</a><a href="#aftercare" className="btn btn-outline">Aftercare</a></div></div>
         <Photo slot="visit" fallback="room-3" alt="Inside Olivo Med Spa" className="img-frame aspect-[4/3] shadow-[var(--shadow-card-hover)]" sizes="(min-width: 64rem) 50vw, 100vw" priority />
       </div></section>
       <section className="py-20 md:py-24"><div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-20">

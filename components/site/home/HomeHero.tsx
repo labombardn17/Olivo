@@ -26,7 +26,7 @@ export function HomeHero({ copy = heroEn }: { copy?: Copy }) {
               <h1 id="hero-title" className="display-xl hero-rise mt-6 balance">{copy.title}</h1>
               <p className="mt-6 max-w-[52ch] text-[1.0625rem] leading-relaxed text-[#fff]/85 sm:text-[1.2rem]">{copy.sub}</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Magnetic><a href={site.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="btn btn-primary">{copy.book}</a></Magnetic>
+                <Magnetic><a href={site.booking} data-cta="primary" className="btn btn-primary">{copy.book}</a></Magnetic>
                 <Link href={copy.quizHref} className="btn btn-light">{copy.quiz}</Link>
               </div>
               <dl className="mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-3 border-t border-[#fff]/25 pt-6 text-[0.875rem] sm:grid-cols-3">

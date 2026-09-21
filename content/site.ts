@@ -1,6 +1,7 @@
 // Site-wide configuration for the public Olivo site (not the concept review).
 import { clinic } from "./clinic";
 import type { CategoryKey } from "./types";
+import { withBase } from "@/lib/base";
 
 /** Canonical origin. Preview deploys stay noindex until NEXT_PUBLIC_INDEXABLE=1. */
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://olivo-med-spa.vercel.app").replace(/\/$/, "");
@@ -16,8 +17,11 @@ export const site = {
   smsNumber: "+18723153481",
   sms: (body?: string) => `sms:+18723153481${body ? `?&body=${encodeURIComponent(body)}` : ""}`,
   smsVerify: "Confirm 872-315-3481 receives text messages, or supply the texting number",
-  booking: "https://www.vagaro.com/olivomedspa/book-now",
-  bookingVerify: "Vagaro booking URL: confirm the public book-now link",
+  /** On-site booking page with the Vagaro widget embedded. */
+  booking: withBase("/book"),
+  bookingExternal: "https://www.vagaro.com/olivomedspa/book-now",
+  bookingWidget: "https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVGA1QjI5GH1p2XyHEYe23LheLozkQ3HKf4HbvU78PJurSCzXClDbUF/tG0rGPy1y2A9Dq+OUvLRvvdLaYCCQC4QVr4shlYmE8mhiaXedCcCUmrowDvtBYrcLfjzh+gzb+QIrl2bpNV24dz88kmPeFIGDximN2x5YeQsejOrI/p4n68BPzf82Lnk1bbcIqH38svP/SPRNn1VWIlF2nh1dJUlXH4tmOAdBW6kHNrLjtrVmPed/2C/FTjiMwsh+AhtS32Bz44KiW00Y9HRV9TgvqvZk4V0VW1NPWmdOru/9dj5Qiy/HyRNBBPwxMhqzZ6PIAHPBS0LhTArgjR++lm96vrCNHW+6P5YRK+vO2y8HpyJ/XEDwXfFRUl1TSeA+HIWL6wspcnyqMF+e83mpBcRdxPc=",
+  bookingVerify: "Vagaro widget and book-now links: confirm with the clinic's Vagaro account",
   memberships: "https://olivomedspa.repeatmd.app/",
   membershipsVerify: "RepeatMD membership portal link: confirm",
   financing: "https://tree.withcherry.com/olivomedspa",

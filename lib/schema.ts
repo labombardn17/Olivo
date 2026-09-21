@@ -26,7 +26,7 @@ export function medicalBusiness() {
     founder: { "@id": id("dr-olivo") },
     medicalSpecialty: ["Dermatology", "PlasticSurgery"],
     isAcceptingNewPatients: true,
-    potentialAction: { "@type": "ReserveAction", target: { "@type": "EntryPoint", urlTemplate: site.booking, actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"] }, result: { "@type": "Reservation", name: "Consultation" } },
+    potentialAction: { "@type": "ReserveAction", target: { "@type": "EntryPoint", urlTemplate: site.bookingExternal, actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"] }, result: { "@type": "Reservation", name: "Consultation" } },
   };
 }
 

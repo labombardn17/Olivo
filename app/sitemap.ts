@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const u = (p: string, priority = 0.6, changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] = "monthly") => ({ url: `${siteUrl}${p}`, lastModified: now, changeFrequency, priority });
   return [
-    u("/", 1, "weekly"), u("/es", 0.8), u("/quiz", 0.9, "weekly"), u("/treatments", 0.9, "weekly"), u("/concerns", 0.8),
+    u("/", 1, "weekly"), u("/es", 0.8), u("/quiz", 0.9, "weekly"), u("/book", 0.9, "weekly"), u("/site-map", 0.3), u("/treatments", 0.9, "weekly"), u("/concerns", 0.8),
     ...categories.map((c) => u(`/treatments/${c.key}`, 0.8)),
     ...services.map((s) => u(`/treatments/${s.slug}`, 0.8)),
     ...concerns.map((c) => u(`/concerns/${c.slug}`, 0.7)),

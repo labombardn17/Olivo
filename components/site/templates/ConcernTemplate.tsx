@@ -24,7 +24,7 @@ export function ConcernTemplate({ c }: { c: Concern }) {
             <p className="kicker mt-6">Concern</p>
             <h1 className="display-xl mt-3 balance">{c.name}</h1>
             <p className="lede mt-5 max-w-[48ch]">{c.summary}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a consultation</a><a href={site.sms(sms)} className="btn btn-outline">Text us</a></div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={site.booking} className="btn btn-primary">Book a consultation</a><a href={site.sms(sms)} className="btn btn-outline">Text us</a></div>
           </div>
           <Photo slot={c.image.slot} fallbackSlot={list[0] ? list[0].image.slot : "home"} fallback={c.image.fallback} alt={c.image.alt} className="img-frame aspect-[4/3] shadow-[var(--shadow-card-hover)]" sizes="(min-width: 64rem) 50vw, 100vw" priority />
         </div>

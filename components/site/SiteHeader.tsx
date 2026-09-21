@@ -74,7 +74,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-4 lg:flex">
           <Link href={pathname.startsWith("/es") ? "/" : "/es"} className="text-[0.75rem] font-semibold tracking-[0.12em] opacity-80 hover:opacity-100" aria-label={pathname.startsWith("/es") ? "EN, switch to English" : "ES, cambiar a español"}>{pathname.startsWith("/es") ? "EN" : "ES"}</Link>
           <a href={site.phoneTel} className="inline-flex items-center gap-2 text-[0.9375rem] font-medium hover:opacity-70"><Phone />{site.phoneDisplay}</a>
-          <a href={site.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="btn btn-primary btn-sm">Book</a>
+          <a href={site.booking} data-cta="primary" className="btn btn-primary btn-sm">Book</a>
         </div>
         <Dialog.Root open={open} onOpenChange={setOpen}>
           <Dialog.Trigger data-nav-toggle="" className="lg:hidden inline-flex items-center gap-2 text-[0.875rem] font-semibold" aria-label="Open menu">
@@ -96,7 +96,7 @@ export function SiteHeader() {
               <p className="mt-6 text-[0.8125rem] font-semibold tracking-[0.12em] text-ink-2"><Link href="/es">ESPAÑOL</Link></p>
             </nav>
             <div className="container-x grid gap-3 pb-10">
-              <a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a consultation</a>
+              <a href={site.booking} className="btn btn-primary">Book a consultation</a>
               <div className="grid grid-cols-2 gap-3">
                 <a href={site.sms("Hi Olivo, I would like to book a consultation.")} className="btn btn-outline">Text us</a>
                 <a href={site.phoneTel} className="btn btn-outline"><Phone />Call</a>

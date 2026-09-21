@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { Option, Recommendation } from "@/content/quiz";
-import { clinic } from "@/content/clinic";
+import { site } from "@/content/site";
 import { Arrow, Check, Phone } from "@/components/functional/Icons";
 
 const SMS_NUMBER = "+18723153481";
@@ -93,15 +93,15 @@ export function CtaBlock({ names, compact }: { names: string; compact: boolean }
       <p className={`font-semibold text-ink ${compact ? "text-base" : "text-lg"}`}>Next step: talk it through with the clinical team.</p>
       <p className="mt-1 text-sm text-ink-2">Bring your results. The consultation is where the plan gets written.</p>
       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <a href={clinic.booking} target="_blank" rel="noopener noreferrer" data-cta="primary" className="btn btn-primary">
+        <a href={site.booking} data-cta="primary" className="btn btn-primary">
           Book a consultation
         </a>
         <a href={smsHref(names)} className="btn btn-outline">
           Text us your results
         </a>
-        <a href={clinic.phoneTel} className="btn btn-outline">
+        <a href={site.phoneTel} className="btn btn-outline">
           <Phone />
-          Call {clinic.phoneDisplay}
+          Call {site.phoneDisplay}
         </a>
       </div>
     </div>

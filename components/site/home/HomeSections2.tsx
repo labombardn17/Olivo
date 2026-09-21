@@ -48,7 +48,7 @@ export function VisitBlock() {
             <div><dt className="font-semibold">Hours</dt><dd className="text-ink-2">{site.hours.map((h) => (<span key={h.days} className="block">{h.days}: {"closed" in h && h.closed ? "Closed" : `${h.open} to ${h.close}`}</span>))}</dd></div>
             <div><dt className="font-semibold">Parking and transit</dt><dd className="text-ink-2">{site.transit}<Verify note={site.transitVerify} /></dd></div>
           </dl>
-          <div className="mt-8 flex flex-wrap gap-3"><a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">Get directions</a><a href={site.booking} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">Book a visit</a></div>
+          <div className="mt-8 flex flex-wrap gap-3"><a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">Get directions</a><a href={site.booking} className="btn btn-primary btn-sm">Book a visit</a></div>
           <p className="mt-8 text-[0.8125rem] text-ink-2">Also serving</p>
           <ul className="mt-2 flex flex-wrap gap-2">{areaList.map(([s, n]) => (<li key={s}><Link href={`/med-spa/${s}`} className="rounded-full border border-rule px-3 py-1 text-[0.8125rem] hover:border-accent hover:text-accent-text">{n}</Link></li>))}</ul>
         </Reveal>
