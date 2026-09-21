@@ -5,6 +5,7 @@ import { descriptions, noindex } from "@/content/seo";
 import { palettes } from "@/lib/palettes";
 import { ChooserDots } from "@/components/chooser/ChooserDots";
 import { ChooserTiles } from "@/components/chooser/ChooserTiles";
+import { DesignProvider } from "@/components/switcher/DesignProvider";
 
 // The chooser is a tool page: Fraunces with the optical size axis only, a third of the full file.
 const fraunces = Fraunces({ subsets: ["latin"], display: "swap", preload: true, axes: ["opsz"], variable: "--font-chooser-display" });
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 /** The URL the client receives. Five tiles, five palette dots, no redirect. Static; palette is client state. */
 export default function Chooser() {
   return (
+    <DesignProvider>
     <main
       className={`${fraunces.variable} ${manrope.variable} font-text min-h-screen px-5 md:px-10 py-10 md:py-14`}
       style={{ ["--font-display-face" as string]: "var(--font-chooser-display)", ["--font-text-face" as string]: "var(--font-chooser-text)" }}
@@ -44,5 +46,6 @@ export default function Chooser() {
         <span>All imagery and reviews are placeholders.</span>
       </footer>
     </main>
+    </DesignProvider>
   );
 }

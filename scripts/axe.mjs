@@ -3,10 +3,11 @@ import { chromium } from "playwright";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { BASE, ensureServer } from "./server.mjs";
+import { ALL_ROUTES, CONCEPT_ROUTES, SITE_ROUTES } from "./routes.mjs";
 
 const require = createRequire(import.meta.url);
 const axeSource = readFileSync(require.resolve("axe-core/axe.min.js"), "utf8");
-const routes = ["/", "/atelier", "/cinema", "/precision", "/residence", "/current", "/atelier/emsculpt-neo", "/cinema/emsculpt-neo", "/precision/emsculpt-neo", "/residence/emsculpt-neo", "/current/emsculpt-neo", "/compare"];
+const routes = process.argv.includes("--all") ? ALL_ROUTES : process.argv.includes("--concepts") ? CONCEPT_ROUTES : SITE_ROUTES;
 const stop = await ensureServer();
 const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
 const failures = [];

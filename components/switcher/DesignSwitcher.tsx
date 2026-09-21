@@ -45,7 +45,7 @@ export function DesignSwitcher() {
     return () => document.removeEventListener("pointerdown", onDown);
   }, [open, setOpen]);
 
-  if (present || hidden) return null;
+  if (present || hidden || !concept) return null;
 
   const current = concepts.find((c) => c.key === concept);
   const mailto = `mailto:?subject=${encodeURIComponent(`Olivo concept feedback: ${current?.name ?? "chooser"} / ${palette}`)}&body=${encodeURIComponent(`Concept: ${current?.name ?? "chooser"}\nPalette: ${palette}\nURL: ${typeof window !== "undefined" ? window.location.href : ""}\n\nNotes:\n`)}`;

@@ -73,7 +73,7 @@ export function HeroVideo({
 
   return (
     <div ref={frameRef} className={`overflow-hidden ${className}`} data-hero-video="">
-      <Image src={poster} alt={posterAlt} width={width} height={height} priority quality={75} sizes="(max-width: 52rem) 150vw, 100vw" className="absolute inset-0 h-full w-full object-cover" />
+      <Image src={poster} alt={posterAlt} width={width} height={height} priority quality={62} sizes="100vw" className="absolute inset-0 h-full w-full object-cover" />
       <video ref={ref} autoPlay muted loop playsInline preload="none" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
       <div aria-hidden="true" className="absolute inset-0 tint-layer" />
     </div>

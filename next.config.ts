@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { execFileSync } from "node:child_process";
 
 /**
  * Two modes. Standalone (default): a normal Next app with headers and its own
@@ -36,4 +37,14 @@ const nextConfig: NextConfig = {
       }),
 };
 
-export default nextConfig;
+/** Fetch clinic photos before the production build, whatever the build command is. */
+export default function config(phase: string): NextConfig {
+  if (phase === "phase-production-build" && process.env.LIVE_IMAGES_SKIP !== "1") {
+    try {
+      execFileSync(process.execPath, ["scripts/fetch-live-images.mjs"], { stdio: "inherit", cwd: __dirname });
+    } catch (e) {
+      console.log("live-images: skipped", e instanceof Error ? e.message : "");
+    }
+  }
+  return nextConfig;
+}

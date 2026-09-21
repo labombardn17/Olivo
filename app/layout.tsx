@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/tokens.css";
 import { paletteInitScript } from "@/lib/palettes";
-import { DesignProvider } from "@/components/switcher/DesignProvider";
 import { LenisProvider } from "@/components/shared/LenisProvider";
 import { Grain } from "@/components/shared/Grain";
 import { siteTitle, descriptions, noindex } from "@/content/seo";
@@ -27,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <LenisProvider>
-          <DesignProvider>{children}</DesignProvider>
+          {children}
         </LenisProvider>
         <Grain />
       </body>

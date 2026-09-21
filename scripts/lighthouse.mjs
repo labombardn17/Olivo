@@ -5,9 +5,10 @@ import lighthouse from "lighthouse";
 import * as chromeLauncher from "chrome-launcher";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { BASE, ensureServer } from "./server.mjs";
+import { ALL_ROUTES, CONCEPT_ROUTES, SITE_ROUTES } from "./routes.mjs";
 
 const root = new URL("..", import.meta.url).pathname;
-const routes = ["/", "/atelier", "/cinema", "/precision", "/residence", "/current", "/atelier/emsculpt-neo", "/cinema/emsculpt-neo", "/precision/emsculpt-neo", "/residence/emsculpt-neo", "/current/emsculpt-neo", "/compare"];
+const routes = process.argv.includes("--all") ? ALL_ROUTES : process.argv.includes("--concepts") ? CONCEPT_ROUTES : SITE_ROUTES;
 const only = process.argv.find((a) => a.startsWith("--only="))?.slice(7).split(",");
 mkdirSync(`${root}.lighthouse`, { recursive: true });
 const stop = await ensureServer();

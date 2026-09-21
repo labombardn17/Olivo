@@ -12,7 +12,8 @@
     "contact-sheet": "node scripts/contact-sheet.mjs",
     "lighthouse": "node scripts/lighthouse.mjs",
     "axe": "node scripts/axe.mjs",
-    "video": "node scripts/make-video.mjs"
+    "video": "node scripts/make-video.mjs",
+    "live-images": "node scripts/fetch-live-images.mjs"
   },
   "dependencies": {
     "@gsap/react": "2.1.2",

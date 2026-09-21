@@ -52,7 +52,7 @@ export function resolvePalette(
   const p = Array.isArray(param) ? param[0] : param;
   if (isPaletteKey(p)) return p;
   if (isPaletteKey(stored)) return stored;
-  return concept ? conceptDefaults[concept] : "olivo";
+  return concept ? conceptDefaults[concept] : "orchid";
 }
 
 /** Ground color the wipe overlay uses for a concept and palette. */
@@ -67,4 +67,4 @@ export function conceptFromPath(pathname: string): ConceptKey | null {
 }
 
 /** Inline, blocking script: sets data-palette before first paint. */
-export const paletteInitScript = `(function(){try{var d=${JSON.stringify(conceptDefaults)};var k=${JSON.stringify(paletteKeys)};var bp='${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}';var pn=location.pathname;if(bp&&pn.indexOf(bp)===0)pn=pn.slice(bp.length);var seg=pn.split('/')[1]||'';var q=new URLSearchParams(location.search).get('palette');var s=null;try{s=localStorage.getItem('${STORAGE_KEY}')}catch(e){}var p=(q&&k.indexOf(q)>-1)?q:(s&&k.indexOf(s)>-1)?s:(d[seg]||'olivo');document.documentElement.setAttribute('data-palette',p);}catch(e){document.documentElement.setAttribute('data-palette','olivo')}})();`;
+export const paletteInitScript = `(function(){try{var d=${JSON.stringify(conceptDefaults)};var k=${JSON.stringify(paletteKeys)};var bp='${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}';var pn=location.pathname;if(bp&&pn.indexOf(bp)===0)pn=pn.slice(bp.length);var seg=pn.split('/')[1]||'';var q=new URLSearchParams(location.search).get('palette');var s=null;try{s=localStorage.getItem('${STORAGE_KEY}')}catch(e){}var p=(q&&k.indexOf(q)>-1)?q:(s&&k.indexOf(s)>-1)?s:(d[seg]||'orchid');document.documentElement.setAttribute('data-palette',p);}catch(e){document.documentElement.setAttribute('data-palette','orchid')}})();`;
