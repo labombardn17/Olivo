@@ -11,6 +11,7 @@ for (const f of files) {
   const text = readFileSync(f, "utf8");
   for (const m of text.matchAll(/(?:verify|Verify|boardVerify|bioVerify|concernsVerify|downtimeVerify|resultsVerify|firstVisitVerify|teamRoleVerify)\s*[:=]\s*["'`]([^"'`]+)["'`]/g)) items.set(m[1], relative(root, f));
   for (const m of text.matchAll(/<Verify note="([^"]+)"/g)) items.set(m[1], relative(root, f));
+  for (const m of text.matchAll(/verify:\s*\[([^\]]+)\]/g)) for (const q of m[1].matchAll(/"([^"]+)"/g)) items.set(q[1], relative(root, f));
 }
 const lines = ["# VERIFY list", "", "Every claim on the prototype that is not sourced in the brief. Each renders in the HTML as `<!-- VERIFY: ... -->` next to the claim.", ""];
 let i = 1;
