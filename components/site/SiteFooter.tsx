@@ -16,7 +16,7 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
   const L = (p: string) => href(lang, p);
   const cats = categories.map((c) => localizeCategory(c, lang));
   return (
-    <footer data-footer="" className="inverse border-t border-rule" aria-label="Site footer">
+    <footer data-footer="" className="inverse border-t border-rule pb-24 md:pb-0" aria-label="Site footer">
       <div className="container-x grid gap-10 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-4">
           <Wordmark href={L("/")} />
