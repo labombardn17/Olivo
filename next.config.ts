@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
         },
         /** Old olivomedspa.com paths map to their new homes once the domain moves. */
         async redirects() {
-          return Object.entries(legacy as Record<string, string>).map(([from, to]) => ({ source: from.replace(/\/$/, ""), destination: to, permanent: true }));
+          return Object.entries(legacy as Record<string, string>).map(([from, to]) => ({ source: from.replace(/\/$/, ""), destination: to, permanent: true })).filter((r) => r.source && r.source !== r.destination);
         },
       }),
 };
