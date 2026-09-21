@@ -7,6 +7,3 @@ next-env.d.ts
 /public/screens
 /.lighthouse
 .env*.local
-/public/img/live
-/public/video/live-hero.mp4
-/public/video/live-hero-poster.jpg

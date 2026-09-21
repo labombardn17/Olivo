@@ -57,7 +57,7 @@ export interface Service {
   faqs: Faq[];
   /** Related service slugs, two to four. */
   related: string[];
-  /** Image slot key resolved by lib/live-images at build time; fallback placeholder. */
+  /** Image slot key for when photography is delivered; every slot renders a coming soon tile today. */
   image: { slot: string; alt: string; fallback: Shot };
   /** Path on the current olivomedspa.com site, for image sourcing and the 301 map. */
   live?: string;

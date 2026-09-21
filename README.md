@@ -1,6 +1,6 @@
 # Olivo Med Spa: the public site, plus five homepage concepts
 
-`/` is the public site: one design, 136 static pages (38 treatments in 9 categories, 16 concerns, 12 neighborhoods, 14 journal posts, team, patient resources, memberships, specials, gift cards, financing, skincare, results, reviews, visit, contact, on-site Vagaro booking at /book, Spanish home and treatments hub, legal, /site-map), the two-minute treatment quiz at /quiz, a text, call, book bar on every page, and local SEO schema throughout. See `docs/LAUNCH.md` for go-live steps and `docs/CONTENT-RULES.md` for the claim rules. The concept review below now lives under `/concepts`.
+`/` is the public site: one design, 136 static pages (38 treatments in 9 categories, 16 concerns, 12 neighborhoods, 14 journal posts, team, patient resources, memberships, specials, gift cards, financing, skincare, results, reviews, visit, contact, on-site Vagaro booking at /book, legal, /site-map) with a full Spanish mirror of every page under /es, the two-minute treatment quiz at /quiz, a text, call, book bar on every page, and local SEO schema throughout. See `docs/LAUNCH.md` for go-live steps and `docs/CONTENT-RULES.md` for the claim rules. The concept review below now lives under `/concepts`.
 
 ## The concept review
 
@@ -30,7 +30,7 @@ A design-selection prototype for Dr. Jacqueline Olivo. One link opens a chooser;
 
 ## What is placeholder
 
-Everything visual. The hero film, all photographs, the portrait, the device images, the map, the reviews and the Instagram tiles are placeholders and are labelled as such in the page. See `ASSETS.md` for the list of what to supply and the licenses. Every claim not sourced in the brief carries a `<!-- VERIFY -->` comment in the HTML; `docs/VERIFY.md` lists all of them.
+Everything visual. Every photo slot and the hero film render a designed "coming soon" tile in the palette; the map, the reviews and the Instagram tiles are placeholders and are labelled as such in the page. See `ASSETS.md` for the list of what to supply and the licenses. Every claim not sourced in the brief carries a `<!-- VERIFY -->` comment in the HTML; `docs/VERIFY.md` lists all of them.
 
 ## Claims, HIPAA and reviews
 

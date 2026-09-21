@@ -5,21 +5,34 @@ import { concerns } from "@/content/concerns";
 import { areas } from "@/content/areas";
 import { posts } from "@/content/blog";
 import { teamMembers } from "@/content/team";
+import { alternates } from "@/lib/i18n";
 
 export const dynamic = "force-static";
 
+type Freq = MetadataRoute.Sitemap[number]["changeFrequency"];
+
+/** Every English path with its priority. The Spanish mirror is derived for each one. */
+function englishPaths(): [string, number, Freq][] {
+  return [
+    ["/", 1, "weekly"], ["/quiz", 0.9, "weekly"], ["/book", 0.9, "weekly"], ["/site-map", 0.3, "monthly"], ["/treatments", 0.9, "weekly"], ["/concerns", 0.8, "monthly"],
+    ...categories.map((c): [string, number, Freq] => [`/treatments/${c.key}`, 0.8, "monthly"]),
+    ...services.map((s): [string, number, Freq] => [`/treatments/${s.slug}`, 0.8, "monthly"]),
+    ...concerns.map((c): [string, number, Freq] => [`/concerns/${c.slug}`, 0.7, "monthly"]),
+    ["/about", 0.7, "monthly"], ["/team", 0.7, "monthly"], ["/for-patients", 0.6, "monthly"], ["/gift-cards", 0.5, "monthly"],
+    ...teamMembers.map((t): [string, number, Freq] => [`/team/${t.slug}`, 0.6, "monthly"]),
+    ["/memberships", 0.7, "monthly"], ["/specials", 0.7, "weekly"], ["/financing", 0.5, "monthly"], ["/skincare", 0.5, "monthly"], ["/results", 0.5, "monthly"], ["/reviews", 0.6, "monthly"], ["/visit", 0.8, "monthly"], ["/contact", 0.6, "monthly"],
+    ...areas.map((a): [string, number, Freq] => [`/med-spa/${a.slug}`, 0.6, "monthly"]),
+    ["/blog", 0.6, "weekly"], ...posts.map((p): [string, number, Freq] => [`/blog/${p.slug}`, 0.5, "monthly"]),
+    ["/privacy", 0.2, "yearly"], ["/terms", 0.2, "yearly"], ["/accessibility", 0.2, "yearly"],
+  ];
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const u = (p: string, priority = 0.6, changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] = "monthly") => ({ url: `${siteUrl}${p}`, lastModified: now, changeFrequency, priority });
-  return [
-    u("/", 1, "weekly"), u("/es", 0.8), u("/quiz", 0.9, "weekly"), u("/book", 0.9, "weekly"), u("/site-map", 0.3), u("/treatments", 0.9, "weekly"), u("/concerns", 0.8),
-    ...categories.map((c) => u(`/treatments/${c.key}`, 0.8)),
-    ...services.map((s) => u(`/treatments/${s.slug}`, 0.8)),
-    ...concerns.map((c) => u(`/concerns/${c.slug}`, 0.7)),
-    u("/about", 0.7), u("/team", 0.7), u("/for-patients", 0.6), u("/gift-cards", 0.5), u("/es/tratamientos", 0.7), ...teamMembers.map((t) => u(`/team/${t.slug}`, 0.6)),
-    u("/memberships", 0.7), u("/specials", 0.7, "weekly"), u("/financing", 0.5), u("/skincare", 0.5), u("/results", 0.5), u("/reviews", 0.6), u("/visit", 0.8), u("/contact", 0.6),
-    ...areas.map((a) => u(`/med-spa/${a.slug}`, 0.6)),
-    u("/blog", 0.6, "weekly"), ...posts.map((p) => u(`/blog/${p.slug}`, 0.5)),
-    u("/privacy", 0.2, "yearly"), u("/terms", 0.2, "yearly"), u("/accessibility", 0.2, "yearly"),
-  ];
+  return englishPaths().flatMap(([p, priority, changeFrequency]) => {
+    const alt = alternates(p);
+    const languages = { en: `${siteUrl}${alt.en}`, es: `${siteUrl}${alt.es}`, "x-default": `${siteUrl}${alt["x-default"]}` };
+    const entry = (path: string, pr: number) => ({ url: `${siteUrl}${path}`, lastModified: now, changeFrequency, priority: pr, alternates: { languages } });
+    return [entry(alt.en, priority), entry(alt.es, Math.round(priority * 0.9 * 10) / 10)];
+  });
 }

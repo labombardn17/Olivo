@@ -1,8 +1,10 @@
 import { Crumbs } from "./Blocks";
 import { site } from "@/content/site";
+import { ui, type Lang } from "@/content/ui";
+import { legalEs } from "@/content/es/legal";
 import { Verify } from "@/lib/verify";
 
-const pages = {
+const pagesEn = {
   privacy: { title: "Privacy policy", updated: "September 2026", sections: [
     ["What we collect", ["When you book through Vagaro, text or call the clinic, or take the treatment quiz, we may receive your name, contact details, and the treatments you are interested in. The quiz stores nothing on our servers; your answers stay in your browser session.", "Clinical information you share with the practice is handled as medical information under applicable law and is kept separately from website analytics."]],
     ["How we use it", ["To respond to you, schedule and confirm visits, send appointment reminders you have agreed to, and improve the site. We do not sell personal information."]],
@@ -22,16 +24,32 @@ const pages = {
   ]},
 } as const;
 
-export function LegalPage({ kind }: { kind: keyof typeof pages }) {
-  const p = pages[kind];
+export type LegalKind = keyof typeof pagesEn;
+
+const metaEn: Record<LegalKind, [string, string]> = {
+  privacy: ["Privacy Policy | Olivo Med Spa", "How Olivo Med Spa in Logan Square, Chicago handles information collected through this website and by phone, text, and online booking."],
+  terms: ["Terms of Use | Olivo Med Spa", "Terms of use for the Olivo Med Spa website, including that site content is educational and not a substitute for a consultation."],
+  accessibility: ["Accessibility Statement | Olivo Med Spa", "Olivo Med Spa's commitment to an accessible website and clinic in Logan Square, Chicago, and how to reach us if something is hard to use."],
+};
+const metaEs: Record<LegalKind, [string, string]> = {
+  privacy: ["Aviso de privacidad | Olivo Med Spa", "Cómo maneja Olivo Med Spa en Logan Square, Chicago, la información recibida a través de este sitio, por teléfono, por mensaje de texto y por reservas en línea."],
+  terms: ["Términos de uso | Olivo Med Spa", "Términos de uso del sitio de Olivo Med Spa: el contenido es educativo y no sustituye una consulta con el equipo médico."],
+  accessibility: ["Declaración de accesibilidad | Olivo Med Spa", "El compromiso de Olivo Med Spa con un sitio y una clínica accesibles en Logan Square, Chicago, y cómo avisarnos si algo resulta difícil de usar."],
+};
+
+export const legalMeta = (kind: LegalKind, lang: Lang) => (lang === "es" ? metaEs : metaEn)[kind];
+
+export function LegalPage({ kind, lang = "en" }: { kind: LegalKind; lang?: Lang }) {
+  const t = ui(lang);
+  const p = lang === "es" ? legalEs[kind] : pagesEn[kind];
   return (
     <section className="py-12 md:py-20">
       <div className="container-x mx-auto max-w-3xl">
-        <Crumbs items={[{ name: "Home", href: "/" }, { name: p.title }]} />
+        <Crumbs lang={lang} items={[{ name: t.blocks.home, href: "/" }, { name: p.title }]} />
         <h1 className="section-title mt-8">{p.title}</h1>
-        <p className="mt-3 text-[0.9375rem] text-ink-2">{site.legalName}. Last updated {p.updated}.<Verify note="Legal pages: counsel to review before launch" /></p>
+        <p className="mt-3 text-[0.9375rem] text-ink-2">{site.legalName}. {t.pages.legal.updated(p.updated)}<Verify note="Legal pages: counsel to review before launch" /></p>
         <div className="prose mt-8">
-          {p.sections.map(([h, ps]) => (<div key={h}><h2>{h}</h2>{ps.map((t) => <p key={t}>{t}</p>)}</div>))}
+          {p.sections.map(([h, ps]) => (<div key={h}><h2>{h}</h2>{ps.map((x) => <p key={x}>{x}</p>)}</div>))}
         </div>
       </div>
     </section>

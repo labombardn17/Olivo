@@ -2,16 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
-import { questions, optionsFor, recommend, joinNames, type Answers, type StepId } from "@/content/quiz";
+import { questions, optionsFor, recommend, type Answers, type StepId } from "@/content/quiz";
+import type { Lang } from "@/content/ui";
+import { quizText } from "./text";
 import { CtaBlock, OptionCard, ProgressBar, ResultCard } from "./QuizParts";
 
 const STORAGE_KEY = "olivo-quiz-answers";
 const ADVANCE_DELAY_MS = 260;
-const SMALL_PRINT = "A quiz is a starting point. Candidacy and expectations are set at your consultation.";
 
 interface QuizProps {
   /** Tighter spacing for a homepage section. Same logic. */
   compact?: boolean;
+  lang?: Lang;
 }
 
 function readStored(): Answers {
@@ -40,8 +42,10 @@ function writeStored(answers: Answers): void {
 }
 
 /** Five short questions, then up to three treatment suggestions. */
-export default function Quiz({ compact = false }: QuizProps) {
+export default function Quiz({ compact = false, lang = "en" }: QuizProps) {
   const total = questions.length;
+  const tx = useMemo(() => quizText(lang), [lang]);
+  const t = tx.ui;
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [pending, setPending] = useState<string | null>(null);
@@ -52,9 +56,9 @@ export default function Quiz({ compact = false }: QuizProps) {
 
   const showingResults = step >= total;
   const current = questions[step];
-  const options = useMemo(() => (current ? optionsFor(current, answers) : []), [current, answers]);
-  const results = useMemo(() => (showingResults ? recommend(answers) : []), [showingResults, answers]);
-  const names = useMemo(() => joinNames(results.map((r) => r.name)), [results]);
+  const options = useMemo(() => (current ? optionsFor(current, answers).map(tx.option) : []), [current, answers, tx]);
+  const results = useMemo(() => (showingResults ? recommend(answers).map(tx.rec) : []), [showingResults, answers, tx]);
+  const names = useMemo(() => t.joinNames(results.map((r) => r.name)), [results, t]);
 
   useEffect(() => {
     const stored = readStored();
@@ -139,15 +143,15 @@ export default function Quiz({ compact = false }: QuizProps) {
 
   return (
     <div className={`w-full max-w-3xl ${outer}`} data-quiz={compact ? "compact" : "full"}>
-      {!showingResults ? <ProgressBar step={step} total={total} /> : null}
+      {!showingResults ? <ProgressBar step={step} total={total} t={t} /> : null}
 
       <div ref={panelRef} key={step}>
         {current && !showingResults ? (
           <section aria-labelledby={`quiz-q-${current.id}`}>
             <h2 id={`quiz-q-${current.id}`} className={`font-display text-ink balance ${compact ? "text-2xl" : "text-3xl md:text-4xl"}`}>
-              {current.title}
+              {tx.stepTitle(current)}
             </h2>
-            {current.sub && !compact ? <p className="section-sub mt-2 text-base">{current.sub}</p> : null}
+            {tx.stepSub(current) && !compact ? <p className="section-sub mt-2 text-base">{tx.stepSub(current)}</p> : null}
             <div className={`mt-5 ${grid}`} role="group" aria-labelledby={`quiz-q-${current.id}`}>
               {options.map((o) => (
                 <OptionCard
@@ -163,14 +167,14 @@ export default function Quiz({ compact = false }: QuizProps) {
             <div className="mt-5 flex items-center justify-between text-sm">
               {step > 0 ? (
                 <button type="button" onClick={back} className="u-draw min-h-[44px] text-ink-2 hover:text-ink">
-                  Back
+                  {t.back}
                 </button>
               ) : (
                 <span />
               )}
               {step > 0 ? (
                 <button type="button" onClick={restart} className="u-draw min-h-[44px] text-xs text-ink-2 hover:text-ink">
-                  Start over
+                  {t.startOver}
                 </button>
               ) : null}
             </div>
@@ -179,33 +183,33 @@ export default function Quiz({ compact = false }: QuizProps) {
 
         {showingResults ? (
           <section aria-labelledby="quiz-results-title">
-            <span className="pill">Your results</span>
+            <span className="pill">{t.resultsPill}</span>
             <h2 id="quiz-results-title" className={`font-display text-ink balance mt-3 ${compact ? "text-2xl" : "text-3xl md:text-4xl"}`}>
-              {results.length > 0 ? "A good place to start the conversation." : "Let us point you in the right direction."}
+              {results.length > 0 ? t.resultsTitle : t.resultsEmptyTitle}
             </h2>
             {results.length > 0 ? (
               <ul className={`mt-5 grid gap-3 ${results.length > 1 ? "sm:grid-cols-2" : ""} ${results.length > 2 && !compact ? "lg:grid-cols-3" : ""}`}>
                 {results.map((rec) => (
-                  <ResultCard key={rec.slug} rec={rec} compact={compact} />
+                  <ResultCard key={rec.slug} rec={rec} compact={compact} t={t} />
                 ))}
               </ul>
             ) : (
-              <p className="section-sub mt-3">Tell us what you have in mind and the clinical team will match it to the right treatment.</p>
+              <p className="section-sub mt-3">{t.resultsEmptyLine}</p>
             )}
             <div className="mt-6">
-              <CtaBlock names={names || "a consultation"} compact={compact} />
+              <CtaBlock names={names || t.consultFallback} compact={compact} t={t} lang={lang} />
             </div>
             <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-xs text-ink-2">{SMALL_PRINT}</p>
+              <p className="text-xs text-ink-2">{t.smallPrint}</p>
               <button type="button" onClick={restart} className="u-draw min-h-[44px] self-start text-xs text-ink-2 hover:text-ink sm:self-auto">
-                Start over
+                {t.startOver}
               </button>
             </div>
           </section>
         ) : null}
       </div>
 
-      {!showingResults ? <p className="mt-6 text-xs text-ink-2">{SMALL_PRINT}</p> : null}
+      {!showingResults ? <p className="mt-6 text-xs text-ink-2">{t.smallPrint}</p> : null}
     </div>
   );
 }

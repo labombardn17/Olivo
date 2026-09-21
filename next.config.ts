@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import { execFileSync } from "node:child_process";
 import legacy from "./content/redirects.json";
 
 /**
@@ -21,6 +20,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  /** One app/global-not-found.tsx serves every root layout (English tree, Spanish tree, concept review). */
+  experimental: { globalNotFound: true },
   outputFileTracingRoot: __dirname,
   ...(isExport
     ? {
@@ -42,15 +43,4 @@ const nextConfig: NextConfig = {
       }),
 };
 
-/** Fetch clinic photos before the production build, whatever the build command is. */
-export default function config(phase: string): NextConfig {
-  if (phase === "phase-production-build" && process.env.LIVE_IMAGES_SKIP !== "1") {
-    try {
-      execFileSync(process.execPath, ["scripts/fetch-live-images.mjs"], { stdio: "inherit", cwd: __dirname });
-      execFileSync(process.execPath, ["scripts/fetch-live-video.mjs"], { stdio: "inherit", cwd: __dirname });
-    } catch (e) {
-      console.log("live-images: skipped", e instanceof Error ? e.message : "");
-    }
-  }
-  return nextConfig;
-}
+export default nextConfig;

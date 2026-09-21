@@ -6,13 +6,13 @@
 - Design review of the five original concepts: /concepts, /compare, /contact-sheet.
 
 ## Before showing Dr. Olivo
-- Open / on a phone. The hero uses a 10 second cut of her current homepage video when the build could fetch it, otherwise the placeholder film.
-- Photos on treatment, category, team, and concern pages are pulled from olivomedspa.com at build time (content/live-images.json lists what was found). Anything without a photo shows a grey labelled placeholder.
+- Open / on a phone, then /es. Every page has a Spanish mirror under /es with Spanish section names; the ES and EN switch in the header keeps you on the same page.
+- No photography ships yet. Every photo slot renders a designed "Photography coming soon" tile and the hero is a CSS field captioned "Clinic film coming soon". Real photos drop into the same slots (components/site/Photo.tsx) once the shoot is done.
 - Everything the clinic must confirm renders as `<!-- VERIFY: ... -->` comments in the HTML. `grep -o "VERIFY: [^-]*" out/**/*.html | sort | uniq -c` lists them.
 
 ## Go live on the real domain
 1. Vercel project settings: add olivomedspa.com and www.olivomedspa.com, set www as primary.
-2. Environment variables (production): `NEXT_PUBLIC_SITE_URL=https://www.olivomedspa.com`, `NEXT_PUBLIC_INDEXABLE=1`. Redeploy. robots.txt flips to allow, every page gets index,follow and a canonical on the new domain, sitemap.xml lists 104 URLs.
+2. Environment variables (production): `NEXT_PUBLIC_SITE_URL=https://www.olivomedspa.com`, `NEXT_PUBLIC_INDEXABLE=1`. Redeploy. robots.txt flips to allow, every page gets index,follow and a canonical on the new domain, sitemap.xml lists every page in both languages with hreflang alternates.
 3. Remove the `X-Robots-Tag: noindex` header in next.config.ts securityHeaders for the standalone build.
 4. Legacy redirects: content/redirects.json maps 65 old paths (every service URL, team, about, promos, skincare, neighborhood pages) to their new homes and is wired into next.config.ts. Add any remaining URLs from the old sitemap before DNS moves.
 5. DNS: point the apex and www at Vercel. Keep Cloudflare proxy off for the cutover or set SSL to Full (strict).

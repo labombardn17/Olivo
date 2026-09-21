@@ -1,28 +1,28 @@
-import Image from "next/image";
-import { Placeholder, type Shot } from "@/components/shared/Placeholder";
-import { liveImage } from "@/lib/live-images";
+import { ComingSoon } from "./ComingSoon";
+import type { Shot } from "@/components/shared/Placeholder";
+import type { Lang } from "@/content/ui";
 
 interface Props {
   slot: string;
   index?: number;
   fallback: Shot;
-  /** A broader slot to try when this one has no photo, e.g. the category. */
   fallbackSlot?: string;
   alt?: string;
   className?: string;
   imgClassName?: string;
   sizes?: string;
   priority?: boolean;
+  lang?: Lang;
+  kind?: "photo" | "gallery" | "portrait";
 }
 
-/** A clinic photo if the build fetched one for this slot, otherwise a labelled placeholder. */
-export function Photo({ slot, index = 0, fallback, fallbackSlot, alt, className = "", imgClassName = "", sizes = "100vw", priority }: Props) {
-  const live = liveImage(slot, index) ?? (fallbackSlot ? liveImage(fallbackSlot, index) : null);
-  if (!live) return <Placeholder shot={fallback} className={className} imgClassName={imgClassName} sizes={sizes} priority={priority} />;
-  const pos = /\b(absolute|fixed|sticky)\b/.test(className) ? "" : "relative ";
-  return (
-    <figure className={`${pos}overflow-hidden ${className}`} data-live={slot}>
-      <Image src={live.src} alt={alt ?? live.alt} width={live.width} height={live.height} sizes={sizes} priority={priority} className={`h-full w-full object-cover ${imgClassName}`} />
-    </figure>
-  );
+/**
+ * Every photo slot on the public site renders a designed "coming soon" tile
+ * until the clinic's photography is delivered. The slot and alt are kept so
+ * real images drop in later without touching the pages.
+ */
+export function Photo({ alt, className = "", lang = "en", kind, fallback }: Props) {
+  // A tile that fills a card sits under the card's own title, so it carries no label of its own.
+  const fill = /\babsolute\b/.test(className);
+  return <ComingSoon label={fill ? undefined : alt} fill={fill} lang={lang} className={className} kind={kind ?? (fallback === "portrait" ? "portrait" : "photo")} />;
 }

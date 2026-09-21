@@ -1,4 +1,6 @@
-// Representative routes for the gates. The public site first, then the concept review.
-export const SITE_ROUTES = ["/", "/treatments", "/treatments/emsculpt-neo", "/treatments/body-contouring", "/treatments/miradry", "/concerns", "/concerns/fine-lines-wrinkles", "/med-spa/bucktown", "/quiz", "/about", "/team/jacqueline-olivo-md", "/memberships", "/specials", "/visit", "/contact", "/blog", "/blog/emsculpt-neo-what-to-expect", "/es", "/es/tratamientos", "/book", "/site-map", "/financing", "/results", "/for-patients", "/gift-cards"];
+// Representative routes for the gates. The public site first (English, then the Spanish mirror), then the concept review.
+const EN_ROUTES = ["/", "/treatments", "/treatments/emsculpt-neo", "/treatments/body-contouring", "/treatments/miradry", "/concerns", "/concerns/fine-lines-wrinkles", "/med-spa/bucktown", "/quiz", "/about", "/team/jacqueline-olivo-md", "/memberships", "/specials", "/visit", "/contact", "/blog", "/blog/emsculpt-neo-what-to-expect", "/book", "/site-map", "/financing", "/results", "/for-patients", "/gift-cards"];
+const ES_ROUTES = ["/es", "/es/tratamientos", "/es/tratamientos/emsculpt-neo", "/es/tratamientos/body-contouring", "/es/inquietudes", "/es/inquietudes/fine-lines-wrinkles", "/es/med-spa/bucktown", "/es/cuestionario", "/es/nosotros", "/es/equipo/jacqueline-olivo-md", "/es/membresias", "/es/visitanos", "/es/contacto", "/es/diario/emsculpt-neo-what-to-expect", "/es/reservar", "/es/mapa-del-sitio", "/es/para-pacientes"];
+export const SITE_ROUTES = [...EN_ROUTES, ...ES_ROUTES];
 export const CONCEPT_ROUTES = ["/concepts", "/atelier", "/cinema", "/precision", "/residence", "/current", "/atelier/emsculpt-neo", "/compare"];
 export const ALL_ROUTES = [...SITE_ROUTES, ...CONCEPT_ROUTES];

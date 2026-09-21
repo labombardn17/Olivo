@@ -3,18 +3,23 @@
 import Link from "next/link";
 import type { Option, Recommendation } from "@/content/quiz";
 import { site } from "@/content/site";
+import type { QuizEs } from "@/content/es/quiz";
+import { href } from "@/lib/i18n";
+import type { Lang } from "@/content/ui";
+
+type UiText = QuizEs["ui"];
 import { Arrow, Check, Phone } from "@/components/functional/Icons";
 
 const SMS_NUMBER = "+18723153481";
 
-export function ProgressBar({ step, total }: { step: number; total: number }) {
+export function ProgressBar({ step, total, t }: { step: number; total: number; t: UiText }) {
   const current = Math.min(step + 1, total);
   const pct = Math.round((current / total) * 100);
   return (
     <div className="mb-6">
       <div className="mb-2 flex items-center justify-between text-xs text-ink-2">
-        <span className="eyebrow">Treatment quiz</span>
-        <span aria-live="polite">Step {current} of {total}</span>
+        <span className="eyebrow">{t.kicker}</span>
+        <span aria-live="polite">{t.stepOf(current, total)}</span>
       </div>
       <div
         className="h-1 w-full overflow-hidden rounded-4 bg-ground-2"
@@ -22,7 +27,7 @@ export function ProgressBar({ step, total }: { step: number; total: number }) {
         aria-valuemin={1}
         aria-valuemax={total}
         aria-valuenow={current}
-        aria-label={`Step ${current} of ${total}`}
+        aria-label={t.stepOf(current, total)}
       >
         <div className="h-full bg-accent-fill transition-[width] duration-300 ease-out" style={{ width: `${pct}%` }} />
       </div>
@@ -66,7 +71,7 @@ export function OptionCard({ option, selected, disabled, compact, onSelect }: Op
   );
 }
 
-export function ResultCard({ rec, compact }: { rec: Recommendation; compact: boolean }) {
+export function ResultCard({ rec, compact, t }: { rec: Recommendation; compact: boolean; t: UiText }) {
   return (
     <li>
       <Link href={rec.href} className={`card flex h-full flex-col justify-between ${compact ? "p-4" : "p-5"}`}>
@@ -75,33 +80,32 @@ export function ResultCard({ rec, compact }: { rec: Recommendation; compact: boo
           <p className="mt-2 text-sm leading-relaxed text-ink-2">{rec.why}</p>
         </div>
         <span className="link-arrow mt-4 text-sm">
-          About {rec.name} <Arrow />
+          {t.about(rec.name)} <Arrow />
         </span>
       </Link>
     </li>
   );
 }
 
-export function smsHref(names: string): string {
-  const body = `Hi Olivo, I took the quiz. I'm interested in ${names}. Can we set up a consultation?`;
-  return `sms:${SMS_NUMBER}?&body=${encodeURIComponent(body)}`;
+export function smsHref(names: string, t: UiText): string {
+  return `sms:${SMS_NUMBER}?&body=${encodeURIComponent(t.sms(names))}`;
 }
 
-export function CtaBlock({ names, compact }: { names: string; compact: boolean }) {
+export function CtaBlock({ names, compact, t, lang }: { names: string; compact: boolean; t: UiText; lang: Lang }) {
   return (
     <div className={`card-2 ${compact ? "p-4" : "p-6"}`}>
-      <p className={`font-semibold text-ink ${compact ? "text-base" : "text-lg"}`}>Next step: talk it through with the clinical team.</p>
-      <p className="mt-1 text-sm text-ink-2">Bring your results. The consultation is where the plan gets written.</p>
+      <p className={`font-semibold text-ink ${compact ? "text-base" : "text-lg"}`}>{t.ctaTitle}</p>
+      <p className="mt-1 text-sm text-ink-2">{t.ctaLine}</p>
       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <a href={site.booking} data-cta="primary" className="btn btn-primary">
-          Book a consultation
+        <a href={href(lang, site.booking)} data-cta="primary" className="btn btn-primary">
+          {t.book}
         </a>
-        <a href={smsHref(names)} className="btn btn-outline">
-          Text us your results
+        <a href={smsHref(names, t)} className="btn btn-outline">
+          {t.textResults}
         </a>
         <a href={site.phoneTel} className="btn btn-outline">
           <Phone />
-          Call {site.phoneDisplay}
+          {t.call(site.phoneDisplay)}
         </a>
       </div>
     </div>
