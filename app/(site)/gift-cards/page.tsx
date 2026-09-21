@@ -7,7 +7,7 @@ import { Crumbs, CtaBand, Steps } from "@/components/site/Blocks";
 import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 
-export const metadata = buildMeta({ title: "Gift Cards | Olivo Med Spa, Logan Square Chicago", description: "Give a treatment or skincare at Olivo Med Spa in Logan Square, Chicago. Gift cards are available in the clinic and online and can be used on any treatment or product.", path: "/gift-cards" });
+export const metadata = buildMeta({ title: "Gift Cards | Olivo Med Spa, Logan Square Chicago", description: "Give a treatment or skincare at Olivo Med Spa in Logan Square, Chicago. Gift cards are available in the clinic and online for any treatment or product.", path: "/gift-cards" });
 
 export default function GiftCards() {
   return (

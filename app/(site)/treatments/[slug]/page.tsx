@@ -15,7 +15,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const cat = categories.find((c) => c.key === slug);
-  if (cat) return buildMeta({ title: `${cat.name} in Logan Square, Chicago | Olivo Med Spa`, description: `${cat.line} Physician-led ${cat.name.toLowerCase()} at Olivo Med Spa, 2550 W. Fullerton Ave, Logan Square, Chicago. Book a consultation.`, path: `/treatments/${slug}` });
+  if (cat) return buildMeta({ title: `${cat.name} in Logan Square, Chicago | Olivo Med Spa`, description: `${cat.line} Physician-led ${cat.name.toLowerCase()} at Olivo Med Spa in Logan Square, Chicago.`.slice(0, 158), path: `/treatments/${slug}` });
   const s = getService(slug);
   if (!s) return {};
   return buildMeta({ title: s.seo.title, description: s.seo.description, path: `/treatments/${slug}` });

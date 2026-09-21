@@ -24,7 +24,7 @@ export function medicalBusiness() {
     sameAs: [...Object.values(site.social), site.mapsUrl],
     foundingDate: String(clinic.founded),
     founder: { "@id": id("dr-olivo") },
-    medicalSpecialty: ["Dermatology", "PlasticSurgery"],
+    employee: { "@id": id("dr-olivo") },
     isAcceptingNewPatients: true,
     potentialAction: { "@type": "ReserveAction", target: { "@type": "EntryPoint", urlTemplate: site.bookingExternal, actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"] }, result: { "@type": "Reservation", name: "Consultation" } },
   };
@@ -33,14 +33,16 @@ export function medicalBusiness() {
 export function physician() {
   return {
     "@context": "https://schema.org",
-    "@type": "Physician",
+    "@type": "Person",
     "@id": id("dr-olivo"),
     name: doctor.name,
+    givenName: "Jacqueline",
+    familyName: "Olivo",
     honorificSuffix: "MD",
     jobTitle: "Founder and Medical Director",
     worksFor: { "@id": id("clinic") },
     url: `${siteUrl}/team/jacqueline-olivo-md`,
-    medicalSpecialty: "Aesthetic medicine",
+    knowsAbout: ["Aesthetic medicine", "Family medicine", "Body contouring", "Injectables", "Laser resurfacing"],
     alumniOf: [{ "@type": "CollegeOrUniversity", name: "San Luis Gonzaga University" }, { "@type": "CollegeOrUniversity", name: "University of Illinois" }],
   };
 }
@@ -48,14 +50,15 @@ export function physician() {
 export function serviceSchema(s: Service) {
   return {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
+    "@type": "Service",
+    "@id": `${siteUrl}/treatments/${s.slug}#service`,
     name: s.name,
+    serviceType: s.name,
     description: s.summary,
     url: `${siteUrl}/treatments/${s.slug}`,
-    procedureType: "https://schema.org/NoninvasiveProcedure",
-    howPerformed: s.session.feels,
     provider: { "@id": id("clinic") },
     areaServed: { "@type": "City", name: "Chicago" },
+    availableChannel: { "@type": "ServiceChannel", serviceUrl: site.bookingExternal, servicePhone: { "@type": "ContactPoint", telephone: "+1-872-315-3481", contactType: "reservations" } },
   };
 }
 

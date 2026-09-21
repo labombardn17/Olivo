@@ -2,7 +2,7 @@ import Quiz from "@/components/quiz/Quiz";
 import { Crumbs } from "@/components/site/Blocks";
 import { buildMeta } from "@/lib/meta";
 
-export const metadata = buildMeta({ title: "Treatment Quiz | Which Treatment Is Right for Me? | Olivo Med Spa", description: "Answer five questions and get up to three treatments to read about, then text your results to Olivo Med Spa in Logan Square, Chicago with one tap.", path: "/quiz" });
+export const metadata = buildMeta({ title: "Treatment Quiz: Find Your Treatment | Olivo Med Spa", description: "Answer five questions and get up to three treatments to read about, then text your results to Olivo Med Spa in Logan Square, Chicago with one tap.", path: "/quiz" });
 
 export default function QuizPage() {
   return (

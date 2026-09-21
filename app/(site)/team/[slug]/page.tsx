@@ -16,7 +16,7 @@ export const dynamicParams = false;
 export function generateStaticParams() { return teamMembers.map((t) => ({ slug: t.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const t = getMember(slug);
-  return t ? buildMeta({ title: `${t.name} | ${t.role} | Olivo Med Spa`, description: `${t.name}, ${t.role.toLowerCase()} at Olivo Med Spa in Logan Square, Chicago. ${t.short}`, path: `/team/${slug}` }) : {};
+  return t ? buildMeta({ title: `${t.name} | Olivo Med Spa`, description: `${t.name}, ${t.role.toLowerCase()} at Olivo Med Spa in Logan Square, Chicago. ${t.short}`.slice(0, 158), path: `/team/${slug}` }) : {};
 }
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const t = getMember(slug);

@@ -9,7 +9,7 @@ import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 import { Arrow, Phone } from "@/components/functional/Icons";
 
-export const metadata = buildMeta({ title: "Tratamientos | Olivo Med Spa, Logan Square, Chicago", description: "Todos los tratamientos de Olivo Med Spa en Logan Square, Chicago: Emsculpt Neo, Emface, Exion, Opus Plasma, láser CO2, Miradry, inyectables, Hydrafacial y más. Atención en español.", path: "/es/tratamientos", languages: { en: "/treatments", es: "/es/tratamientos", "x-default": "/treatments" } });
+export const metadata = buildMeta({ title: "Tratamientos | Olivo Med Spa, Logan Square, Chicago", description: "Tratamientos de Olivo Med Spa en Logan Square, Chicago: Emsculpt Neo, Emface, Exion, Opus Plasma, Miradry, inyectables e Hydrafacial. Atención en español.", path: "/es/tratamientos", languages: { en: "/treatments", es: "/es/tratamientos", "x-default": "/treatments" } });
 
 export default function Tratamientos() {
   return (

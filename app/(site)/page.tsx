@@ -7,8 +7,8 @@ import { faq } from "@/content/featured";
 import { buildMeta } from "@/lib/meta";
 
 export const metadata = buildMeta({
-  title: "Olivo Med Spa | Physician-Led Med Spa in Logan Square, Chicago",
-  description: "Physician owned and led since 2013. Emsculpt Neo, Emface, Exion, Opus Plasma, CO2 laser, Miradry, injectables and Hydrafacial under one roof at 2550 W. Fullerton, Logan Square, Chicago.",
+  title: "Olivo Med Spa | Physician-Led Med Spa in Logan Square",
+  description: "Physician owned and led since 2013. Emsculpt Neo, Emface, Exion, Opus Plasma, Miradry, injectables and Hydrafacial under one roof in Logan Square, Chicago.",
   path: "/",
   languages: { en: "/", es: "/es", "x-default": "/" },
 });

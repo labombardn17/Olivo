@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 
 /** Counts from 0 to the number inside on first view. Non-numeric text is left alone. */
@@ -38,19 +38,35 @@ export function HeroFade({ children, className = "" }: { children: ReactNode; cl
   return <div ref={ref} className={className}>{children}</div>;
 }
 
-/** Stagger direct children into view. */
+/** Stagger direct children into view. CSS driven; see Reveal. */
 export function Stagger({ children, className = "", as: Tag = "div", amount = 0.08 }: { children: ReactNode; className?: string; as?: "div" | "ul" | "ol"; amount?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || el.getBoundingClientRect().top < window.innerHeight) { el.dataset.in = "1"; return; }
+    el.classList.add("rv-armed");
+    const io = new IntersectionObserver(([e]) => { if (e?.isIntersecting) { el.dataset.in = "1"; io.disconnect(); } }, { rootMargin: "0px 0px -10% 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const El = Tag as "div";
+  return <El ref={ref} className={`rv-stagger ${className}`} style={{ ["--rv-y" as string]: "28px", ["--rv-x" as string]: "0px", ["--rv-d" as string]: "0.9s", ["--rv-delay" as string]: "0s", ["--rv-ease" as string]: "cubic-bezier(0.16, 1, 0.3, 1)", ["--rv-stagger" as string]: `${amount}s` }}>{children}</El>;
+}
+
+/** Slow Ken Burns on a framed image. */
+export function Drift({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useGSAP(() => {
     const el = ref.current;
     if (!el || prefersReducedMotion()) return;
-    gsap.from(el.children, { opacity: 0, y: 28, duration: 0.9, ease: "power3.out", stagger: amount, scrollTrigger: { trigger: el, start: "top 85%", once: true } });
+    gsap.fromTo(el, { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
+    gsap.fromTo(el.firstElementChild, { scale: 1.12 }, { scale: 1, duration: 2, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
   }, { scope: ref });
-  const El = Tag as "div";
-  return <El ref={ref} className={className}>{children}</El>;
+  return <div ref={ref} className={`overflow-hidden ${className}`}>{children}</div>;
 }
 
-/** Buttons lean toward a fine pointer. Children must be a single element. */
+/** Buttons lean toward a fine pointer. Children must be a single element. Loads GSAP only on desktop. */
 export function Magnetic({ children, className = "", strength = 0.25 }: { children: ReactNode; className?: string; strength?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   useGSAP(() => {
@@ -68,16 +84,4 @@ export function Magnetic({ children, className = "", strength = 0.25 }: { childr
     return () => { el.removeEventListener("pointermove", move); el.removeEventListener("pointerleave", leave); };
   }, { scope: ref });
   return <div ref={ref} className={`inline-block ${className}`}>{children}</div>;
-}
-
-/** Slow Ken Burns on a framed image. */
-export function Drift({ children, className = "" }: { children: ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useGSAP(() => {
-    const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
-    gsap.fromTo(el, { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
-    gsap.fromTo(el.firstElementChild, { scale: 1.12 }, { scale: 1, duration: 2, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
-  }, { scope: ref });
-  return <div ref={ref} className={`overflow-hidden ${className}`}>{children}</div>;
 }

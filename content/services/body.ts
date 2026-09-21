@@ -28,7 +28,7 @@ export const bodyServices: Service[] = [
     related: ["exion-body", "emsella", "kybella"],
     image: { slot: "emsculpt-neo", alt: "Emsculpt Neo treatment at Olivo Med Spa", fallback: "room-1" },
     live: "/emsculpt/",
-    seo: { title: "Emsculpt Neo in Logan Square, Chicago | Olivo Med Spa", description: "Emsculpt Neo at Olivo Med Spa builds muscle and reduces fat in one 30-minute session, no downtime. Physician-led since 2013. Book a consultation on Fullerton Ave." },
+    seo: { title: "Emsculpt Neo in Logan Square, Chicago | Olivo Med Spa", description: "Emsculpt Neo in Logan Square, Chicago. Builds muscle and reduces fat in one 30-minute session, no downtime, at physician-led Olivo Med Spa. Book a consultation." },
     es: { name: "Emsculpt Neo", summary: "Desarrolla músculo y reduce grasa en la misma sesión de 30 minutos, sin cirugía." },
   },
   {

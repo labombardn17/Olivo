@@ -7,7 +7,7 @@ import { Stagger } from "@/components/site/Motion";
 import { buildMeta } from "@/lib/meta";
 import { Arrow } from "@/components/functional/Icons";
 
-export const metadata = buildMeta({ title: "All Treatments | Med Spa in Logan Square, Chicago | Olivo Med Spa", description: "Every treatment at Olivo Med Spa: Emsculpt Neo, Emface, Exion, Emsella, Opus Plasma, CO2 laser, Miradry, Hydrafacial, injectables, laser hair removal, and more, at 2550 W. Fullerton Ave, Chicago.", path: "/treatments" });
+export const metadata = buildMeta({ title: "All Treatments | Olivo Med Spa, Logan Square Chicago", description: "Every treatment at Olivo Med Spa in Logan Square, Chicago: Emsculpt Neo, Emface, Exion, Opus Plasma, Miradry, Hydrafacial, injectables, laser hair removal.", path: "/treatments" });
 
 export default function Treatments() {
   return (

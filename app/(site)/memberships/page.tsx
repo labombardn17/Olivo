@@ -10,7 +10,7 @@ import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 import { Check } from "@/components/functional/Icons";
 
-export const metadata = buildMeta({ title: "Memberships | Skin Club, Sculpt It, Laser Hair Club | Olivo Med Spa", description: "Skin Club, Emsculpt NEO Club, Sculpt It, and the Laser Hair Reduction Club at Olivo Med Spa in Logan Square, Chicago. Monthly credits, member pricing, priority booking.", path: "/memberships" });
+export const metadata = buildMeta({ title: "Memberships: Skin Club and Sculpt It | Olivo Med Spa", description: "Skin Club, Emsculpt NEO Club, Sculpt It, and the Laser Hair Reduction Club at Olivo Med Spa in Logan Square, Chicago. Monthly credits and member pricing.", path: "/memberships" });
 
 export default function Memberships() {
   return (

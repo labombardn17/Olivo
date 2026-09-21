@@ -9,7 +9,7 @@ import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 import { Arrow, Phone } from "@/components/functional/Icons";
 
-export const metadata = buildMeta({ title: "Olivo Med Spa | Med Spa dirigido por una médica en Logan Square, Chicago", description: "Propiedad de una médica y dirigido por ella desde 2013. Emsculpt Neo, Emface, Exion, Opus Plasma, láser CO2, Miradry, inyectables e Hydrafacial en 2550 W. Fullerton, Logan Square, Chicago.", path: "/es", languages: { en: "/", es: "/es", "x-default": "/" } });
+export const metadata = buildMeta({ title: "Olivo Med Spa | Med spa en Logan Square, Chicago", description: "Dirigido por una médica desde 2013. Emsculpt Neo, Emface, Exion, Opus Plasma, Miradry, inyectables e Hydrafacial en Logan Square, Chicago. Atención en español.", path: "/es", languages: { en: "/", es: "/es", "x-default": "/" } });
 
 const catEs: Record<string, string> = { "body-contouring": "Contorno corporal", "facial-lifting": "Lifting facial", injectables: "Inyectables", "skin-resurfacing": "Rejuvenecimiento de la piel", "laser-and-light": "Láser y luz", "facials-and-peels": "Faciales y peelings", sweat: "Sudoración axilar", wellness: "Bienestar", removals: "Eliminaciones" };
 

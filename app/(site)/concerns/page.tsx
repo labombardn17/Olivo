@@ -6,7 +6,7 @@ import { Stagger } from "@/components/site/Motion";
 import { buildMeta } from "@/lib/meta";
 import { Arrow } from "@/components/functional/Icons";
 
-export const metadata = buildMeta({ title: "Treatments by Concern | Olivo Med Spa, Logan Square", description: "Start with what you would like to change. Lines, volume, sagging, stubborn fat, sweat, texture, pigment, hair, and more, matched to treatments at Olivo Med Spa in Chicago.", path: "/concerns" });
+export const metadata = buildMeta({ title: "Treatments by Concern | Olivo Med Spa, Logan Square", description: "Start with what you would like to change: lines, volume, sagging, stubborn fat, sweat, texture, or hair, matched to treatments at Olivo Med Spa in Chicago.", path: "/concerns" });
 
 export default function Concerns() {
   return (

@@ -10,7 +10,7 @@ import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 import { Arrow } from "@/components/functional/Icons";
 
-export const metadata = buildMeta({ title: "About Olivo Med Spa | Physician-Led Since 2013 | Logan Square", description: "Olivo Med Spa is a physician owned and led aesthetics clinic in Logan Square, Chicago, founded in 2013 by Jacqueline Olivo, MD, with the full BTL and Alma platforms under one roof.", path: "/about" });
+export const metadata = buildMeta({ title: "About Olivo Med Spa | Physician-Led Since 2013", description: "A physician owned and led aesthetics clinic in Logan Square, Chicago, founded in 2013 by Jacqueline Olivo, MD, with the full BTL and Alma platforms on site.", path: "/about" });
 
 export default function About() {
   return (

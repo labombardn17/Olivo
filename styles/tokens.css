@@ -258,3 +258,21 @@ html.lenis, html.lenis body { height: auto; }
   .reveal-range::-moz-range-thumb { width: 2px; height: 100%; background: transparent; border: 0; }
   .reveal-range:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
 }
+
+/* CSS reveals. Elements are hidden only after JS arms them below the fold, so nothing above the fold ever waits for JavaScript. */
+@layer components {
+  .rv.rv-armed:not([data-in]) { opacity: 0; transform: translate3d(var(--rv-x, 0), var(--rv-y, 20px), 0); }
+  .rv { transition: opacity var(--rv-d, 0.9s) var(--rv-ease, ease) var(--rv-delay, 0s), transform var(--rv-d, 0.9s) var(--rv-ease, ease) var(--rv-delay, 0s); }
+  .rv-stagger.rv-armed:not([data-in]) > * { opacity: 0; transform: translate3d(var(--rv-x, 0), var(--rv-y, 20px), 0); }
+  .rv-stagger > * { transition: opacity var(--rv-d, 0.9s) var(--rv-ease, ease), transform var(--rv-d, 0.9s) var(--rv-ease, ease); }
+  .rv-stagger > :nth-child(2) { transition-delay: calc(var(--rv-stagger) * 1); }
+  .rv-stagger > :nth-child(3) { transition-delay: calc(var(--rv-stagger) * 2); }
+  .rv-stagger > :nth-child(4) { transition-delay: calc(var(--rv-stagger) * 3); }
+  .rv-stagger > :nth-child(5) { transition-delay: calc(var(--rv-stagger) * 4); }
+  .rv-stagger > :nth-child(6) { transition-delay: calc(var(--rv-stagger) * 5); }
+  .rv-stagger > :nth-child(7) { transition-delay: calc(var(--rv-stagger) * 6); }
+  .rv-stagger > :nth-child(8) { transition-delay: calc(var(--rv-stagger) * 7); }
+  .rv-stagger > :nth-child(9) { transition-delay: calc(var(--rv-stagger) * 8); }
+  .rv-stagger > :nth-child(n + 10) { transition-delay: calc(var(--rv-stagger) * 9); }
+  @media (prefers-reduced-motion: reduce) { .rv.rv-armed:not([data-in]), .rv-stagger.rv-armed:not([data-in]) > * { opacity: 1; transform: none; } }
+}

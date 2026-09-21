@@ -11,7 +11,7 @@ import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 import { Check } from "@/components/functional/Icons";
 
-export const metadata = buildMeta({ title: "For Patients: First Visit, Policies, Aftercare | Olivo Med Spa", description: "What to expect at your first visit to Olivo Med Spa in Logan Square, Chicago, what to bring, clinic policies, and aftercare guidance for every treatment category.", path: "/for-patients" });
+export const metadata = buildMeta({ title: "For Patients: First Visit and Aftercare | Olivo Med Spa", description: "What to expect at your first visit to Olivo Med Spa in Logan Square, Chicago, what to bring, clinic policies, and aftercare for every treatment category.", path: "/for-patients" });
 
 export default function ForPatients() {
   const { intro, firstVisit, firstVisitVerify, bring, policies, aftercare, aftercareNote, faqs } = forPatients;

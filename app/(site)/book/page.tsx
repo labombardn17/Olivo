@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { Crumbs } from "@/components/site/Blocks";
+import { BookingWidget } from "@/components/site/BookingWidget";
 import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 import { Phone } from "@/components/functional/Icons";
 
-export const metadata = buildMeta({ title: "Book a Consultation or Treatment | Olivo Med Spa, Chicago", description: "Book online at Olivo Med Spa in Logan Square, Chicago. Pick a consultation or treatment and a time that suits you, or text 872-315-3481 and the team will book it for you.", path: "/book" });
+export const metadata = buildMeta({ title: "Book a Consultation or Treatment | Olivo Med Spa, Chicago", description: "Book online at Olivo Med Spa in Logan Square, Chicago. Pick a consultation or treatment and a time, or text 872-315-3481 and the team will book it for you.", path: "/book" });
 
 export default function Book() {
   return (
@@ -30,10 +31,7 @@ export default function Book() {
             <p className="mt-6 text-[0.8125rem] text-ink-2">Not sure what to book? <Link href="/quiz" className="link-arrow">Take the two-minute quiz</Link> first.</p>
             <Verify note={site.bookingVerify} />
           </div>
-          <div className="card overflow-hidden p-2">
-            <iframe src={site.bookingWidget} title="Olivo Med Spa online booking, powered by Vagaro" loading="lazy" className="h-[68rem] w-full rounded-[calc(var(--r-card)-0.25rem)] bg-ground" style={{ border: 0 }} />
-            <p className="p-3 text-center text-[0.8125rem] text-ink-2">If the calendar does not load, <a href={site.bookingExternal} target="_blank" rel="noopener noreferrer" className="link-arrow">open it on Vagaro</a> or text us.</p>
-          </div>
+          <BookingWidget />
         </div>
       </div>
     </section>

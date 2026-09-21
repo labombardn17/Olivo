@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import * as Dialog from "@radix-ui/react-dialog";
 import { categories, mainNav, site } from "@/content/site";
 import { flagshipSlugs } from "@/content/services";
 import { useScrolled } from "@/components/shared/useScrolled";
@@ -28,6 +27,13 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", on);
   }, [mega]);
   const ref = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const d = dialogRef.current;
+    if (!d) return;
+    if (open && !d.open) d.showModal();
+    if (!open && d.open) d.close();
+  }, [open]);
   useEffect(() => { setMega(false); setOpen(false); }, [pathname]);
   useEffect(() => {
     if (!mega) return;
@@ -76,14 +82,14 @@ export function SiteHeader() {
           <a href={site.phoneTel} className="inline-flex items-center gap-2 text-[0.9375rem] font-medium hover:opacity-70"><Phone />{site.phoneDisplay}</a>
           <a href={site.booking} data-cta="primary" className="btn btn-primary btn-sm">Book</a>
         </div>
-        <Dialog.Root open={open} onOpenChange={setOpen}>
-          <Dialog.Trigger data-nav-toggle="" className="lg:hidden inline-flex items-center gap-2 text-[0.875rem] font-semibold" aria-label="Open menu">
-            <span aria-hidden="true" className="flex flex-col gap-[5px]"><span className="block h-[2px] w-6 bg-current" /><span className="block h-[2px] w-6 bg-current" /><span className="block h-[2px] w-4 bg-current" /></span>Menu
-          </Dialog.Trigger>
-          <Dialog.Content className="fixed inset-0 z-[78] flex flex-col overflow-y-auto bg-ground text-ink" data-mobile-menu="" aria-describedby={undefined}>
+        <button type="button" data-nav-toggle="" onClick={() => setOpen(true)} className="lg:hidden inline-flex items-center gap-2 text-[0.875rem] font-semibold" aria-haspopup="dialog" aria-expanded={open}>
+          <span aria-hidden="true" className="flex flex-col gap-[5px]"><span className="block h-[2px] w-6 bg-current" /><span className="block h-[2px] w-6 bg-current" /><span className="block h-[2px] w-4 bg-current" /></span>Menu
+        </button>
+        <dialog ref={dialogRef} onClose={() => setOpen(false)} onClick={(e) => { if (e.target === dialogRef.current) setOpen(false); }} className="menu-dialog m-0 h-full max-h-none w-full max-w-none bg-ground p-0 text-ink" data-mobile-menu="" aria-label="Menu">
+          <div className="flex min-h-full flex-col overflow-y-auto">
             <div className="container-x flex h-[4.5rem] items-center justify-between">
-              <Dialog.Title asChild><div><Wordmark /></div></Dialog.Title>
-              <Dialog.Close className="text-[0.875rem] font-semibold" aria-label="Close menu">Close</Dialog.Close>
+              <Wordmark />
+              <button type="button" onClick={() => setOpen(false)} className="text-[0.875rem] font-semibold">Close</button>
             </div>
             <nav className="container-x flex-1 py-4" aria-label="Mobile">
               <ul className="divide-y divide-rule border-y border-rule">
@@ -102,8 +108,8 @@ export function SiteHeader() {
                 <a href={site.phoneTel} className="btn btn-outline"><Phone />Call</a>
               </div>
             </div>
-          </Dialog.Content>
-        </Dialog.Root>
+          </div>
+        </dialog>
       </div>
     </header>
   );

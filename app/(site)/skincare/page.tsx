@@ -6,7 +6,7 @@ import { Crumbs, CtaBand } from "@/components/site/Blocks";
 import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
 
-export const metadata = buildMeta({ title: "Skincare: Alastin, ZO Skin Health, Skinbetter | Olivo Med Spa", description: "Physician-dispensed skincare at Olivo Med Spa in Logan Square, Chicago: Alastin, ZO Skin Health, and Skinbetter Science, chosen after a skin consultation.", path: "/skincare" });
+export const metadata = buildMeta({ title: "Skincare: Alastin, ZO, Skinbetter | Olivo Med Spa", description: "Physician-dispensed skincare at Olivo Med Spa in Logan Square, Chicago: Alastin, ZO Skin Health, and Skinbetter Science, chosen after a skin consultation.", path: "/skincare" });
 
 export default function Skincare() {
   return (
