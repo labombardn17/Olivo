@@ -57,7 +57,7 @@ export const skinServices: Service[] = [
     related: ["erbium-resurfacing", "opus-plasma", "exion-rf-microneedling"],
     image: { slot: "co2-fractional-laser", alt: "CO2 fractional laser treatment room at Olivo Med Spa", fallback: "steel-1" },
     live: "/services/laserlight-treatments/co2-laser-fractional-resurfacing/",
-    seo: { title: "CO2 Fractional Laser in Logan Square | Olivo Med Spa", description: "CO2 fractional laser at Olivo Med Spa in Logan Square, Chicago. The clinic's deepest resurfacing for scars, lines, and texture, with about a week of downtime." },
+    seo: { title: "CO2 Fractional Laser in Logan Square | Olivo Med Spa", description: "CO2 fractional laser at Olivo Med Spa in Logan Square, Chicago. The clinic's deepest resurfacing for scars, lines, and texture, about a week of downtime." },
     es: { name: "Láser fraccionado CO2", summary: "El resurfacing más profundo de la clínica para textura, cicatrices y líneas, con cerca de una semana de recuperación." },
     verify: ["CO2 device manufacturer and model: clinic to confirm", "Who performs CO2 and whether anesthesia beyond topical numbing is used: clinic to confirm"],
   },

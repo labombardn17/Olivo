@@ -20,7 +20,7 @@ import { Verify } from "@/lib/verify";
 import { Check } from "@/components/functional/Icons";
 
 export const quizMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Cuestionario: encuentre su tratamiento | Olivo Med Spa", description: "Responda cinco preguntas y reciba hasta tres tratamientos para leer, luego envíe sus resultados por texto a Olivo Med Spa en Logan Square, Chicago con un toque.", path: "/quiz", lang }
+  ? { title: "Cuestionario: encuentre su tratamiento | Olivo Med Spa", description: "Responda cinco preguntas y reciba hasta tres tratamientos para leer, luego envíe sus resultados por texto a Olivo Med Spa en Logan Square, Chicago.", path: "/quiz", lang }
   : { title: "Treatment Quiz: Find Your Treatment | Olivo Med Spa", description: "Answer five questions and get up to three treatments to read about, then text your results to Olivo Med Spa in Logan Square, Chicago with one tap.", path: "/quiz", lang });
 
 export function QuizPage({ lang }: { lang: Lang }) {
@@ -35,7 +35,7 @@ export function QuizPage({ lang }: { lang: Lang }) {
 }
 
 export const patientsMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Para pacientes: primera visita y cuidados | Olivo Med Spa", description: "Qué esperar en su primera visita a Olivo Med Spa en Logan Square, Chicago, qué traer, políticas de la clínica y cuidados posteriores para cada categoría de tratamiento.", path: "/for-patients", lang }
+  ? { title: "Para pacientes: primera visita y cuidados | Olivo Med Spa", description: "Qué esperar en su primera visita a Olivo Med Spa en Logan Square, Chicago, qué traer, políticas de la clínica y cuidados posteriores por tratamiento.", path: "/for-patients", lang }
   : { title: "For Patients: First Visit and Aftercare | Olivo Med Spa", description: "What to expect at your first visit to Olivo Med Spa in Logan Square, Chicago, what to bring, clinic policies, and aftercare for every treatment category.", path: "/for-patients", lang });
 
 export function ForPatientsPage({ lang }: { lang: Lang }) {
@@ -65,7 +65,7 @@ export function ForPatientsPage({ lang }: { lang: Lang }) {
 }
 
 export const giftMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Tarjetas de regalo | Olivo Med Spa, Logan Square, Chicago", description: "Regale un tratamiento o productos de cuidado de la piel en Olivo Med Spa en Logan Square, Chicago. Tarjetas disponibles en la clínica y en línea para cualquier tratamiento.", path: "/gift-cards", lang }
+  ? { title: "Tarjetas de regalo | Olivo Med Spa, Logan Square, Chicago", description: "Regale un tratamiento o productos de cuidado de la piel en Olivo Med Spa en Logan Square, Chicago. Tarjetas disponibles en la clínica y en línea.", path: "/gift-cards", lang }
   : { title: "Gift Cards | Olivo Med Spa, Logan Square Chicago", description: "Give a treatment or skincare at Olivo Med Spa in Logan Square, Chicago. Gift cards are available in the clinic and online for any treatment or product.", path: "/gift-cards", lang });
 
 export function GiftCardsPage({ lang }: { lang: Lang }) {

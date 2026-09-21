@@ -15,7 +15,7 @@ import { Verify } from "@/lib/verify";
 import { Phone } from "@/components/functional/Icons";
 
 export const resultsMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Resultados y política de galería | Olivo Med Spa", description: "Cómo comparte Olivo Med Spa en Logan Square, Chicago, sus resultados de antes y después: autorización escrita del paciente, solo tratamiento y número de sesiones, sin promesas.", path: "/results", lang }
+  ? { title: "Resultados y política de galería | Olivo Med Spa", description: "Cómo comparte Olivo Med Spa en Logan Square, Chicago, sus resultados de antes y después: autorización escrita, solo tratamiento y sesiones, sin promesas.", path: "/results", lang }
   : { title: "Results and Gallery Policy | Olivo Med Spa", description: "How Olivo Med Spa in Logan Square, Chicago shares before and after results: written patient authorization, treatment and session count only, no promises.", path: "/results", lang });
 
 export function ResultsPage({ lang }: { lang: Lang }) {
@@ -49,7 +49,7 @@ export function ReviewsPage({ lang }: { lang: Lang }) {
 }
 
 export const visitMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Visítenos | 2550 W Fullerton Ave, Logan Square | Olivo Med Spa", description: "Olivo Med Spa está en 2550 W. Fullerton Ave, Chicago, IL 60618, en Logan Square. Horario, estacionamiento, transporte, cómo llegar y cómo reservar o escribir a la clínica.", path: "/visit", lang }
+  ? { title: "Visítenos | 2550 W Fullerton, Logan Square | Olivo Med Spa", description: "Olivo Med Spa está en 2550 W. Fullerton Ave, Chicago, IL 60618, en Logan Square. Horario, estacionamiento, transporte, cómo llegar y cómo reservar.", path: "/visit", lang }
   : { title: "Visit Olivo Med Spa | 2550 W Fullerton Ave, Logan Square", description: "Olivo Med Spa is at 2550 W. Fullerton Ave, Chicago, IL 60618 in Logan Square. Hours, parking, transit, directions, and how to book or text the clinic.", path: "/visit", lang });
 
 export function VisitPage({ lang }: { lang: Lang }) {
@@ -65,7 +65,7 @@ export function VisitPage({ lang }: { lang: Lang }) {
 }
 
 export const contactMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Contacto | Escriba, llame o reserve en línea | Olivo Med Spa", description: "Escriba o llame a Olivo Med Spa al 872-315-3481, reserve en línea a través de Vagaro o visítenos en 2550 W. Fullerton Ave en Logan Square, Chicago.", path: "/contact", lang }
+  ? { title: "Contacto | Escriba, llame o reserve | Olivo Med Spa", description: "Escriba o llame a Olivo Med Spa al 872-315-3481, reserve en línea a través de Vagaro o visítenos en 2550 W. Fullerton Ave en Logan Square, Chicago.", path: "/contact", lang }
   : { title: "Contact Olivo Med Spa | Text, Call, or Book Online", description: "Text or call Olivo Med Spa at 872-315-3481, book online through Vagaro, or visit 2550 W. Fullerton Ave in Logan Square, Chicago.", path: "/contact", lang });
 
 export function ContactPage({ lang }: { lang: Lang }) {
@@ -90,7 +90,7 @@ export function ContactPage({ lang }: { lang: Lang }) {
 }
 
 export const bookMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Reserve una consulta o tratamiento | Olivo Med Spa, Chicago", description: "Reserve en línea en Olivo Med Spa en Logan Square, Chicago. Elija una consulta o un tratamiento y un horario, o escriba al 872-315-3481 y el equipo lo reserva por usted.", path: "/book", lang }
+  ? { title: "Reserve una consulta o tratamiento | Olivo Med Spa, Chicago", description: "Reserve en línea en Olivo Med Spa en Logan Square, Chicago. Elija una consulta o un tratamiento y un horario, o escriba al 872-315-3481 y el equipo lo agenda.", path: "/book", lang }
   : { title: "Book a Consultation or Treatment | Olivo Med Spa, Chicago", description: "Book online at Olivo Med Spa in Logan Square, Chicago. Pick a consultation or treatment and a time, or text 872-315-3481 and the team will book it for you.", path: "/book", lang });
 
 export function BookPage({ lang }: { lang: Lang }) {

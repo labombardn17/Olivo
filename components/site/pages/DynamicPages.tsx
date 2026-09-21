@@ -26,7 +26,8 @@ export function treatmentMeta(slug: string, lang: Lang) {
   const cat = categories.find((c) => c.key === slug);
   if (cat) {
     const c = localizeCategory(cat, lang);
-    const title = lang === "es" ? `${c.name} en Logan Square, Chicago | Olivo Med Spa` : `${c.name} in Logan Square, Chicago | Olivo Med Spa`;
+    const full = lang === "es" ? `${c.name} en Logan Square, Chicago | Olivo Med Spa` : `${c.name} in Logan Square, Chicago | Olivo Med Spa`;
+    const title = full.length <= 60 ? full : full.replace(", Chicago", "");
     const description = lang === "es"
       ? `${c.line} ${c.name} con un equipo dirigido por una médica en Olivo Med Spa, Logan Square, Chicago.`
       : `${c.line} Physician-led ${c.name.toLowerCase()} at Olivo Med Spa in Logan Square, Chicago.`;

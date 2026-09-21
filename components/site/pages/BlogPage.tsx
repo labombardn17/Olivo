@@ -9,7 +9,7 @@ import { buildMeta } from "@/lib/meta";
 import { Arrow } from "@/components/functional/Icons";
 
 export const blogMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Diario | Notas sobre piel, cuerpo y bienestar | Olivo Med Spa", description: "Notas en lenguaje claro del equipo médico de Olivo Med Spa en Logan Square, Chicago: qué hace cada tratamiento, cómo es una primera visita y cómo prepararse.", path: "/blog", lang }
+  ? { title: "Diario | Piel, cuerpo y bienestar | Olivo Med Spa", description: "Notas claras del equipo médico de Olivo Med Spa en Logan Square, Chicago: qué hace cada tratamiento, cómo es una primera visita y cómo prepararse.", path: "/blog", lang }
   : { title: "Journal | Skin, Body, and Wellness Notes | Olivo Med Spa", description: "Plain-language notes from the physician-led team at Olivo Med Spa in Logan Square, Chicago: what treatments do, what a first visit is like, and how to prepare.", path: "/blog", lang });
 
 export function BlogPage({ lang }: { lang: Lang }) {

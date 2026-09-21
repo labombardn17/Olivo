@@ -15,7 +15,7 @@ import { Verify } from "@/lib/verify";
 import { Arrow } from "@/components/functional/Icons";
 
 export const aboutMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Nosotros | Olivo Med Spa, dirigido por una médica desde 2013", description: "Clínica de estética en Logan Square, Chicago, propiedad de una médica y dirigida por ella, la Dra. Jacqueline Olivo, desde 2013, con las plataformas completas de BTL y Alma.", path: "/about", lang }
+  ? { title: "Nosotros | Olivo Med Spa, médica al frente desde 2013", description: "Clínica de estética en Logan Square, Chicago, propiedad de la Dra. Jacqueline Olivo y dirigida por ella desde 2013, con las plataformas completas de BTL y Alma.", path: "/about", lang }
   : { title: "About Olivo Med Spa | Physician-Led Since 2013", description: "A physician owned and led aesthetics clinic in Logan Square, Chicago, founded in 2013 by Jacqueline Olivo, MD, with the full BTL and Alma platforms on site.", path: "/about", lang });
 
 export function AboutPage({ lang }: { lang: Lang }) {

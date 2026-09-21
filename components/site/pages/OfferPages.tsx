@@ -41,7 +41,7 @@ export function MembershipsPage({ lang }: { lang: Lang }) {
 }
 
 export const financingMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Financiamiento con Cherry | Olivo Med Spa, Chicago", description: "Pague sus tratamientos a plazos a través de Cherry en Olivo Med Spa en Logan Square, Chicago. Solicítelo en línea en minutos. Cherry define los términos al aplicar.", path: "/financing", lang }
+  ? { title: "Financiamiento con Cherry | Olivo Med Spa, Chicago", description: "Pague sus tratamientos a plazos a través de Cherry en Olivo Med Spa en Logan Square, Chicago. Solicítelo en línea en minutos. Cherry define los términos.", path: "/financing", lang }
   : { title: "Financing Through Cherry | Olivo Med Spa, Chicago", description: "Pay for treatments over time through Cherry at Olivo Med Spa in Logan Square, Chicago. Apply online in minutes. Terms are set by Cherry at application.", path: "/financing", lang });
 
 export function FinancingPage({ lang }: { lang: Lang }) {
