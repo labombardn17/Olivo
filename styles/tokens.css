@@ -67,13 +67,14 @@ html[data-palette="orchid"] {
   --d-brass: #4b3d57; --d-brass-text: #c4a6dd;
 }
 html[data-palette="olivo"] {
-  --l-accent-fill: #4a5730; --d-accent-fill: #aab98a;
-  --l-ground: #efeae0; --l-ground-2: #e5dfd2; --l-ink: #1f241c; --l-ink-2: #545a4b;
-  --l-rule: #d2ccbd; --l-accent: #5b6b3a; --l-accent-text: #4a5730; --l-accent-ink: #efeae0;
-  --l-brass: #a8894b; --l-brass-text: #6f582b;
-  --d-ground: #151812; --d-ground-2: #1f231b; --d-ink: #e9e4d8; --d-ink-2: #b0ad9e;
-  --d-rule: #353a2e; --d-accent: #8c9d68; --d-accent-text: #aab98a; --d-accent-ink: #151812;
-  --d-brass: #a8894b; --d-brass-text: #cbb07a;
+  /* Tuned to the flash sale creative: deep olive type, warm ivory ground, a thin gold rule. */
+  --l-accent-fill: #4a5a2e; --d-accent-fill: #b3c08e;
+  --l-ground: #f5f1e7; --l-ground-2: #ece6d8; --l-ink: #1f2416; --l-ink-2: #55593f;
+  --l-rule: #d8d0bc; --l-accent: #4a5a2e; --l-accent-text: #3f4d27; --l-accent-ink: #f5f1e7;
+  --l-brass: #b8974f; --l-brass-text: #7a6230;
+  --d-ground: #1a2014; --d-ground-2: #252c1c; --d-ink: #eee9dc; --d-ink-2: #b7b5a3;
+  --d-rule: #3a4230; --d-accent: #8fa066; --d-accent-text: #b3c08e; --d-accent-ink: #1a2014;
+  --d-brass: #b8974f; --d-brass-text: #d3b878;
 }
 html[data-palette="champagne"] {
   --l-accent-fill: #76603c; --d-accent-fill: #cfb385;

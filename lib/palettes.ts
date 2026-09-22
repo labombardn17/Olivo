@@ -15,7 +15,7 @@ export interface Palette {
 export const palettes: Palette[] = [
   { key: "noir", name: "Noir", mood: "Black and white", light: "#f5f3ef", dark: "#0b0b0c", accent: "#0b0b0c" },
   { key: "orchid", name: "Orchid", mood: "Purplish and white", light: "#fbf9fc", dark: "#1a1220", accent: "#6e4b8f" },
-  { key: "olivo", name: "Olivo", mood: "Olive, bone, brass", light: "#efeae0", dark: "#151812", accent: "#5b6b3a" },
+  { key: "olivo", name: "Olivo", mood: "Olive, ivory, gold", light: "#f5f1e7", dark: "#1a2014", accent: "#4a5a2e" },
   { key: "champagne", name: "Champagne", mood: "Espresso, ivory, gold", light: "#f6f1e8", dark: "#1a1512", accent: "#b89a6a" },
   { key: "glacier", name: "Glacier", mood: "Slate, ice, pewter", light: "#f1f1ee", dark: "#0f151b", accent: "#3a5a73" },
 ];
