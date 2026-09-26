@@ -66,5 +66,9 @@ export function conceptFromPath(pathname: string): ConceptKey | null {
   return isConceptKey(seg) ? seg : null;
 }
 
-/** Inline, blocking script: sets data-palette before first paint. */
+/** Inline, blocking script: sets data-palette before first paint. Pass a key to pin it (the public site is orchid). */
+export const paletteInit = (force?: PaletteKey) => force
+  ? `document.documentElement.classList.add('js');document.documentElement.setAttribute('data-palette','${force}');`
+  : paletteInitScript;
+
 export const paletteInitScript = `(function(){document.documentElement.classList.add('js');try{var d=${JSON.stringify(conceptDefaults)};var k=${JSON.stringify(paletteKeys)};var bp='${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}';var pn=location.pathname;if(bp&&pn.indexOf(bp)===0)pn=pn.slice(bp.length);var seg=pn.split('/')[1]||'';var q=new URLSearchParams(location.search).get('palette');var s=null;try{s=localStorage.getItem('${STORAGE_KEY}')}catch(e){}var p=(q&&k.indexOf(q)>-1)?q:(s&&k.indexOf(s)>-1)?s:(d[seg]||'orchid');document.documentElement.setAttribute('data-palette',p);}catch(e){document.documentElement.setAttribute('data-palette','orchid')}})();`;

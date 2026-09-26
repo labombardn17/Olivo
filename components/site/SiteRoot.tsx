@@ -14,7 +14,7 @@ const figtree = Figtree({ subsets: ["latin"], display: "swap", preload: true, va
 /** Root layout body for the public site in one language: fonts, schema, header, main, footer, text bar. */
 export function SiteRoot({ lang, children }: { lang: Lang; children: ReactNode }) {
   return (
-    <RootShell lang={lang}>
+    <RootShell lang={lang} palette="orchid">
       <div
         data-concept="site"
         className={`${cormorant.variable} ${figtree.variable} font-text`}
