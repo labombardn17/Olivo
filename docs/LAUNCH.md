@@ -7,7 +7,7 @@
 
 ## Before showing Dr. Olivo
 - Open / on a phone, then /es. Every page has a Spanish mirror under /es with Spanish section names; the ES and EN switch in the header keeps you on the same page.
-- No photography ships yet. Every photo slot renders a designed "Photography coming soon" tile and the hero is a CSS field captioned "Clinic film coming soon". Real photos drop into the same slots (components/site/Photo.tsx) once the shoot is done.
+- Every photo slot has a real photograph (content/photos.ts, files in public/img/live). 24 are the clinic's own, 9 manufacturer, 38 iStock frames carried over from the current site. Confirm with the previous agency that the iStock licences cover the new site, and confirm a signed release for each of the nine before and after cases on /results. Swap a photo by replacing the file and the size in content/photos.ts.
 - Everything the clinic must confirm renders as `<!-- VERIFY: ... -->` comments in the HTML. `grep -o "VERIFY: [^-]*" out/**/*.html | sort | uniq -c` lists them.
 
 ## Go live on the real domain

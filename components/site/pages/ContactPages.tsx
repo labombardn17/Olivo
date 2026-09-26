@@ -8,7 +8,8 @@ import { Testimonials } from "@/components/site/home/HomeSections";
 import { VisitBlock } from "@/components/site/home/HomeSections2";
 import { TextComposer } from "@/components/site/TextComposer";
 import { BookingWidget } from "@/components/site/BookingWidget";
-import { ComingSoon } from "@/components/site/ComingSoon";
+import { Photo } from "@/components/site/Photo";
+import { gallery } from "@/content/photos";
 import { Crumbs, CtaBand, FaqList } from "@/components/site/Blocks";
 import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
@@ -26,7 +27,7 @@ export function ResultsPage({ lang }: { lang: Lang }) {
         <Crumbs lang={lang} items={[{ name: t.blocks.home, href: "/" }, { name: p.crumb }]} />
         <p className="kicker mt-8">{p.kicker}</p><h1 className="section-title mt-3 balance">{p.title}</h1>
         <div className="prose">{p.body.map((x) => <p key={x.slice(0, 20)}>{x}</p>)}</div>
-        <div className="mt-10"><ComingSoon kind="gallery" lang={lang} className="img-frame aspect-[4/5] sm:aspect-[16/10] shadow-[var(--shadow-card-hover)]" /><Verify note="Gallery: supply authorized before and after cases with signed releases" /></div>
+        <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">{gallery.map((g) => (<li key={g.slot}><figure><Photo slot={g.slot} fallback="skin-1" alt={`${g[lang]}, ${lang === "es" ? "antes y después" : "before and after"}`} lang={lang} className="img-frame aspect-square shadow-[var(--shadow-card)]" sizes="(min-width: 40rem) 33vw, 50vw" /><figcaption className="mt-2 text-[0.8125rem] text-ink-2">{g[lang]}</figcaption></figure></li>))}</ul><Verify note="Gallery: confirm a signed release is on file for each case shown" />
       </div></section>
       <CtaBand title={p.cta} line={p.ctaLine} lang={lang} />
     </>

@@ -30,7 +30,7 @@ A design-selection prototype for Dr. Jacqueline Olivo. One link opens a chooser;
 
 ## What is placeholder
 
-Everything visual. Every photo slot and the hero film render a designed "coming soon" tile in the palette; the map, the reviews and the Instagram tiles are placeholders and are labelled as such in the page. See `ASSETS.md` for the list of what to supply and the licenses. Every claim not sourced in the brief carries a `<!-- VERIFY -->` comment in the HTML; `docs/VERIFY.md` lists all of them.
+The map, the reviews and the Instagram tiles are placeholders and are labelled as such in the page. Photographs are real (see content/photos.ts for provenance). See `ASSETS.md` for the list of what to supply and the licenses. Every claim not sourced in the brief carries a `<!-- VERIFY -->` comment in the HTML; `docs/VERIFY.md` lists all of them.
 
 ## Claims, HIPAA and reviews
 

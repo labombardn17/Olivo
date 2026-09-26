@@ -1,17 +1,18 @@
 import Link from "next/link";
-import { HeroField } from "@/components/site/home/HeroField";
+import Image from "next/image";
+import { photos } from "@/content/photos";
 import { HeroFade, Magnetic } from "@/components/site/Motion";
 import { site } from "@/content/site";
 import { ui, type Lang } from "@/content/ui";
 import { href } from "@/lib/i18n";
 import { Verify } from "@/lib/verify";
-/** Full-bleed hero on a designed field. The clinic film drops in here once it is shot. */
+/** Full-bleed hero over the clinic photograph. The image is the LCP and loads with priority. */
 export function HomeHero({ lang = "en" }: { lang?: Lang }) {
   const t = ui(lang).hero;
   return (
     <section id="top" data-hero="" aria-labelledby="hero-title" className="relative">
       <div className="relative min-h-[92svh] w-full overflow-hidden">
-        <HeroField lang={lang} />
+        <Image src={photos.home!.src} alt={lang === "es" ? "Recepción de Olivo Med Spa" : "Olivo Med Spa reception"} fill priority sizes="100vw" quality={72} className="object-cover" style={{ objectPosition: photos.home!.focus }} />
         <div className="absolute inset-0 hero-scrim" aria-hidden="true" />
         <HeroFade className="relative z-10 flex min-h-[92svh] items-end">
           <div className="container-x w-full pb-16 pt-32 md:pb-24">

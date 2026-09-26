@@ -1,0 +1,113 @@
+// Photographs on the public site, one per slot. Every file comes from the
+// clinic's current website (review set ids in `source`; see review/olivo-live
+// in the parent repository). Team, clinic, Emsculpt, Hydrafacial, miraDry,
+// laser genesis, hydrojelly and the before and after cases are the clinic's
+// own; Emface, Exion, DiamondGlow, Opus Colibri and skinbetter are
+// manufacturer images; the rest are the stock the current site already runs.
+export interface PhotoAsset {
+  src: string;
+  width: number;
+  height: number;
+  /** CSS object-position for cover crops. */
+  focus: string;
+  /** Id in the harvest review set. */
+  source: string;
+}
+
+export const photos: Record<string, PhotoAsset> = {
+  "home": { src: "/img/live/home.webp", width: 1024, height: 768, focus: "50% 55%", source: "106" },
+  "dr-olivo": { src: "/img/live/dr-olivo.webp", width: 1600, height: 1200, focus: "62% 35%", source: "062" },
+  "michelina": { src: "/img/live/michelina.webp", width: 1600, height: 1200, focus: "50% 50%", source: "192" },
+  "bianca": { src: "/img/live/bianca.webp", width: 1600, height: 1200, focus: "50% 50%", source: "193" },
+  "valeria": { src: "/img/live/valeria.webp", width: 1600, height: 1273, focus: "50% 50%", source: "194" },
+  "about": { src: "/img/live/about.webp", width: 600, height: 555, focus: "50% 55%", source: "189" },
+  "visit": { src: "/img/live/visit.webp", width: 1600, height: 849, focus: "55% 50%", source: "003" },
+  "memberships": { src: "/img/live/memberships.webp", width: 1600, height: 1600, focus: "50% 40%", source: "109" },
+  "specials": { src: "/img/live/specials.webp", width: 1600, height: 958, focus: "50% 50%", source: "007" },
+  "skincare": { src: "/img/live/skincare.webp", width: 1024, height: 642, focus: "50% 50%", source: "059" },
+  "body-contouring": { src: "/img/live/body-contouring.webp", width: 1230, height: 400, focus: "50% 50%", source: "066" },
+  "facial-lifting": { src: "/img/live/facial-lifting.webp", width: 1600, height: 1067, focus: "50% 50%", source: "179" },
+  "injectables": { src: "/img/live/injectables.webp", width: 1230, height: 400, focus: "50% 50%", source: "070" },
+  "skin-resurfacing": { src: "/img/live/skin-resurfacing.webp", width: 1230, height: 400, focus: "50% 50%", source: "069" },
+  "laser-and-light": { src: "/img/live/laser-and-light.webp", width: 1024, height: 605, focus: "50% 50%", source: "187" },
+  "facials-and-peels": { src: "/img/live/facials-and-peels.webp", width: 940, height: 788, focus: "50% 50%", source: "114" },
+  "sweat": { src: "/img/live/sweat.webp", width: 530, height: 400, focus: "50% 50%", source: "127" },
+  "wellness": { src: "/img/live/wellness.webp", width: 1600, height: 375, focus: "50% 50%", source: "029" },
+  "removals": { src: "/img/live/removals.webp", width: 940, height: 788, focus: "50% 50%", source: "211" },
+  "emsculpt-neo": { src: "/img/live/emsculpt-neo.webp", width: 491, height: 555, focus: "50% 50%", source: "190" },
+  "exion-body": { src: "/img/live/exion-body.webp", width: 1551, height: 517, focus: "50% 50%", source: "171" },
+  "emsella": { src: "/img/live/emsella.webp", width: 1600, height: 375, focus: "50% 50%", source: "072" },
+  "kybella": { src: "/img/live/kybella.webp", width: 1230, height: 400, focus: "50% 50%", source: "034" },
+  "laser-lipo": { src: "/img/live/laser-lipo.webp", width: 1600, height: 1600, focus: "50% 50%", source: "201" },
+  "miradry": { src: "/img/live/miradry.webp", width: 530, height: 400, focus: "50% 50%", source: "112" },
+  "emface": { src: "/img/live/emface.webp", width: 849, height: 867, focus: "50% 50%", source: "180" },
+  "exion-face": { src: "/img/live/exion-face.webp", width: 1230, height: 400, focus: "50% 50%", source: "043" },
+  "pdo-threads": { src: "/img/live/pdo-threads.webp", width: 1600, height: 375, focus: "50% 50%", source: "030" },
+  "radiesse": { src: "/img/live/radiesse.webp", width: 1230, height: 400, focus: "50% 50%", source: "036" },
+  "botox-and-xeomin": { src: "/img/live/botox-and-xeomin.webp", width: 1230, height: 400, focus: "50% 50%", source: "032" },
+  "dermal-fillers": { src: "/img/live/dermal-fillers.webp", width: 1230, height: 400, focus: "50% 50%", source: "028" },
+  "revanesse-versa": { src: "/img/live/revanesse-versa.webp", width: 1230, height: 400, focus: "50% 50%", source: "115" },
+  "hydrafacial": { src: "/img/live/hydrafacial.webp", width: 1024, height: 1148, focus: "50% 45%", source: "135" },
+  "glass-skin-facial": { src: "/img/live/glass-skin-facial.webp", width: 1600, height: 375, focus: "50% 50%", source: "013" },
+  "red-out-facial": { src: "/img/live/red-out-facial.webp", width: 1230, height: 400, focus: "50% 50%", source: "054" },
+  "pca-chemical-peels": { src: "/img/live/pca-chemical-peels.webp", width: 1600, height: 375, focus: "50% 50%", source: "044" },
+  "diamondglow": { src: "/img/live/diamondglow.webp", width: 1600, height: 1074, focus: "50% 50%", source: "047" },
+  "glo2facial": { src: "/img/live/glo2facial.webp", width: 683, height: 1024, focus: "50% 50%", source: "132" },
+  "dermaplaning": { src: "/img/live/dermaplaning.webp", width: 1022, height: 882, focus: "50% 50%", source: "183" },
+  "lash-lift-and-tint": { src: "/img/live/lash-lift-and-tint.webp", width: 1230, height: 400, focus: "50% 50%", source: "181" },
+  "hydrojelly-mask": { src: "/img/live/hydrojelly-mask.webp", width: 1507, height: 1744, focus: "50% 45%", source: "162" },
+  "laser-hair-removal": { src: "/img/live/laser-hair-removal.webp", width: 940, height: 788, focus: "50% 50%", source: "102" },
+  "ipl-photofacial": { src: "/img/live/ipl-photofacial.webp", width: 1230, height: 400, focus: "50% 50%", source: "040" },
+  "laser-genesis": { src: "/img/live/laser-genesis.webp", width: 1600, height: 1200, focus: "50% 45%", source: "185" },
+  "tattoo-removal": { src: "/img/live/tattoo-removal.webp", width: 1230, height: 500, focus: "50% 50%", source: "178" },
+  "vein-removal": { src: "/img/live/vein-removal.webp", width: 1230, height: 400, focus: "50% 50%", source: "066" },
+  "mole-removal": { src: "/img/live/mole-removal.webp", width: 1230, height: 400, focus: "50% 50%", source: "129" },
+  "opus-plasma": { src: "/img/live/opus-plasma.webp", width: 1230, height: 400, focus: "50% 50%", source: "037" },
+  "co2-fractional-laser": { src: "/img/live/co2-fractional-laser.webp", width: 1230, height: 400, focus: "50% 50%", source: "203" },
+  "erbium-resurfacing": { src: "/img/live/erbium-resurfacing.webp", width: 1600, height: 1600, focus: "50% 50%", source: "038" },
+  "exion-rf-microneedling": { src: "/img/live/exion-rf-microneedling.webp", width: 1600, height: 1600, focus: "50% 50%", source: "096" },
+  "opus-colibri": { src: "/img/live/opus-colibri.webp", width: 768, height: 768, focus: "50% 50%", source: "103" },
+  "iv-therapy": { src: "/img/live/iv-therapy.webp", width: 1230, height: 400, focus: "50% 50%", source: "071" },
+  "glp-1-weight-management": { src: "/img/live/glp-1-weight-management.webp", width: 1600, height: 375, focus: "50% 50%", source: "074" },
+  "hormone-therapy": { src: "/img/live/hormone-therapy.webp", width: 1600, height: 375, focus: "50% 50%", source: "014" },
+  "emfemme-360": { src: "/img/live/emfemme-360.webp", width: 1230, height: 400, focus: "50% 50%", source: "053" },
+  "for-men": { src: "/img/live/for-men.webp", width: 1024, height: 768, focus: "50% 40%", source: "055" },
+  "acne-breakouts": { src: "/img/live/acne-breakouts.webp", width: 1600, height: 1600, focus: "50% 50%", source: "096" },
+  "dull-tired-skin": { src: "/img/live/dull-tired-skin.webp", width: 1600, height: 375, focus: "50% 50%", source: "013" },
+  "excessive-sweating": { src: "/img/live/excessive-sweating.webp", width: 940, height: 788, focus: "50% 50%", source: "209" },
+  "low-energy": { src: "/img/live/low-energy.webp", width: 1600, height: 375, focus: "50% 50%", source: "029" },
+  "pelvic-floor": { src: "/img/live/pelvic-floor.webp", width: 1600, height: 375, focus: "50% 50%", source: "072" },
+  "unwanted-hair": { src: "/img/live/unwanted-hair.webp", width: 1230, height: 400, focus: "50% 50%", source: "041" },
+  "unwanted-tattoos": { src: "/img/live/unwanted-tattoos.webp", width: 1230, height: 400, focus: "50% 50%", source: "177" },
+  "veins-and-moles": { src: "/img/live/veins-and-moles.webp", width: 1600, height: 1379, focus: "50% 50%", source: "067" },
+  "double-chin": { src: "/img/live/double-chin.webp", width: 1230, height: 400, focus: "50% 50%", source: "034" },
+  "fine-lines-wrinkles": { src: "/img/live/fine-lines-wrinkles.webp", width: 1600, height: 847, focus: "50% 50%", source: "004" },
+  "muscle-tone": { src: "/img/live/muscle-tone.webp", width: 1600, height: 375, focus: "50% 50%", source: "074" },
+  "sagging-skin": { src: "/img/live/sagging-skin.webp", width: 1600, height: 958, focus: "50% 50%", source: "007" },
+  "skin-texture-scars": { src: "/img/live/skin-texture-scars.webp", width: 1600, height: 1600, focus: "50% 50%", source: "097" },
+  "stubborn-fat": { src: "/img/live/stubborn-fat.webp", width: 1230, height: 400, focus: "50% 50%", source: "053" },
+  "sun-damage-pigment": { src: "/img/live/sun-damage-pigment.webp", width: 1600, height: 1600, focus: "50% 50%", source: "039" },
+  "volume-loss": { src: "/img/live/volume-loss.webp", width: 925, height: 890, focus: "50% 50%", source: "005" },
+  "gallery-1": { src: "/img/live/gallery-1.webp", width: 800, height: 795, focus: "50% 50%", source: "042" },
+  "gallery-2": { src: "/img/live/gallery-2.webp", width: 1022, height: 882, focus: "50% 50%", source: "183" },
+  "gallery-3": { src: "/img/live/gallery-3.webp", width: 1003, height: 1023, focus: "50% 50%", source: "133" },
+  "gallery-4": { src: "/img/live/gallery-4.webp", width: 1600, height: 1600, focus: "50% 50%", source: "038" },
+  "gallery-5": { src: "/img/live/gallery-5.webp", width: 1208, height: 951, focus: "50% 50%", source: "022" },
+  "gallery-6": { src: "/img/live/gallery-6.webp", width: 1197, height: 1200, focus: "50% 50%", source: "027" },
+  "gallery-7": { src: "/img/live/gallery-7.webp", width: 1201, height: 1285, focus: "50% 50%", source: "024" },
+  "gallery-8": { src: "/img/live/gallery-8.webp", width: 1600, height: 1379, focus: "50% 50%", source: "067" },
+  "gallery-9": { src: "/img/live/gallery-9.webp", width: 1600, height: 795, focus: "50% 50%", source: "130" },
+};
+
+/** Before and after cases shown on the results page. Treatment name only, per the gallery policy. */
+export const gallery: { slot: string; en: string; es: string }[] = [
+  { slot: "gallery-1", en: "Laser hair removal", es: "Depilación láser" },
+  { slot: "gallery-2", en: "Dermaplaning", es: "Dermaplaning" },
+  { slot: "gallery-3", en: "Hydrafacial", es: "Hydrafacial" },
+  { slot: "gallery-4", en: "Erbium resurfacing", es: "Renovación con erbio" },
+  { slot: "gallery-5", en: "Injectables", es: "Inyectables" },
+  { slot: "gallery-6", en: "Injectables", es: "Inyectables" },
+  { slot: "gallery-7", en: "Lip filler", es: "Relleno de labios" },
+  { slot: "gallery-8", en: "Vein removal", es: "Eliminación de venas" },
+  { slot: "gallery-9", en: "Mole removal", es: "Eliminación de lunares" },
+];

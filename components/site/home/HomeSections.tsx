@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Marquee } from "@/components/shared/Marquee";
 import { Reveal } from "@/components/shared/Reveal";
 import { Photo } from "@/components/site/Photo";
-import { ComingSoon } from "@/components/site/ComingSoon";
+import { gallery } from "@/content/photos";
 import { CountUp, Stagger } from "@/components/site/Motion";
 import { SectionHead } from "@/components/site/Blocks";
 import { categories, site } from "@/content/site";
@@ -97,7 +97,7 @@ export function DoctorBlock({ lang = "en" }: P) {
   return (
     <section id="doctor" aria-labelledby="doctor-title" className="bg-ground-2 py-20 md:py-28">
       <div className="container-x grid items-center gap-10 md:grid-cols-2 md:gap-16">
-        <Reveal><ComingSoon kind="portrait" label="Dr. Jacqueline Olivo" lang={lang} className="img-frame aspect-[4/5] shadow-[var(--shadow-card-hover)]" /></Reveal>
+        <Reveal><Photo slot="dr-olivo" fallback="portrait" alt="Dr. Jacqueline Olivo" lang={lang} className="img-frame aspect-[4/5] shadow-[var(--shadow-card-hover)]" sizes="(min-width: 48rem) 50vw, 100vw" /></Reveal>
         <Reveal delay={0.1}>
           <p className="kicker">{t.doctorKicker}</p>
           <h2 id="doctor-title" className="section-title mt-3">{t.doctorTitle}</h2>
@@ -118,8 +118,10 @@ export function Results({ lang = "en" }: P) {
     <section id="results" aria-labelledby="results-title" className="inverse py-20 md:py-28">
       <div className="container-x">
         <SectionHead id="results-title" kicker={t.resultsKicker} title={t.resultsTitle} sub={t.resultsSub} />
-        <div className="mx-auto mt-10 max-w-3xl">
-          <ComingSoon kind="gallery" lang={lang} className="img-frame aspect-[4/5] sm:aspect-[16/10] shadow-[var(--shadow-card-hover)]" />
+        <div className="mx-auto mt-10 max-w-5xl">
+          <Stagger as="ul" className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4" amount={0.05}>
+            {gallery.slice(0, 4).map((g) => (<li key={g.slot}><figure><Photo slot={g.slot} fallback="skin-1" alt={`${g[lang]}, ${lang === "es" ? "antes y después" : "before and after"}`} lang={lang} className="img-frame aspect-square" sizes="(min-width: 48rem) 25vw, 50vw" /><figcaption className="mt-2 text-center text-[0.8125rem] text-ink-2">{g[lang]}</figcaption></figure></li>))}
+          </Stagger>
           <p className="mt-6 text-center"><Link href={href(lang, "/results")} className="link-arrow">{t.resultsPolicy} <Arrow /></Link></p>
         </div>
       </div>
