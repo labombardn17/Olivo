@@ -8,19 +8,17 @@ import { flagshipSlugs } from "@/content/services";
 import { ui, type Lang } from "@/content/ui";
 import { altPath, href } from "@/lib/i18n";
 import { localizeCategory } from "@/lib/localize";
-import { useScrolled } from "@/components/shared/useScrolled";
 import { Phone, Arrow } from "@/components/functional/Icons";
 import { Wordmark } from "./Wordmark";
 
 const flagshipNames: Record<string, string> = { "emsculpt-neo": "Emsculpt Neo", emface: "Emface", "exion-body": "Exion", emsella: "Emsella", "opus-plasma": "Opus Plasma", "co2-fractional-laser": "CO2", miradry: "Miradry", hydrafacial: "Hydrafacial", "exion-rf-microneedling": "RF microneedling" };
 
-/** Sticky header. Transparent over a dark hero on the homepage, solid elsewhere. Hides on scroll down. */
+/** Sticky solid header. Hides on scroll down, returns on scroll up. */
 export function SiteHeader({ lang = "en" }: { lang?: Lang }) {
   const t = ui(lang);
   const pathname = usePathname();
-  const overlay = pathname === "/" || pathname === "/es";
-  const scrolled = useScrolled(40);
-  const solid = !overlay || scrolled;
+  const overlay = false;
+  const solid = true;
   const [open, setOpen] = useState(false);
   const [mega, setMega] = useState(false);
   const [hidden, setHidden] = useState(false);

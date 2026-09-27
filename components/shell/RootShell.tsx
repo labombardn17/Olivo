@@ -14,7 +14,7 @@ import { Grain } from "@/components/shared/Grain";
  */
 export function RootShell({ lang, palette, children }: { lang: "en" | "es"; palette?: PaletteKey; children: ReactNode }) {
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang={lang} data-palette={palette} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: paletteInit(palette) }} />
       </head>

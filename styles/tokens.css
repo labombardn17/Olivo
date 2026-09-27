@@ -95,6 +95,17 @@ html[data-palette="glacier"] {
   --d-brass: #4e5860; --d-brass-text: #aeb6bd;
 }
 
+/* Orchid is the default palette, so nothing depends on the attribute being set. */
+:root {
+  --l-accent-fill: #6e4b8f; --d-accent-fill: #c4a6dd;
+  --l-ground: #fbf9fc; --l-ground-2: #f1edf4; --l-ink: #1b1424; --l-ink-2: #5b4f67;
+  --l-rule: #dcd4e2; --l-accent: #6e4b8f; --l-accent-text: #553873; --l-accent-ink: #fbf9fc;
+  --l-brass: #c7b6d6; --l-brass-text: #553873;
+  --d-ground: #1a1220; --d-ground-2: #241a2c; --d-ink: #efe6f3; --d-ink-2: #baaec5;
+  --d-rule: #3a2e45; --d-accent: #a582c4; --d-accent-text: #c4a6dd; --d-accent-ink: #1a1220;
+  --d-brass: #4b3d57; --d-brass-text: #c4a6dd;
+}
+
 /* Default: light scheme with dark as inverse. */
 :root {
   --accent-fill: var(--l-accent-fill);

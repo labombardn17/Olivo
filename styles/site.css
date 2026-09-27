@@ -27,6 +27,9 @@
 [data-concept="site"] .btn-solid { background: var(--ground-2); color: var(--ink); border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--rule)); }
 [data-concept="site"] .btn-solid:hover { background: var(--accent-fill); color: var(--accent-ink); border-color: var(--accent-fill); }
 [data-concept="site"] .stripe { background-image: linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), var(--rule) calc(100% - 1px)); }
+[data-concept="site"] .hero-light { background: var(--ground-2); }
+[data-concept="site"] .hero-glow { position: absolute; inset: -20% -10% auto -10%; height: 90%; background: radial-gradient(60% 60% at 25% 30%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%), radial-gradient(40% 50% at 90% 80%, color-mix(in srgb, var(--brass) 30%, transparent), transparent 70%); pointer-events: none; }
+[data-concept="site"] .hero-photo { box-shadow: var(--shadow-card-hover); outline: 1px solid color-mix(in srgb, var(--accent) 35%, var(--rule)); outline-offset: -1px; }
 [data-concept="site"] .hero-scrim { background: linear-gradient(to right, rgba(12, 6, 18, 0.62), rgba(12, 6, 18, 0.34) 55%, rgba(12, 6, 18, 0.18)), linear-gradient(to top, rgba(12, 6, 18, 0.7), rgba(12, 6, 18, 0.2) 50%, rgba(12, 6, 18, 0.12)); }
 [data-concept="site"] .card-link { display: block; text-decoration: none; }
 [data-concept="site"] .divider-title { display: flex; align-items: center; gap: 1rem; }
