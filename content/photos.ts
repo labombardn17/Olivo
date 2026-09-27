@@ -15,7 +15,7 @@ export interface PhotoAsset {
 }
 
 export const photos: Record<string, PhotoAsset> = {
-  "home": { src: "/img/live/home.webp", width: 1024, height: 768, focus: "50% 55%", source: "106" },
+  "home": { src: "/img/live/home.webp", width: 1024, height: 768, focus: "78% 50%", source: "106" },
   "dr-olivo": { src: "/img/live/dr-olivo.webp", width: 1600, height: 1200, focus: "62% 35%", source: "062" },
   "michelina": { src: "/img/live/michelina.webp", width: 1600, height: 1200, focus: "50% 50%", source: "192" },
   "bianca": { src: "/img/live/bianca.webp", width: 1600, height: 1200, focus: "50% 50%", source: "193" },
