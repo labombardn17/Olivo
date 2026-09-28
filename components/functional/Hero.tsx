@@ -1,4 +1,5 @@
 import { HeroVideo } from "@/components/shared/HeroVideo";
+import { withBase } from "@/lib/base";
 
 import { clinic, cta, proof, trust } from "@/content/olivo";
 import { Verify } from "@/lib/verify";
@@ -35,7 +36,7 @@ export function Hero({ variant, eyebrow, title, sub }: Props) {
     return (
       <section id="top" data-hero="" aria-labelledby="hero-title" className="relative">
         <div className="relative min-h-[86svh] w-full overflow-hidden">
-          <HeroVideo className="absolute inset-0 h-full w-full" />
+          <HeroVideo className="absolute inset-0 h-full w-full" webm={withBase("/video/hero-drone.webm")} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.62), rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.05))" }} aria-hidden="true" />
           <div className="absolute inset-x-0 bottom-0 h-1/2" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.45), transparent)" }} aria-hidden="true" />
           <div className={`relative z-10 flex min-h-[86svh] items-center ${variant === "film" ? "text-center" : ""}`}>
@@ -70,7 +71,7 @@ export function Hero({ variant, eyebrow, title, sub }: Props) {
             )}
           </div>
           <div className={`order-1 lg:order-2 relative img-frame ${variant === "block" ? "lg:-mr-8" : ""}`}>
-            <HeroVideo className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] w-full" />
+            <HeroVideo className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] w-full" webm={withBase("/video/hero-drone.webm")} />
           </div>
         </div>
       </section>
@@ -81,7 +82,7 @@ export function Hero({ variant, eyebrow, title, sub }: Props) {
     <section id="top" data-hero="" aria-labelledby="hero-title" className="pt-6">
       <div className="container-x">
         <div className="relative overflow-hidden img-frame min-h-[78svh]">
-          <HeroVideo className="absolute inset-0 h-full w-full" />
+          <HeroVideo className="absolute inset-0 h-full w-full" webm={withBase("/video/hero-drone.webm")} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.05))" }} aria-hidden="true" />
           <div className="relative z-10 flex min-h-[78svh] flex-col items-center justify-end px-6 pb-14 text-center text-[#fff] md:pb-20">
             <span className="pill mb-5 !bg-[#fff]/15 !text-[#fff]">{eyebrow}</span>

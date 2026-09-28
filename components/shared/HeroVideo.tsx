@@ -10,6 +10,7 @@ interface Props {
   poster?: string;
   posterAlt?: string;
   mp4?: string;
+  /** Optional; when absent only the MP4 source is injected. */
   webm?: string;
   width?: number;
   height?: number;
@@ -23,14 +24,14 @@ interface Props {
  * prefers-reduced-motion or saveData the poster stays. On portrait screens
  * the poster is fetched at 150vw: object-fit cover shows only the middle
  * of a landscape frame. Sources are injected on the first interaction or
- * after 3s idle, whichever comes first, so the poster settles as the LCP.
+ * after 5s idle, whichever comes first, so the poster settles as the LCP.
  */
 export function HeroVideo({
   className = "",
   poster = "/video/hero-drone-poster.jpg",
   posterAlt = "Placeholder aerial still, to be replaced with the clinic's drone footage",
   mp4 = withBase("/video/hero-drone.mp4"),
-  webm = withBase("/video/hero-drone.webm"),
+  webm,
   width = 1920,
   height = 1080,
   frameRef,
@@ -45,13 +46,16 @@ export function HeroVideo({
     let cancelled = false;
     const inject = () => {
       if (cancelled || v.querySelector("source")) return;
-      const w = document.createElement("source");
-      w.src = webm;
-      w.type = "video/webm";
+      if (webm) {
+        const w = document.createElement("source");
+        w.src = webm;
+        w.type = "video/webm";
+        v.append(w);
+      }
       const m = document.createElement("source");
       m.src = mp4;
       m.type = "video/mp4";
-      v.append(w, m);
+      v.append(m);
       v.load();
       v.play().catch(() => {});
     };
@@ -63,7 +67,7 @@ export function HeroVideo({
       else inject();
     };
     events.forEach((e) => window.addEventListener(e, onFirst, { passive: true, once: true }));
-    const t = window.setTimeout(onFirst, 3000);
+    const t = window.setTimeout(onFirst, 5000);
     return () => {
       cancelled = true;
       window.clearTimeout(t);
