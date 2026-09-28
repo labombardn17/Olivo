@@ -82,3 +82,10 @@
 [data-concept="site"] .soon[data-soon-fill] .soon-inner { padding-bottom: 34%; }
 
 
+
+/* Hero review variants */
+[data-concept="site"] .hero-orchid-scrim { background: linear-gradient(to top, rgba(38, 22, 52, 0.96) 0%, rgba(38, 22, 52, 0.78) 34%, rgba(38, 22, 52, 0.25) 62%, rgba(38, 22, 52, 0.05) 100%); }
+[data-concept="site"] .btn-on-orchid { background: #fff; color: var(--accent-text); }
+[data-concept="site"] .btn-on-orchid:hover { background: var(--ground-2); }
+@media (min-width: 48rem) { [data-concept="site"] .hero-orchid-scrim { background: linear-gradient(to right, rgba(26, 18, 32, 0.8) 0%, rgba(26, 18, 32, 0.45) 50%, rgba(26, 18, 32, 0.1) 100%); } }
+[data-concept="site"] .hero-glow-light { background: radial-gradient(70% 60% at 20% 20%, rgba(255, 255, 255, 0.14), transparent 70%); pointer-events: none; }
