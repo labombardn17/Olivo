@@ -24,7 +24,7 @@ export function HomeHero({ lang = "en" }: { lang?: Lang }) {
             <Link href={href(lang, "/quiz")} className="btn btn-outline">{t.quiz}</Link>
           </div>
           <dl className="mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-3 border-t border-rule pt-6 text-[0.875rem] sm:grid-cols-3">
-            <div><dt className="text-ink-2">{t.clinic}</dt><dd className="mt-0.5 font-medium">2550 W. Fullerton Ave</dd></div>
+            <div><dt className="text-ink-2">{t.clinic}</dt><dd className="mt-0.5 font-medium"><a href={site.directionsUrl} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">2550 W. Fullerton Ave</a></dd></div>
             <div><dt className="text-ink-2">{t.hours}</dt><dd className="mt-0.5 font-medium">{t.hoursLine}</dd></div>
             <div><dt className="text-ink-2">{t.reach}</dt><dd className="mt-0.5 font-medium"><a href={site.sms(ui(lang).textNow.body)} className="hover:underline underline-offset-4">{t.reachLine}</a><Verify note={site.smsVerify} /></dd></div>
           </dl>
