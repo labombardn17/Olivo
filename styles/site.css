@@ -84,5 +84,7 @@
 [data-concept="site"] .hero-orchid-scrim { background: linear-gradient(to top, rgba(38, 22, 52, 0.96) 0%, rgba(38, 22, 52, 0.78) 34%, rgba(38, 22, 52, 0.25) 62%, rgba(38, 22, 52, 0.05) 100%); }
 @media (min-width: 48rem) { [data-concept="site"] .hero-orchid-scrim { background: linear-gradient(to right, rgba(26, 18, 32, 0.8) 0%, rgba(26, 18, 32, 0.45) 50%, rgba(26, 18, 32, 0.1) 100%); } }
 
-/* Once the chat widget has loaded, the mobile bar sits above its bubble. */
-html[data-chat="on"] [data-concept="site"] .text-now-mobile { bottom: 5.25rem; }
+/* The Text, Call, Book bar keeps the bottom edge on phones; the chat widget's fixed root is lifted above it. */
+@media (max-width: 47.98rem) {
+  body > [data-dandy-root], body > iframe[src*="getdandy"], body > [id*="dandy" i], body > [class*="dandy" i] { bottom: calc(5.5rem + env(safe-area-inset-bottom)) !important; }
+}
