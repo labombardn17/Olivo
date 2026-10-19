@@ -86,5 +86,5 @@
 
 /* The Text, Call, Book bar keeps the bottom edge on phones; the chat widget's fixed root is lifted above it. */
 @media (max-width: 47.98rem) {
-  body > [data-dandy-root], body > iframe[src*="getdandy"], body > [id*="dandy" i], body > [class*="dandy" i] { bottom: calc(5.5rem + env(safe-area-inset-bottom)) !important; }
+  [data-dandy-root], iframe[src*="getdandy"] { bottom: calc(5.5rem + env(safe-area-inset-bottom)) !important; }
 }

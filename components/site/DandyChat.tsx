@@ -23,14 +23,30 @@ export function DandyChat() {
       s.async = true;
       document.body.appendChild(s);
       document.documentElement.setAttribute("data-chat", "on");
-      // Tag the widget's fixed root(s) as they appear so CSS can lift them above the text bar on phones.
-      const tag = (el: Element) => {
-        if (!(el instanceof HTMLElement) || el.closest("[data-concept]") || el.tagName === "SCRIPT") return;
-        if (getComputedStyle(el).position === "fixed") el.setAttribute("data-dandy-root", "");
+      // Lift the widget above the Text, Call, Book bar on phones: tag every
+      // fixed-position element the widget adds (it may sit inside a static
+      // wrapper or an open shadow root), rescanning as the widget builds itself.
+      const ours = (el: Element) => Boolean(el.closest("[data-concept]"));
+      const phone = () => window.matchMedia("(max-width: 47.98rem)").matches;
+      const lift = "calc(5.5rem + env(safe-area-inset-bottom))";
+      const tag = (el: Element, insideFixed = false) => {
+        if (!(el instanceof HTMLElement) || ours(el) || /^(SCRIPT|STYLE|LINK)$/.test(el.tagName)) return;
+        let fixed = insideFixed;
+        if (!insideFixed && getComputedStyle(el).position === "fixed") {
+          fixed = true;
+          el.setAttribute("data-dandy-root", "");
+          // Inline so it also reaches launchers rendered inside a shadow root, where page CSS cannot.
+          if (phone()) el.style.setProperty("bottom", lift, "important");
+        }
+        const kids = [...el.children, ...(el.shadowRoot ? Array.from(el.shadowRoot.children) : [])];
+        kids.forEach((k) => tag(k, fixed));
       };
-      const mo = new MutationObserver((muts) => muts.forEach((m) => m.addedNodes.forEach((n) => { if (n instanceof Element) tag(n); })));
-      mo.observe(document.body, { childList: true });
-      window.setTimeout(() => { Array.from(document.body.children).forEach(tag); mo.disconnect(); }, 15000);
+      const scan = () => Array.from(document.body.children).forEach(tag);
+      let pending = 0;
+      const mo = new MutationObserver(() => { if (!pending) pending = window.setTimeout(() => { pending = 0; scan(); }, 150); });
+      mo.observe(document.body, { childList: true, subtree: true });
+      [1000, 3000, 8000].forEach((ms) => window.setTimeout(scan, ms));
+      window.setTimeout(() => { scan(); mo.disconnect(); }, 20000);
     };
     const events = ["pointerdown", "keydown", "touchstart", "wheel", "scroll"] as const;
     const onFirst = () => { events.forEach((e) => window.removeEventListener(e, onFirst)); load(); };
