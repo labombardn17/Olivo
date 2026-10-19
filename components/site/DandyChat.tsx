@@ -41,7 +41,7 @@ export function DandyChat() {
         const kids = [...el.children, ...(el.shadowRoot ? Array.from(el.shadowRoot.children) : [])];
         kids.forEach((k) => tag(k, fixed));
       };
-      const scan = () => Array.from(document.body.children).forEach(tag);
+      const scan = () => Array.from(document.body.children).forEach((el) => tag(el));
       let pending = 0;
       const mo = new MutationObserver(() => { if (!pending) pending = window.setTimeout(() => { pending = 0; scan(); }, 150); });
       mo.observe(document.body, { childList: true, subtree: true });
