@@ -10,6 +10,9 @@
 - Every photo slot has a real photograph (content/photos.ts, files in public/img/live). 24 are the clinic's own, 9 manufacturer, 38 iStock frames carried over from the current site. Confirm with the previous agency that the iStock licences cover the new site, and confirm a signed release for each of the nine before and after cases on /results. Swap a photo by replacing the file and the size in content/photos.ts.
 - Everything the clinic must confirm renders as `<!-- VERIFY: ... -->` comments in the HTML. `grep -o "VERIFY: [^-]*" out/**/*.html | sort | uniq -c` lists them.
 
+## Third parties on the page
+- GetDandy WebChat loads on every public page after the first interaction or five seconds idle (components/site/DandyChat.tsx). The GetDandy AI Voice number is +1 (507) 428-2754; the site still shows the clinic line 872-315-3481 everywhere. Change content/clinic.ts only if the clinic decides the public number should be the AI line.
+
 ## Go live on the real domain
 1. Vercel project settings: add olivomedspa.com and www.olivomedspa.com, set www as primary.
 2. Environment variables (production): `NEXT_PUBLIC_SITE_URL=https://www.olivomedspa.com`, `NEXT_PUBLIC_INDEXABLE=1`. Redeploy. robots.txt flips to allow, every page gets index,follow and a canonical on the new domain, sitemap.xml lists every page in both languages with hreflang alternates.
