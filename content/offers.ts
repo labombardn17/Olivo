@@ -9,8 +9,8 @@ export const membershipTiers = [
 export const membershipsVerify = "Membership perks, tier names, and terms: clinic to supply the real program details before launch";
 
 export const specials = {
-  intro: "Specials change monthly. The current offers live in the clinic's member portal and are confirmed at booking.",
-  verify: "Specials: pull the live monthly offers from the clinic before launch; no prices shown until supplied",
+  intro: "Current offers at the clinic, confirmed when you book. Questions about a package? Text or call and a person will answer during clinic hours.",
+  verify: "Specials: current campaigns live in content/specials.ts, transcribed from the clinic's October 2026 flyers; these items show only when no campaign is running",
   items: [
     { name: "This month's featured treatment", line: "Ask about the current featured device treatment when you book." },
     { name: "New patient consultation", line: "A consultation with the clinical team to build a written plan." },

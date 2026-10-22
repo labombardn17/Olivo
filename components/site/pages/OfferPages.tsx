@@ -11,6 +11,8 @@ import { Stagger } from "@/components/site/Motion";
 import { Crumbs, CtaBand, FaqList, Steps } from "@/components/site/Blocks";
 import { buildMeta } from "@/lib/meta";
 import { Verify } from "@/lib/verify";
+import { activeCampaigns } from "@/content/specials";
+import { SpecialsCampaigns } from "./SpecialsCampaigns";
 import { Check } from "@/components/functional/Icons";
 
 const name = (slug: string, lang: Lang) => { const s = getService(slug); return s ? localizeService(s, lang).name : slug; };
@@ -59,8 +61,8 @@ export function FinancingPage({ lang }: { lang: Lang }) {
 }
 
 export const specialsMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Especiales del mes | Olivo Med Spa, Logan Square, Chicago", description: "Especiales mensuales de Olivo Med Spa en Logan Square, Chicago. Las ofertas cambian cada mes y se confirman al reservar. Escriba o llame al 872-315-3481.", path: "/specials", lang }
-  : { title: "Specials This Month | Olivo Med Spa, Logan Square Chicago", description: "Current monthly specials at Olivo Med Spa in Logan Square, Chicago. Offers change monthly and are confirmed at booking. Text or call 872-315-3481.", path: "/specials", lang });
+  ? { title: "Promociones de otoño y fiestas | Olivo Med Spa", description: "Promociones de otoño y fiestas en Olivo Med Spa, Logan Square, Chicago: Emsculpt Neo, Emface, Exion, miraDry, Emsella y faciales. Llame al 872-315-3481.", path: "/specials", lang }
+  : { title: "Fall and Holiday Specials | Olivo Med Spa, Chicago", description: "Fall and holiday specials at Olivo Med Spa in Logan Square, Chicago: Emsculpt Neo, Emface, Exion, miraDry, Emsella and facials. Text or call 872-315-3481.", path: "/specials", lang });
 
 export function SpecialsPage({ lang }: { lang: Lang }) {
   const t = ui(lang); const p = t.pages.specials; const { specials, membershipTiers } = offersFor(lang); const L = (x: string) => href(lang, x);
@@ -71,7 +73,9 @@ export function SpecialsPage({ lang }: { lang: Lang }) {
         <Photo slot="specials" fallback="light-1" alt={p.crumb} lang={lang} className="img-frame aspect-[4/3] shadow-[var(--shadow-card-hover)]" />
       </div></section>
       <section className="py-20"><div className="container-x">
-        <Stagger className="grid gap-6 md:grid-cols-3">{specials.items.map((s) => (<div key={s.name} className="card p-7"><p className="kicker">{p.offer}</p><h2 className="font-display mt-2 text-[1.6rem] leading-tight">{s.name}</h2><p className="mt-3 text-ink-2">{s.line}</p>{"verify" in s && s.verify && <Verify note={s.verify} />}<a href={L(site.booking)} className="btn btn-outline btn-sm mt-6">{p.book}</a></div>))}</Stagger>
+        {activeCampaigns().length ? <SpecialsCampaigns lang={lang} /> : (
+          <Stagger className="grid gap-6 md:grid-cols-3">{specials.items.map((s) => (<div key={s.name} className="card p-7"><p className="kicker">{p.offer}</p><h2 className="font-display mt-2 text-[1.6rem] leading-tight">{s.name}</h2><p className="mt-3 text-ink-2">{s.line}</p>{"verify" in s && s.verify && <Verify note={s.verify} />}<a href={L(site.booking)} className="btn btn-outline btn-sm mt-6">{p.book}</a></div>))}</Stagger>
+        )}
         <div className="card-2 mt-10 p-7 md:flex md:items-center md:justify-between"><div><p className="font-semibold">{p.standing}</p><p className="mt-1 text-[0.9375rem] text-ink-2">{p.standingLine(membershipTiers.map((m) => m.name).join(", "))}</p></div><Link href={L("/memberships")} className="btn btn-primary btn-sm mt-4 md:mt-0">{p.seeMem}</Link></div>
       </div></section>
       <CtaBand title={p.cta} sms={p.sms} lang={lang} />
