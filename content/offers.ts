@@ -10,7 +10,7 @@ export const membershipsVerify = "Membership perks, tier names, and terms: clini
 
 export const specials = {
   intro: "Current offers at the clinic, confirmed when you book. Questions about a package? Text or call and a person will answer during clinic hours.",
-  verify: "Specials: current campaigns live in content/specials.ts, transcribed from the clinic's October 2026 flyers; these items show only when no campaign is running",
+  verify: "Specials: current campaigns live in content/specials.ts, transcribed from the clinic's flyers and ads; these items show only when no campaign is running",
   items: [
     { name: "This month's featured treatment", line: "Ask about the current featured device treatment when you book." },
     { name: "New patient consultation", line: "A consultation with the clinical team to build a written plan." },

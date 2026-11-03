@@ -61,8 +61,8 @@ export function FinancingPage({ lang }: { lang: Lang }) {
 }
 
 export const specialsMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Promociones de otoño y fiestas | Olivo Med Spa", description: "Promociones de otoño y fiestas en Olivo Med Spa, Logan Square, Chicago: Emsculpt Neo, Emface, Exion, miraDry, Emsella y faciales. Llame al 872-315-3481.", path: "/specials", lang }
-  : { title: "Fall and Holiday Specials | Olivo Med Spa, Chicago", description: "Fall and holiday specials at Olivo Med Spa in Logan Square, Chicago: Emsculpt Neo, Emface, Exion, miraDry, Emsella and facials. Text or call 872-315-3481.", path: "/specials", lang });
+  ? { title: "Promociones | Olivo Med Spa, Logan Square, Chicago", description: "Promociones actuales en Olivo Med Spa, Logan Square, Chicago: miraDry, microneedling, Emsculpt Neo, Emface, Exion y Emsella. Llame al 872-315-3481.", path: "/specials", lang }
+  : { title: "Specials | Olivo Med Spa, Logan Square, Chicago", description: "Current specials at Olivo Med Spa in Logan Square, Chicago: miraDry, microneedling, Emsculpt Neo, Emface, Exion and Emsella. Text or call 872-315-3481.", path: "/specials", lang });
 
 export function SpecialsPage({ lang }: { lang: Lang }) {
   const t = ui(lang); const p = t.pages.specials; const { specials, membershipTiers } = offersFor(lang); const L = (x: string) => href(lang, x);

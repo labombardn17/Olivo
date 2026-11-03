@@ -7,8 +7,8 @@ import { Verify } from "@/lib/verify";
 import { Arrow } from "@/components/functional/Icons";
 
 const words = {
-  en: { sessions: (n: number) => `${n} ${n === 1 ? "session" : "sessions"}`, per: { each: "each", month: "per month", session: "per session", syringe: "per syringe" } as Record<Per, string>, save: (n: string) => `Save ${n}`, endsSoon: "Ends soon", range: (a: string, b: string) => `${a} to ${b}`, book: "Book this", about: (n: string) => `About ${n}` },
-  es: { sessions: (n: number) => `${n} ${n === 1 ? "sesión" : "sesiones"}`, per: { each: "c/u", month: "al mes", session: "por sesión", syringe: "por jeringa" } as Record<Per, string>, save: (n: string) => `Ahorre ${n}`, endsSoon: "Termina pronto", range: (a: string, b: string) => `Del ${a} al ${b}`, book: "Reservar", about: (n: string) => `Sobre ${n}` },
+  en: { sessions: (n: number) => `${n} ${n === 1 ? "session" : "sessions"}`, per: { each: "each", month: "per month", session: "per session", syringe: "per syringe" } as Record<Per, string>, save: (n: string) => `Save ${n}`, endsSoon: "Ends soon", range: (a: string, b: string) => `${a} to ${b}`, book: "Book this", free: "Free", about: (n: string) => `About ${n}` },
+  es: { sessions: (n: number) => `${n} ${n === 1 ? "sesión" : "sesiones"}`, per: { each: "c/u", month: "al mes", session: "por sesión", syringe: "por jeringa" } as Record<Per, string>, save: (n: string) => `Ahorre ${n}`, endsSoon: "Termina pronto", range: (a: string, b: string) => `Del ${a} al ${b}`, book: "Reservar", free: "Gratis", about: (n: string) => `Sobre ${n}` },
 };
 
 const money = (n: number) => `$${n.toLocaleString("en-US")}`;
@@ -30,7 +30,7 @@ function Row({ r, lang }: { r: PriceRow; lang: Lang }) {
       {label && <dt className="text-[0.9375rem] text-ink-2">{label}</dt>}
       {label && <span aria-hidden="true" className="min-w-4 flex-1 translate-y-[-0.2rem] border-b border-dotted border-rule" />}
       <dd className={label ? "text-right" : ""}>
-        <span className="font-display text-[1.35rem] leading-none">{money(r.price)}</span>
+        <span className="font-display text-[1.35rem] leading-none">{r.price ? money(r.price) : w.free}</span>
         {r.per && <span className="ml-1 text-[0.8125rem] text-ink-2">{w.per[r.per]}</span>}
         {r.save && <span className="ml-2 rounded-full bg-ground-2 px-2 py-0.5 text-[0.75rem] font-semibold text-accent-text">{w.save(money(r.save))}</span>}
       </dd>

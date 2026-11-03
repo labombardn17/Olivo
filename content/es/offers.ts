@@ -13,7 +13,7 @@ export const membershipTiersEs: readonly TierEs<(typeof membershipTiers)[number]
 
 export const specialsEs: typeof specials = {
   intro: "Ofertas vigentes en la clínica, confirmadas al reservar. ¿Preguntas sobre un paquete? Escriba o llame y una persona le responderá en horario de atención.",
-  verify: "Specials: current campaigns live in content/specials.ts, transcribed from the clinic's October 2026 flyers; these items show only when no campaign is running",
+  verify: "Specials: current campaigns live in content/specials.ts, transcribed from the clinic's flyers and ads; these items show only when no campaign is running",
   items: [
     { name: "Tratamiento destacado del mes", line: "Pregunte por el tratamiento con dispositivo destacado de este mes cuando reserve." },
     { name: "Consulta para pacientes nuevos", line: "Una consulta con el equipo clínico para elaborar un plan por escrito." },
