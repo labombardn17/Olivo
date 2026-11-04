@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import legacy from "./content/redirects.json";
+import { indexable } from "./content/live";
 
 /**
  * Two modes. Standalone (default): a normal Next app with headers and its own
@@ -10,8 +11,9 @@ import legacy from "./content/redirects.json";
 const isExport = process.env.OLIVO_EXPORT === "1";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+/** Search engines stay out of everything but the live olivomedspa.com build (content/live.ts). */
 const securityHeaders = [
-  { key: "X-Robots-Tag", value: "noindex, nofollow" },
+  ...(indexable ? [] : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]),
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "origin-when-cross-origin" },
   // Same-origin framing only: /compare frames the concepts.

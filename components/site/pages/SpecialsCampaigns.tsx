@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
 import type { Lang } from "@/content/ui";
@@ -61,27 +62,49 @@ function OfferCard({ o, lang }: { o: Offer; lang: Lang }) {
   );
 }
 
-function MenuList({ c, lang }: { c: Campaign; lang: Lang }) {
+/** One price on the same line as the name, or the full tiers when there is more than one. */
+function MenuItem({ o, lang }: { o: Offer; lang: Lang }) {
   const w = words[lang];
+  const only = o.tiers.length === 1 && o.tiers[0]?.rows.length === 1 && !o.tiers[0].label ? o.tiers[0].rows[0] : undefined;
+  const simple = only && !only.label && !only.sessions ? only : undefined;
+  return (
+    <li>
+      <div className="flex items-baseline gap-3">
+        <h3 className="font-display text-[1.35rem] leading-tight">{o.href ? <Link href={href(lang, o.href)} className="hover:text-accent-text">{o.name[lang]}</Link> : o.name[lang]}</h3>
+        {simple && <span aria-hidden="true" className="min-w-4 flex-1 translate-y-[-0.2rem] border-b border-dotted border-rule" />}
+        {simple && <p className="whitespace-nowrap"><span className="font-display text-[1.35rem] leading-none">{money(simple.price)}</span>{simple.per && <span className="ml-1 text-[0.8125rem] text-ink-2">{w.per[simple.per]}</span>}</p>}
+      </div>
+      {o.line && <p className="mt-1 text-[0.9375rem] text-ink-2">{o.line[lang]}</p>}
+      {!simple && o.tiers.map((t, i) => (
+        <div key={i} className="mt-2">
+          {t.label && <p className="kicker mt-3 !text-[0.6875rem]">{t.label[lang]}</p>}
+          <dl>{t.rows.map((r, j) => <Row key={j} r={r} lang={lang} />)}</dl>
+        </div>
+      ))}
+      {o.verify && <Verify note={o.verify} />}
+    </li>
+  );
+}
+
+function MenuList({ c, lang }: { c: Campaign; lang: Lang }) {
   return (
     <div className="card p-6 md:p-9">
-      <ul className="grid gap-x-12 gap-y-6 md:grid-cols-2">
-        {c.offers.map((o) => {
-          const r = o.tiers[0]?.rows[0];
-          return (
-            <li key={o.id}>
-              <div className="flex items-baseline gap-3">
-                <h3 className="font-display text-[1.35rem] leading-tight">{o.href ? <Link href={href(lang, o.href)} className="hover:text-accent-text">{o.name[lang]}</Link> : o.name[lang]}</h3>
-                <span aria-hidden="true" className="min-w-4 flex-1 translate-y-[-0.2rem] border-b border-dotted border-rule" />
-                {r && <p className="whitespace-nowrap"><span className="font-display text-[1.35rem] leading-none">{money(r.price)}</span>{r.per && <span className="ml-1 text-[0.8125rem] text-ink-2">{w.per[r.per]}</span>}</p>}
-              </div>
-              {o.line && <p className="mt-1 text-[0.9375rem] text-ink-2">{o.line[lang]}</p>}
-              {o.verify && <Verify note={o.verify} />}
-            </li>
-          );
-        })}
-      </ul>
-      <a href={href(lang, site.booking)} className="btn btn-primary btn-sm mt-8">{w.book}</a>
+      <ul className="grid gap-x-12 gap-y-8 md:grid-cols-2">{c.offers.map((o) => <MenuItem key={o.id} o={o} lang={lang} />)}</ul>
+      <a href={href(lang, site.booking)} className="btn btn-primary btn-sm mt-8">{words[lang].book}</a>
+    </div>
+  );
+}
+
+/** The clinic's flyers, side by side on desktop. Each opens full size in a new tab. */
+function Flyers({ c, lang }: { c: Campaign; lang: Lang }) {
+  if (!c.images?.length) return null;
+  return (
+    <div className="mx-auto mb-10 grid max-w-[60rem] gap-6 md:grid-cols-2">
+      {c.images.map((img) => (
+        <a key={img.src} href={img.src} target="_blank" rel="noopener noreferrer" className="img-frame block shadow-[var(--shadow-card-hover)]">
+          <Image src={img.src} width={img.width} height={img.height} alt={img.alt[lang]} sizes="(min-width: 768px) 30rem, 100vw" className="h-auto w-full" />
+        </a>
+      ))}
     </div>
   );
 }
@@ -105,6 +128,7 @@ export function SpecialsCampaigns({ lang }: { lang: Lang }) {
             </div>
             {daysLeft(c.until, today) <= 14 && <span className="pill">{w.endsSoon}</span>}
           </div>
+          <Flyers c={c} lang={lang} />
           {c.layout === "menu" ? <MenuList c={c} lang={lang} /> : (
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">{c.offers.map((o) => <OfferCard key={o.id} o={o} lang={lang} />)}</div>
           )}

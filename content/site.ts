@@ -3,9 +3,8 @@ import { clinic } from "./clinic";
 import type { CategoryKey } from "./types";
 import { withBase } from "@/lib/base";
 
-/** Canonical origin. Preview deploys stay noindex until NEXT_PUBLIC_INDEXABLE=1. */
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://olivo-med-spa.vercel.app").replace(/\/$/, "");
-export const indexable = process.env.NEXT_PUBLIC_INDEXABLE === "1";
+/** Canonical origin and indexing: see content/live.ts. */
+export { indexable, siteUrl } from "./live";
 
 export const site = {
   name: clinic.name,
@@ -32,7 +31,7 @@ export const site = {
   geo: { lat: 41.9249979, lng: -87.6922262 },
   placeId: "ChIJd9bIVzjTD4gRgCJNyOPUiwY",
   mapsUrl: "https://maps.app.goo.gl/sboaSLri4Cd6KR5q9",
-  directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=2550+W+Fullerton+Ave+Chicago+IL+60618&destination_place_id=ChIJd9bIVzjTD4gRgCJNyOPUiwY",
+  directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=2550+W+Fullerton+Ave+Chicago+IL+60647&destination_place_id=ChIJd9bIVzjTD4gRgCJNyOPUiwY",
   hours: [
     { days: "Monday to Friday", open: "10 AM", close: "7 PM" },
     { days: "Saturday", open: "10 AM", close: "5 PM" },

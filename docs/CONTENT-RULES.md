@@ -21,7 +21,7 @@ These apply to every string in `content/`. They exist because this is a medical 
 - Product names as the manufacturer writes them: Emsculpt Neo, Emface, Exion, Emsella, Emfemme 360, Opus Plasma, Opus Colibri, Miradry, Hydrafacial, Botox Cosmetic, Xeomin, Revanesse Versa, Belotero, Radiesse, Kybella, Alastin, ZO Skin Health, Skinbetter Science.
 
 ## Facts you may use
-- Olivo Med Spa, 2550 W. Fullerton Ave, Chicago, IL 60618, Logan Square. Phone 872-315-3481.
+- Olivo Med Spa, 2550 W. Fullerton Ave, Chicago, IL 60647, Logan Square. Phone 872-315-3481.
 - Physician owned and led since 2013 by Jacqueline Olivo, MD. Practicing medicine since 2007.
 - Hours: Monday to Friday 10 AM to 7 PM, Saturday 10 AM to 5 PM, closed Sunday.
 - Booking through Vagaro. Financing through Cherry. Memberships: Skin Club, Skin Club VIP, Skin Club Elite, Emsculpt NEO Club, Sculpt It, Laser Hair Reduction Club (terms to be supplied).

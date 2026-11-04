@@ -50,8 +50,8 @@ export function ReviewsPage({ lang }: { lang: Lang }) {
 }
 
 export const visitMeta = (lang: Lang) => buildMeta(lang === "es"
-  ? { title: "Visítenos | 2550 W Fullerton, Logan Square | Olivo Med Spa", description: "Olivo Med Spa está en 2550 W. Fullerton Ave, Chicago, IL 60618, en Logan Square. Horario, estacionamiento, transporte, cómo llegar y cómo reservar.", path: "/visit", lang }
-  : { title: "Visit Olivo Med Spa | 2550 W Fullerton Ave, Logan Square", description: "Olivo Med Spa is at 2550 W. Fullerton Ave, Chicago, IL 60618 in Logan Square. Hours, parking, transit, directions, and how to book or text the clinic.", path: "/visit", lang });
+  ? { title: "Visítenos | 2550 W Fullerton, Logan Square | Olivo Med Spa", description: "Olivo Med Spa está en 2550 W. Fullerton Ave, Chicago, IL 60647, en Logan Square. Horario, estacionamiento, transporte, cómo llegar y cómo reservar.", path: "/visit", lang }
+  : { title: "Visit Olivo Med Spa | 2550 W Fullerton Ave, Logan Square", description: "Olivo Med Spa is at 2550 W. Fullerton Ave, Chicago, IL 60647 in Logan Square. Hours, parking, transit, directions, and how to book or text the clinic.", path: "/visit", lang });
 
 export function VisitPage({ lang }: { lang: Lang }) {
   const t = ui(lang); const p = t.pages.visit;

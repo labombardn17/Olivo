@@ -12,7 +12,7 @@ export const clinic = {
     line1: "2550 W. Fullerton Ave",
     city: "Chicago",
     state: "IL",
-    zip: "60618",
+    zip: "60647",
     neighborhood: "Logan Square",
   },
   booking: "https://www.vagaro.com/olivomedspa/book-now",

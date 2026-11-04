@@ -10,6 +10,7 @@ export const sections: Record<string, string> = {
   memberships: "membresias", specials: "especiales", financing: "financiamiento", skincare: "cuidado-de-la-piel", results: "resultados",
   reviews: "resenas", visit: "visitanos", contact: "contacto", book: "reservar", quiz: "cuestionario", "for-patients": "para-pacientes",
   "gift-cards": "tarjetas-de-regalo", "site-map": "mapa-del-sitio", privacy: "privacidad", terms: "terminos", accessibility: "accesibilidad",
+  offers: "ofertas",
 };
 const toEnSection = Object.fromEntries(Object.entries(sections).map(([a, b]) => [b, a]));
 
